@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proto;
+
+// The request message to be auto selected.
+message AutoSelectRequest {
+	string from = 1;
+}
+
+// The response message to the auto selected requester.
+message AutoSelectResponse {
+	string server = 1;
+}
+
+// The gRPC service definition for SkyLB demo.
+service Demo {
+	rpc AutoSelectMain (AutoSelectRequest) returns (AutoSelectResponse);
+}

@@ -1,0 +1,99 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vexillary-demo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: vexillary-demo
+        tier: backend
+    spec:
+      containers:
+      - name: vexillary-demo
+        image: {{.DockerRegistryHostPort}}/skylb-demo:0.1.0
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        command:
+          - /skylb-demo/bin/server
+          - --skylb-endpoints=skylb:1900
+          - --alsologtostderr
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: port
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vexillary-test
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: vexillary-test
+        tier: backend
+    spec:
+      containers:
+      - name: vexillary-test
+        image: {{.DockerRegistryHostPort}}/skylb-demo:0.1.0
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        command:
+          - /skylb-demo/bin/server
+          - --skylb-endpoints=skylb:1900
+          - --alsologtostderr
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: port
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: vexillary-demo
+  labels:
+    app: vexillary-demo
+    tier: backend
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: port
+  selector:
+    app: vexillary-demo
+    tier: backend
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: vexillary-test
+  labels:
+    app: vexillary-test
+    tier: backend
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: port
+  selector:
+    app: vexillary-test
+    tier: backend

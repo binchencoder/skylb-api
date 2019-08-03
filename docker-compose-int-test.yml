@@ -1,0 +1,76 @@
+# Depends on //docker-compose/dev/skylb/docker-compose.yml.
+
+version: '3'
+services:
+    etcd:
+        ports:
+            - "2379:2379"
+        environment:
+            - ETCD_LISTEN_CLIENT_URLS=http://etcd:2379
+            - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+        image: "harbor.eff.ltd/system/etcd"
+
+    skylb1:
+        ports:
+            - "1900:1900"
+        image: "harbor.eff.ltd/skylb/skylb"
+        command: |
+            /skylb/skylb
+                --alsologtostderr -v 5
+                --etcd-endpoints http://etcd:2379
+                --etcd-key-ttl 15s
+        depends_on:
+            - etcd
+
+    skylb2:
+        ports:
+            - "2000:2000"
+        image: "harbor.eff.ltd/skylb/skylb"
+        command: |
+            /skylb/skylb
+                --alsologtostderr -v 5
+                --host-port=:2000
+                --etcd-endpoints http://etcd:2379
+                --etcd-key-ttl 15s
+        depends_on:
+            - etcd
+
+    skylweb:
+        ports:
+            - "8090:8090"
+        image: "harbor.eff.ltd/skylb/webserver"
+        command: |
+            /skylb/skylbweb
+                --alsologtostderr -v 5
+                --etcd-endpoints http://etcd:2379
+        depends_on:
+            - etcd
+
+    stress-server:
+        ports:
+            - "5888:5888"
+        image: "harbor.eff.ltd/skylb/skylb-stress"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            /skylb/stress-server
+                --alsologtostderr -v 5
+                --skylb-endpoints=skylb1:1900,skylb2:2000
+                --enable-prom-on-same-port
+                --enable-pprof-on-same-port
+
+    stress-gateway:
+        ports:
+            - "6666:6666"
+        command: |
+            dockerize
+                --wait tcp://stress-server:5888
+                /skylb/stress-gateway
+                    --alsologtostderr --v 5
+                    --enable-vexillary-debug=true
+                    --debug-service=dory-service
+                    --skylb-endpoints=skylb1:1900,skylb2:2000
+        image: "harbor.eff.ltd/skylb/skylb-stress"
+        depends_on:
+            - stress-server

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: skylb-demo-client
+  namespace: default
+spec:
+  containers:
+  - image: {{.DockerRegistryHostPort}}/skylb-demo:0.1.14
+    command:
+      - /skylb-demo/bin/client
+      - --skylb-endpoints=skylb:1900
+      - --alsologtostderr
+      - -v=3
+    imagePullPolicy: Always
+    name: skylb-demo-client
+  restartPolicy: Always

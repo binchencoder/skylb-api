@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package proto;
+
+// The request message to be greeted.
+message GreetingRequest {
+	string name = 1;
+	int32  age  = 2;
+}
+
+// The response message to greet the requester.
+message GreetingResponse {
+	string greeting = 1;
+}
+
+// The gRPC service definition for SkyLB demo.
+service Demo {
+	rpc Greeting (GreetingRequest) returns (GreetingResponse);
+}

@@ -1,0 +1,78 @@
+# Depends on //docker-compose/dev/skylb/docker-compose.yml.
+
+version: '3'
+services:
+    demo-go-client1:
+        image: "harbor.eff.com/skylb/demo-go"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            /skylb/client
+                --alsologtostderr -v 5
+                --skylb-endpoints=skylb1:1900,skylb2:2000
+                --health-check-interval=6s
+
+    demo-go-consistent-hash-client1:
+        image: "harbor.eff.com/skylb/demo-go"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            /skylb/consistenthash
+                --alsologtostderr -v 5
+                --skylb-endpoints=skylb1:1900,skylb2:2000
+                --health-check-interval=6s
+
+    demo-go-server1:
+        image: "harbor.eff.com/skylb/demo-go"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            /skylb/server
+                --alsologtostderr -v 5
+                --skylb-endpoints=skylb1:1900,skylb2:2000
+
+    demo-go-server2:
+        image: "harbor.eff.com/skylb/demo-go"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            /skylb/server
+                --alsologtostderr -v 5
+                --skylb-endpoints=skylb1:1900,skylb2:2000
+
+    demo-java-client1:
+        image: "harbor.eff.com/skylb/demo-java"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+          java -Dhealth-check-interval=5 -jar /skylb/gc_deploy.jar skylb://skylb1:1900,skylb2:2000
+
+    demo-java-consistent-hash-client1:
+        image: "harbor.eff.com/skylb/demo-java"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+          java -Ddemo-lb-type=ConsistentHash -Dhealth-check-interval=5 -jar /skylb/gc_deploy.jar skylb://skylb1:1900,skylb2:2000
+
+    demo-java-server1:
+        image: "harbor.eff.com/skylb/demo-java"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            java -jar /skylb/gs_deploy.jar skylb://skylb1:1900,skylb2:2000
+
+    demo-java-server2:
+        image: "harbor.eff.com/skylb/demo-java"
+        depends_on:
+            - skylb1
+            - skylb2
+        command: |
+            java -jar /skylb/gs_deploy.jar skylb://skylb1:1900,skylb2:2000
+

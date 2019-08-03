@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.jingoal.vexillary:vexillary-data-proto:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jingoal/vexillary/vexillary-data-proto/1.0-SNAPSHOT/vexillary-data-proto-1.0-20170726.030116-89.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jingoal/vexillary/vexillary-data-proto/1.0-SNAPSHOT/vexillary-data-proto-1.0-20170726.030116-89-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jingoal/vexillary/vexillary-data-proto/1.0-SNAPSHOT/vexillary-data-proto-1.0-20170726.030116-89-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
