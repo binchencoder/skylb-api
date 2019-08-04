@@ -29,7 +29,7 @@ genproto_java(
     srcs = ["api.proto"],
     has_service = 1,
     deps = [
-        "//janus/gateway/options:options_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_proto",
         "//third-party-go/vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
         "@binchencoder_ease_gateway//proto/data:data_srcjar",
     ],
@@ -39,7 +39,7 @@ java_library(
     name = "skytest",
     srcs = [":skytest_src"],
     deps = [
-        "//janus/gateway/options",
+        "@binchencoder_ease_gateway//gateway/options",
         "//third-party-java/dependencies/lib:grpc-1.18.0",
     ],
 )

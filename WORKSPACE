@@ -21,26 +21,14 @@ gazelle_dependencies()
 
 go_repository(
     name = "binchencoder_ease_gateway",
-    commit = "dfd9b30350fedd12764718cf64bcef2c4c085a1e",
+    commit = "3a37540f37b015fc035702efc0b527f1d7ff699b",
     importpath = "github.com/binchencoder/ease-gateway",
-)
-
-go_repository(
-    name = "binchencoder_third_party_go",
-    commit = "a99e7b8104bcb76ed9cc7a29c87dbc246dc6329c",
-    importpath = "github.com/binchencoder/third-party-go",
 )
 
 go_repository(
     name = "binchencoder_third_party_java",
     commit = "dcac035f578caefefc6cd12a799cbb400a09f004",
     importpath = "github.com/binchencoder/third-party-java",
-)
-
-go_repository(
-    name = "binchencoder_letsgo",
-    commit = "c20a79ec826682a2ddc66642ee78e5779bde9175",
-    importpath = "github.com/binchencoder/letsgo",
 )
 
 go_repository(

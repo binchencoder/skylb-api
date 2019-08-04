@@ -7,8 +7,8 @@ go_binary(
     srcs = ["main.go"],
     deps = [
         "//letsgo:go_default_library",
-        "@binchencoder_letsgo//metrics:go_default_library",
-        "@binchencoder_letsgo//runtime/pprof:go_default_library",
+        "//letsgo/metrics:go_default_library",
+        "//letsgo/runtime/pprof:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",

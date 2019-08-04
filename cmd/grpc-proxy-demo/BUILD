@@ -6,7 +6,7 @@ go_binary(
     srcs = ["client.go"],
     deps = [
         "//letsgo:go_default_library",
-        "@binchencoder_letsgo//hashring:go_default_library",
+        "//letsgo/hashring:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",

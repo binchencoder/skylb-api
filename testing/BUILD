@@ -10,8 +10,8 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/testing",
     deps = [
-        "//client/option:go_default_library",
-        "//proto:go_default_library",
+        "//skylb-api/client/option:go_default_library",
+        "//skylb-api/proto:go_default_library",
         "//third-party-go/vendor/github.com/opentracing/opentracing-go:go_default_library",
         "//third-party-go/vendor/github.com/stretchr/testify/mock:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",

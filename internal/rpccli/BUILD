@@ -10,9 +10,9 @@ go_library(
     ),
     importpath = "github.com/binchencoder/skylb-api/internal/rpccli",
     deps = [
-        "@binchencoder_letsgo//strings:go_default_library",
-        "//internal/flags:go_default_library",
-        "//proto:go_default_library",
+        "//letsgo/strings:go_default_library",
+        "//skylb-api/internal/flags:go_default_library",
+        "//skylb-api/proto:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",

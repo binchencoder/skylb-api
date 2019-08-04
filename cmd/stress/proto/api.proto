@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-import "janus/gateway/options/annotations.proto";
+import "ease-gateway/gateway/options/annotations.proto";
 
 enum Gender {
 	MALE = 0;
@@ -23,14 +23,14 @@ message SayHelloResp {
 
 // Stress service definition.
 service StressService {
-	option (jingoal.api.service_spec) = {
-		service_id: DORY_SERVICE
+	option (ease.api.service_spec) = {
+		service_id: SKYLB_DEMO_SERVICE
 		gen_controller: true
 	};
 
 	// Get value from Dory service data storage
 	rpc SayHello(SayHelloReq) returns (SayHelloResp){
-		option (jingoal.api.http) = {
+		option (ease.api.http) = {
 			get: "/stress/v1/say-hello/{name}/gender/{gender}"
 		};
 	}
@@ -38,7 +38,7 @@ service StressService {
 	// SayHelloDisabled is a disabled API to get value from Dory service data
 	// storage
 	rpc SayHelloDisabled(SayHelloReq) returns (SayHelloResp){
-		option (jingoal.api.http) = {
+		option (ease.api.http) = {
 			get: "/stress/v1/say-hello-disabled/{name}/gender/{gender}"
 		};
 	}

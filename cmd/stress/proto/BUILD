@@ -1,48 +1,59 @@
 package(default_visibility = ["//visibility:public"])
 
-load("//bld_tools/bazel/rules_jingoal/protobuf:def.bzl", "genproto_go", "genproto_grpc_gateway")
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
-genproto_go(
-    name = "proto_go",
+proto_library(
+    name = "apipb_proto",
     srcs = glob(["*.proto"]),
-    has_service = 1,
     deps = [
-        "//janus/gateway/options:options_proto_go",
+        "//ease-gateway/gateway/options:options_proto",
+        "//ease-gateway/proto/data:data_proto",
+        "@com_google_protobuf//:duration_proto",
+        "@com_google_protobuf//:empty_proto",
+        "@com_google_protobuf//:field_mask_proto",
+        "@com_google_protobuf//:timestamp_proto",
+        "@com_google_protobuf//:wrappers_proto",
+        "@go_googleapis//google/api:annotations_proto",
     ],
 )
 
-genproto_grpc_gateway(
-    name = "gateway_go",
-    srcs = glob(["*.proto"]),
+go_proto_library(
+    name = "apipb_go_proto",
+    compilers = [
+        "@io_bazel_rules_go//proto:go_grpc",
+        "//ease-gateway/gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
+    ],
+    importpath = "github.com/binchencoder/skylb-api/cmd/stress/proto",
+    proto = ":apipb_proto",
     deps = [
-        "//janus/gateway/options:options_proto_go",
+        "//ease-gateway/gateway/options:options_go_proto",
+        "//ease-gateway/proto/data:data_go_proto",
+        "//ease-gateway/proto/frontend:error_go_proto",
+        "@go_googleapis//google/api:annotations_go_proto",
     ],
 )
 
 go_library(
     name = "go_default_library",
-    srcs = [
-        ":gateway_go",
-        ":proto_go",
-    ],
+    embed = [":apipb_go_proto"],
     importpath = "github.com/binchencoder/skylb-api/cmd/stress/proto",
     deps = [
-        "//janus/gateway/options:go_default_library",
-        "//janus/gateway/runtime:go_default_library",
-        "//janus/gateway/utilities:go_default_library",
-        "@binchencoder_letsgo//grpc:go_default_library",
-        "//balancer:go_default_library",
-        "//client:go_default_library",
-        "//client/option:go_default_library",
-        "//proto:go_default_library",
+        "//ease-gateway/gateway/options:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
+        "//ease-gateway/proto/frontend:go_default_library",
+        "@grpc_ecosystem_grpc_gateway//runtime:go_default_library",
+        "@grpc_ecosystem_grpc_gateway//utilities:go_default_library",
+        "//letsgo/grpc:go_default_library",
+        "//skylb-api/balancer:go_default_library",
+        "//skylb-api/client:go_default_library",
+        "//skylb-api/client/option:go_default_library",
+        "//skylb-api/proto:go_default_library",
         "//third-party-go/vendor/github.com/golang/protobuf/proto:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/codes:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/grpclog:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
-        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
     ],
 )

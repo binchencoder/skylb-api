@@ -11,7 +11,7 @@ genproto_go(
     srcs = ["api.proto"],
     has_service = 1,
     deps = [
-        "//janus/gateway/options:options_proto_go",
+        "@binchencoder_ease_gateway//gateway/options:options_proto_go",
     ],
 )
 
@@ -19,7 +19,7 @@ genproto_grpc_gateway(
     name = "gateway_go",
     srcs = ["api.proto"],
     deps = [
-        "//janus/gateway/options:options_proto_go",
+        "@binchencoder_ease_gateway//gateway/options:options_proto_go",
     ],
 )
 
@@ -27,7 +27,7 @@ genproto_swagger(
     name = "swagger",
     srcs = ["api.proto"],
     deps = [
-        "//janus/gateway/options:options_proto_go",
+        "@binchencoder_ease_gateway//gateway/options:options_proto_go",
     ],
 )
 
@@ -39,10 +39,10 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
     deps = [
-        "//janus/gateway/options:go_default_library",
-        "//janus/gateway/runtime:go_default_library",
-        "//janus/gateway/utilities:go_default_library",
-        "@binchencoder_letsgo//grpc:go_default_library",
+        "@binchencoder_ease_gateway//gateway/options:go_default_library",
+        "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
+        "@binchencoder_ease_gateway//gateway/utilities:go_default_library",
+        "//letsgo/grpc:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",
@@ -64,7 +64,7 @@ genproto_java(
     srcs = ["api.proto"],
     has_service = 1,
     deps = [
-        "//janus/gateway/options:options_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_proto",
         "//third-party-go/vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
         "@binchencoder_ease_gateway//proto/data:data_srcjar",
     ],
@@ -74,7 +74,7 @@ java_library(
     name = "greeting",
     srcs = [":greeting_src"],
     deps = [
-        "//janus/gateway/options",
+        "@binchencoder_ease_gateway//gateway/options",
         "//third-party-java/dependencies/lib:grpc-1.18.0",
     ],
 )

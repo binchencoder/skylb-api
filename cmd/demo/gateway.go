@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/binchencoder/janus/gateway/runtime"
+	"github.com/binchencoder/ease-gateway/gateway/runtime"
 	"github.com/binchencoder/letsgo"
 	gw "github.com/binchencoder/skylb-api/cmd/demo/proto"
 )

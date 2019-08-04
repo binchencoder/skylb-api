@@ -6,7 +6,7 @@ option java_multiple_files = false;
 option java_outer_classname = "GreetingProtos";
 option java_package = "com.binchencoder.skylb.demo.proto";
 
-import "janus/gateway/options/annotations.proto";
+import "ease-gateway/gateway/options/annotations.proto";
 
 // The request message to be greeted.
 message GreetingRequest {
