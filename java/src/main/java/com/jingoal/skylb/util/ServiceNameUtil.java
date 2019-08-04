@@ -1,6 +1,6 @@
-package com.jingoal.skylb.util;
+package com.binchencoder.skylb.util;
 
-import com.jingoal.vexillary.grpc.DataProtos.ServiceId;
+import com.binchencoder.vexillary.grpc.DataProtos.ServiceId;
 
 public class ServiceNameUtil {
 

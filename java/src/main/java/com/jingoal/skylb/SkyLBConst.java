@@ -1,4 +1,4 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 public class SkyLBConst {
   public static final String SKYLB_SCHEME = "skylb";
@@ -15,7 +15,7 @@ public class SkyLBConst {
 
   /**
    * service names (string literal).
-   * Also see comments for {@link com.jingoal.skylb.demo.Configuration#CLIENT_SERVICE_NAME}
+   * Also see comments for {@link com.binchencoder.skylb.demo.Configuration#CLIENT_SERVICE_NAME}
    */
   public static final String SKYLB_REPORTER = "skylb-reporter";
   public static final String SKYLB_DISCOVERY = "skylb-discovery";

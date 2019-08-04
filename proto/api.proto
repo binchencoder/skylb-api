@@ -4,9 +4,9 @@ package api;
 
 option java_multiple_files = false;
 option java_outer_classname = "ClientProtos";
-option java_package = "com.jingoal.skylb.proto";
+option java_package = "com.binchencoder.skylb.proto";
 
-import "vexillary-client/proto/data/data.proto";
+import "proto/data/data.proto";
 
 // The message describing a service spec.
 message ServiceSpec {

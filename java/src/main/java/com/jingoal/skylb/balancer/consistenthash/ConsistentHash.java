@@ -1,4 +1,4 @@
-package com.jingoal.skylb.balancer.consistenthash;
+package com.binchencoder.skylb.balancer.consistenthash;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

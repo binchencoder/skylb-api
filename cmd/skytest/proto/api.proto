@@ -4,7 +4,7 @@ package proto;
 
 option java_multiple_files = false;
 option java_outer_classname = "SkytestProtos";
-option java_package = "com.jingoal.skylb.skytest.proto";
+option java_package = "com.binchencoder.skylb.skytest.proto";
 
 // The request message to be greeted.
 message GreetingRequest {

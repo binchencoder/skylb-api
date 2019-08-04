@@ -32,7 +32,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/naming"
 
-	"jingoal.com/skylb-api/internal/health"
+	"github.com/binchencoder/skylb-api/internal/health"
 )
 
 var (

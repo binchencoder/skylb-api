@@ -4,11 +4,11 @@ load("@io_bazel_rules_docker//docker:docker.bzl", "docker_build")
 pkg_tar(
     name = "demo-java-tar",
     srcs = [
-        "//skylb-api/demo/src/main/java/com/jingoal/skylb/demo:chc_deploy.jar",
-        "//skylb-api/demo/src/main/java/com/jingoal/skylb/demo:chcms_deploy.jar",
-        "//skylb-api/demo/src/main/java/com/jingoal/skylb/demo:gc_deploy.jar",
-        "//skylb-api/demo/src/main/java/com/jingoal/skylb/demo:gs_deploy.jar",
-        "//skylb-api/demo/src/main/java/com/jingoal/skylb/demo:sgs_deploy.jar",
+        "//demo/src/main/java/com/jingoal/skylb/demo:chc_deploy.jar",
+        "//demo/src/main/java/com/jingoal/skylb/demo:chcms_deploy.jar",
+        "//demo/src/main/java/com/jingoal/skylb/demo:gc_deploy.jar",
+        "//demo/src/main/java/com/jingoal/skylb/demo:gs_deploy.jar",
+        "//demo/src/main/java/com/jingoal/skylb/demo:sgs_deploy.jar",
     ],
 )
 

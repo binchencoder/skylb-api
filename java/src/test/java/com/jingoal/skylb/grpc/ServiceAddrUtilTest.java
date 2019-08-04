@@ -1,4 +1,4 @@
-package com.jingoal.skylb.grpc;
+package com.binchencoder.skylb.grpc;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,0 +1,24 @@
+_output/
+.idea
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Bazel.
+bazel-bin
+bazel-genfiles
+bazel-skylb-api
+bazel-out
+bazel-testlogs
+
+# Go vendor directory
+#vendor
+
+# Generated travis files
+.travis.yml
+
+# Java files
+*.exe
+target/

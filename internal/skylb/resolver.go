@@ -4,8 +4,8 @@ import (
 	"github.com/golang/glog"
 	"google.golang.org/grpc/naming"
 
-	"jingoal.com/skylb-api/client/option"
-	pb "jingoal.com/skylb-api/proto"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // skylbResolver implements grpc naming.Resolver.

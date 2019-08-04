@@ -1,6 +1,6 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
-import com.jingoal.skylb.proto.ClientProtos.ServiceEndpoints;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceEndpoints;
 
 public interface ServerListener {
   void onChange(ServiceEndpoints endpoints);

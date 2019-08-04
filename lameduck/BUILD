@@ -10,10 +10,10 @@ go_library(
     srcs = [
         "lameduck.go",
     ],
-    importpath = "jingoal.com/skylb-api/lameduck",
+    importpath = "github.com/binchencoder/skylb-api/lameduck",
     deps = [
-        "//skylb-api/prefix:go_default_library",
-        "//skylb-api/util:go_default_library",
+        "//prefix:go_default_library",
+        "//util:go_default_library",
         "//third-party-go/vendor/github.com/coreos/etcd/client:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
     ],
@@ -29,7 +29,7 @@ go_test(
         ":go_default_library",
     ],
     deps = [
-        "//skylb-api/util:go_default_library",
+        "//util:go_default_library",
         "//third-party-go/vendor/github.com/coreos/etcd/client:go_default_library",
         "//third-party-go/vendor/github.com/smartystreets/goconvey/convey:go_default_library",
     ],

@@ -1,16 +1,16 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.SettableFuture;
 
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.MetricsClientInterceptor;
-import com.jingoal.skylb.proto.ClientProtos.ReportLoadRequest;
-import com.jingoal.skylb.proto.ClientProtos.ReportLoadResponse;
-import com.jingoal.skylb.proto.ClientProtos.ServiceSpec;
-import com.jingoal.skylb.proto.SkylbGrpc;
-import com.jingoal.skylb.proto.SkylbGrpc.SkylbStub;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.MetricsClientInterceptor;
+import com.binchencoder.skylb.proto.ClientProtos.ReportLoadRequest;
+import com.binchencoder.skylb.proto.ClientProtos.ReportLoadResponse;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceSpec;
+import com.binchencoder.skylb.proto.SkylbGrpc;
+import com.binchencoder.skylb.proto.SkylbGrpc.SkylbStub;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

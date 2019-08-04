@@ -3,12 +3,12 @@ package client
 import (
 	"flag"
 
-	"jingoal.com/letsgo/flags"
-	"jingoal.com/letsgo/service/naming"
-	"jingoal.com/skylb-api/client/option"
-	"jingoal.com/skylb-api/internal/skylb"
-	pb "jingoal.com/skylb-api/proto"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	"github.com/binchencoder/letsgo/flags"
+	"github.com/binchencoder/letsgo/service/naming"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/skylb"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
 )
 
 const (

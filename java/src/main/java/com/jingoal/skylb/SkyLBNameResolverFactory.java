@@ -1,4 +1,4 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -15,12 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-import com.jingoal.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.Constants;
-import com.jingoal.skylb.proto.ClientProtos.InstanceEndpoint;
-import com.jingoal.skylb.proto.ClientProtos.ServiceEndpoints;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.Constants;
+import com.binchencoder.skylb.proto.ClientProtos.InstanceEndpoint;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceEndpoints;
 
 import io.grpc.Attributes;
 import io.grpc.EquivalentAddressGroup;

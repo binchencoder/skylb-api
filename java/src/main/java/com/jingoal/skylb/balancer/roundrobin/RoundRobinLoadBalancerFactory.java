@@ -1,7 +1,7 @@
-package com.jingoal.skylb.balancer.roundrobin;
+package com.binchencoder.skylb.balancer.roundrobin;
 
-import com.jingoal.skylb.healthcheck.SizerLBFactory;
-import com.jingoal.skylb.healthcheck.SizerUser;
+import com.binchencoder.skylb.healthcheck.SizerLBFactory;
+import com.binchencoder.skylb.healthcheck.SizerUser;
 
 import io.grpc.ExperimentalApi;
 import io.grpc.LoadBalancer;

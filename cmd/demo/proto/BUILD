@@ -37,16 +37,16 @@ go_library(
         ":api_proto",
         ":gateway_go",
     ],
-    importpath = "jingoal.com/skylb-api/cmd/demo/proto",
+    importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
     deps = [
         "//janus/gateway/options:go_default_library",
         "//janus/gateway/runtime:go_default_library",
         "//janus/gateway/utilities:go_default_library",
-        "//letsgo/grpc:go_default_library",
-        "//skylb-api/balancer:go_default_library",
-        "//skylb-api/client:go_default_library",
-        "//skylb-api/client/option:go_default_library",
-        "//skylb-api/proto:go_default_library",
+        "@binchencoder_letsgo//grpc:go_default_library",
+        "//balancer:go_default_library",
+        "//client:go_default_library",
+        "//client/option:go_default_library",
+        "//proto:go_default_library",
         "//third-party-go/vendor/github.com/golang/protobuf/proto:go_default_library",
         "//third-party-go/vendor/github.com/golang/protobuf/protoc-gen-go/descriptor:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
@@ -54,8 +54,8 @@ go_library(
         "//third-party-go/vendor/google.golang.org/grpc/codes:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/grpclog:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
-        "//vexillary-client/proto/data:go_default_library",
-        "//vexillary-client/proto/frontend:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
     ],
 )
 
@@ -66,7 +66,7 @@ genproto_java(
     deps = [
         "//janus/gateway/options:options_proto",
         "//third-party-go/vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
-        "//vexillary-client/proto/data:data_srcjar",
+        "@binchencoder_ease_gateway//proto/data:data_srcjar",
     ],
 )
 
@@ -82,11 +82,11 @@ java_library(
 release_info(
     name = "demo_greeting_src",
     src = "greeting_src",
-    group_id = "com.jingoal.skylb",
+    group_id = "com.binchencoder.skylb",
 )
 
 release_info(
     name = "demo_greeting",
     src = "greeting",
-    group_id = "com.jingoal.skylb",
+    group_id = "com.binchencoder.skylb",
 )

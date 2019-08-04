@@ -9,10 +9,10 @@ import (
 	"github.com/golang/glog"
 	"golang.org/x/net/context"
 
-	"jingoal.com/letsgo"
-	"jingoal.com/letsgo/metrics"
-	pb "jingoal.com/skylb-api/cmd/demo/proto"
-	"jingoal.com/skylb-api/cmd/demo/rpc"
+	"github.com/binchencoder/letsgo"
+	"github.com/binchencoder/letsgo/metrics"
+	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
+	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 )
 
 var (

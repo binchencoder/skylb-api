@@ -11,10 +11,10 @@ go_library(
         ["*.go"],
         exclude = ["*_test.go"],
     ),
-    importpath = "jingoal.com/skylb-api/metrics",
+    importpath = "github.com/binchencoder/skylb-api/metrics",
     deps = [
-        "//letsgo/grpc:go_default_library",
-        "//skylb-api/proto:go_default_library",
+        "@binchencoder_letsgo//grpc:go_default_library",
+        "//proto:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/github.com/prometheus/client_golang/prometheus:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",

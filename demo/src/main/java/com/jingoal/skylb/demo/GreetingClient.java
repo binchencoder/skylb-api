@@ -1,4 +1,4 @@
-package com.jingoal.skylb.demo;
+package com.binchencoder.skylb.demo;
 
 import java.net.URI;
 import java.util.Calendar;
@@ -7,17 +7,17 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jingoal.skylb.MonitorService;
-import com.jingoal.skylb.SkyLBConst;
-import com.jingoal.skylb.SkyLBNameResolverFactory;
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-import com.jingoal.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
-import com.jingoal.skylb.demo.proto.DemoGrpc;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingRequest;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingResponse;
-import com.jingoal.skylb.grpc.Channels;
-import com.jingoal.skylb.grpc.ClientTemplate;
-import com.jingoal.skylb.metrics.MetricsClientInterceptor;
+import com.binchencoder.skylb.MonitorService;
+import com.binchencoder.skylb.SkyLBConst;
+import com.binchencoder.skylb.SkyLBNameResolverFactory;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
+import com.binchencoder.skylb.demo.proto.DemoGrpc;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingRequest;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingResponse;
+import com.binchencoder.skylb.grpc.Channels;
+import com.binchencoder.skylb.grpc.ClientTemplate;
+import com.binchencoder.skylb.metrics.MetricsClientInterceptor;
 
 import io.grpc.LoadBalancer;
 import io.grpc.ManagedChannel;
@@ -106,7 +106,7 @@ public class GreetingClient {
             .nameResolverFactory(SkyLBNameResolverFactory.getInstance(callerServiceName))
             .defaultLoadBalancingPolicy(loadBalancerDesc)
             .intercept(MetricsClientInterceptor.create(
-                com.jingoal.skylb.metrics.Configuration.allMetrics(),
+                com.binchencoder.skylb.metrics.Configuration.allMetrics(),
                 calleeServiceName, callerServiceName))
             // Set idleTimeout to several seconds to reproduce channel idle behavior.
             //.idleTimeout(31, TimeUnit.DAYS)

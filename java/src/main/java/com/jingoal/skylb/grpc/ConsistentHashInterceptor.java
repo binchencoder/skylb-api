@@ -1,6 +1,6 @@
-package com.jingoal.skylb.grpc;
+package com.binchencoder.skylb.grpc;
 
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

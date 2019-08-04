@@ -9,8 +9,8 @@ import (
 	"github.com/golang/protobuf/jsonpb"
 	. "github.com/smartystreets/goconvey/convey"
 
-	"jingoal.com/letsgo/trace"
-	pb "jingoal.com/skylb-api/cmd/stress/proto"
+	"github.com/binchencoder/letsgo/trace"
+	pb "github.com/binchencoder/skylb-api/cmd/stress/proto"
 )
 
 func TestContextMetadataPassing(t *testing.T) {

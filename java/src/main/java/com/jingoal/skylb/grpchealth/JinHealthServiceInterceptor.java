@@ -1,4 +1,4 @@
-package com.jingoal.skylb.grpchealth;
+package com.binchencoder.skylb.grpchealth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

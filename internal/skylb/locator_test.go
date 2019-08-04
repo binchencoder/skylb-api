@@ -8,10 +8,10 @@ import (
 	"github.com/stretchr/testify/mock"
 	"google.golang.org/grpc/naming"
 
-	"jingoal.com/skylb-api/client/option"
-	pb "jingoal.com/skylb-api/proto"
-	jt "jingoal.com/skylb-api/testing"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/proto"
+	jt "github.com/binchencoder/skylb-api/testing"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
 )
 
 func TestServiceLocator(t *testing.T) {

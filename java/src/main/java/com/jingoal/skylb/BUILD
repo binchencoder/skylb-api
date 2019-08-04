@@ -10,9 +10,9 @@ java_library(
         "metrics/*.java",
     ]),
     deps = [
-        "//skylb-api/java/src/main/java/com/jingoal/skylb/balancer/consistenthash",
-        "//skylb-api/java/src/main/java/com/jingoal/skylb/balancer/roundrobin",
-        "//skylb-api/proto:skylb-proto",
+        "//java/src/main/java/com/jingoal/skylb/balancer/consistenthash",
+        "//java/src/main/java/com/jingoal/skylb/balancer/roundrobin",
+        "//proto:skylb-proto",
         "//third-party-java/dependencies/lib:commons-lang3-3.4",
         "//third-party-java/dependencies/lib:grpc-1.18.0",
         "//third-party-java/dependencies/lib:gson-2.6.2",

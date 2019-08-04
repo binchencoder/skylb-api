@@ -1,11 +1,11 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.MetricsClientInterceptor;
-import com.jingoal.skylb.proto.ClientProtos.ResolveRequest;
-import com.jingoal.skylb.proto.ClientProtos.ResolveResponse;
-import com.jingoal.skylb.proto.ClientProtos.ServiceSpec;
-import com.jingoal.skylb.proto.SkylbGrpc;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.MetricsClientInterceptor;
+import com.binchencoder.skylb.proto.ClientProtos.ResolveRequest;
+import com.binchencoder.skylb.proto.ClientProtos.ResolveResponse;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceSpec;
+import com.binchencoder.skylb.proto.SkylbGrpc;
 
 import java.net.InetSocketAddress;
 import java.util.Iterator;

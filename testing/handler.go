@@ -5,9 +5,9 @@ import (
 	"github.com/stretchr/testify/mock"
 	"google.golang.org/grpc/naming"
 
-	"jingoal.com/skylb-api/client/option"
-	pb "jingoal.com/skylb-api/proto"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
 )
 
 // LoadBalanceHandlerMock mocks SkyLB API option.LoadBalanceHandler.

@@ -16,14 +16,14 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/naming"
 
-	lsql "jingoal.com/letsgo/sql"
-	jb "jingoal.com/skylb-api/balancer"
-	"jingoal.com/skylb-api/client/option"
-	"jingoal.com/skylb-api/internal/flags"
-	cflags "jingoal.com/skylb-api/internal/flags/client"
-	health "jingoal.com/skylb-api/internal/health"
-	pb "jingoal.com/skylb-api/proto"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	lsql "github.com/binchencoder/letsgo/sql"
+	jb "github.com/binchencoder/skylb-api/balancer"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	cflags "github.com/binchencoder/skylb-api/internal/flags/client"
+	health "github.com/binchencoder/skylb-api/internal/health"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
 )
 
 const (

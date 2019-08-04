@@ -11,5 +11,5 @@ go_library(
         ["*.go"],
         exclude = ["*_test.go"],
     ),
-    importpath = "jingoal.com/skylb-api/util",
+    importpath = "github.com/binchencoder/skylb-api/util",
 )

@@ -1,6 +1,6 @@
-package com.jingoal.hashring;
+package com.binchencoder.hashring;
 
-import com.jingoal.skylb.balancer.consistenthash.HashFunction;
+import com.binchencoder.skylb.balancer.consistenthash.HashFunction;
 
 import java.util.Collection;
 import java.util.SortedMap;

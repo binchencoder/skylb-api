@@ -1,4 +1,4 @@
-package com.jingoal.skylb.metrics;
+package com.binchencoder.skylb.metrics;
 
 public class Constants {
   public static final String GRPC_SERVICE = "grpc_service";

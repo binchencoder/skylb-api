@@ -1,6 +1,6 @@
-package com.jingoal.hashring;
+package com.binchencoder.hashring;
 
-import com.jingoal.skylb.balancer.consistenthash.Crc32Hash;
+import com.binchencoder.skylb.balancer.consistenthash.Crc32Hash;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,9 +12,9 @@ import org.junit.Test;
 import java.util.Collections;
 
 /**
- * The test cases are adapted from //letsgo/hashring/hashring_test.go.
+ * The test cases are adapted from @binchencoder_letsgo//hashring/hashring_test.go.
  *
- * @author fuyc@jingoal.com
+ * @author fuyc@github.com/binchencoder
  */
 public class ConsistentHashTest {
 

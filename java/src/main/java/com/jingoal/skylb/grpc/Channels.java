@@ -1,14 +1,14 @@
-package com.jingoal.skylb.grpc;
+package com.binchencoder.skylb.grpc;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import com.jingoal.skylb.Properties;
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-import com.jingoal.skylb.healthcheck.CallOption;
-import com.jingoal.skylb.healthcheck.Sizer;
-import com.jingoal.skylb.healthcheck.SizerUser;
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.Constants;
+import com.binchencoder.skylb.Properties;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.healthcheck.CallOption;
+import com.binchencoder.skylb.healthcheck.Sizer;
+import com.binchencoder.skylb.healthcheck.SizerUser;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/naming"
 
-	lgrpc "jingoal.com/letsgo/grpc"
-	"jingoal.com/letsgo/hashring"
-	"jingoal.com/skylb-api/internal/health"
+	lgrpc "github.com/binchencoder/letsgo/grpc"
+	"github.com/binchencoder/letsgo/hashring"
+	"github.com/binchencoder/skylb-api/internal/health"
 )
 
 // consistentHashing implements interface grpc.Balancer. It maintains a

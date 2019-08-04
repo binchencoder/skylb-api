@@ -1,4 +1,4 @@
-package com.jingoal.skylb.metrics;
+package com.binchencoder.skylb.metrics;
 
 import io.grpc.MethodDescriptor;
 import io.grpc.MethodDescriptor.MethodType;

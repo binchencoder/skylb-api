@@ -1,4 +1,4 @@
-package com.jingoal.skylb.healthcheck;
+package com.binchencoder.skylb.healthcheck;
 
 /**
  * The load balancer factory which can expose load balancer.

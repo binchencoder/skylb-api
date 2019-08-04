@@ -1,9 +1,9 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import com.jingoal.skylb.proto.ClientProtos.ServiceEndpoints;
-import com.jingoal.skylb.proto.ClientProtos.ServiceSpec;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceEndpoints;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceSpec;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

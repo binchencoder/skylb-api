@@ -11,8 +11,8 @@ import (
 	etcd "github.com/coreos/etcd/client"
 	"github.com/golang/glog"
 
-	"jingoal.com/skylb-api/prefix"
-	"jingoal.com/skylb-api/util"
+	"github.com/binchencoder/skylb-api/prefix"
+	"github.com/binchencoder/skylb-api/util"
 )
 
 var (

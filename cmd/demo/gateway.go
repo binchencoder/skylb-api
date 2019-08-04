@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"jingoal.com/janus/gateway/runtime"
-	"jingoal.com/letsgo"
-	gw "jingoal.com/skylb-api/cmd/demo/proto"
+	"github.com/binchencoder/janus/gateway/runtime"
+	"github.com/binchencoder/letsgo"
+	gw "github.com/binchencoder/skylb-api/cmd/demo/proto"
 )
 
 func usage() {

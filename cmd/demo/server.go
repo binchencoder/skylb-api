@@ -12,13 +12,13 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
-	"jingoal.com/letsgo"
-	grpcerr "jingoal.com/letsgo/grpc"
-	pb "jingoal.com/skylb-api/cmd/demo/proto"
-	"jingoal.com/skylb-api/cmd/demo/rpc"
-	skylb "jingoal.com/skylb-api/server"
-	vexpb "jingoal.com/vexillary-client/proto/data"
-	fepb "jingoal.com/vexillary-client/proto/frontend"
+	"github.com/binchencoder/letsgo"
+	grpcerr "github.com/binchencoder/letsgo/grpc"
+	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
+	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
+	skylb "github.com/binchencoder/skylb-api/server"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	fepb "github.com/binchencoder/ease-gateway/proto/frontend"
 )
 
 var (

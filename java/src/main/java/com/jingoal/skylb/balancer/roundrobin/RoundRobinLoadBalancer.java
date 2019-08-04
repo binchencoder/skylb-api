@@ -1,4 +1,4 @@
-package com.jingoal.skylb.balancer.roundrobin;
+package com.binchencoder.skylb.balancer.roundrobin;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static io.grpc.ConnectivityState.CONNECTING;
@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
-import com.jingoal.skylb.healthcheck.Sizer;
+import com.binchencoder.skylb.healthcheck.Sizer;
 
 import io.grpc.Attributes;
 import io.grpc.ChannelLogger.ChannelLogLevel;

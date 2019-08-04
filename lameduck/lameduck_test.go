@@ -6,7 +6,7 @@ import (
 	etcd "github.com/coreos/etcd/client"
 	. "github.com/smartystreets/goconvey/convey"
 
-	"jingoal.com/skylb-api/util"
+	"github.com/binchencoder/skylb-api/util"
 )
 
 func TestHostPort(t *testing.T) {

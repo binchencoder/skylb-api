@@ -1,4 +1,4 @@
-package com.jingoal.skylb.demo;
+package com.binchencoder.skylb.demo;
 
 import java.net.URI;
 import java.util.Calendar;
@@ -7,14 +7,14 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jingoal.skylb.MonitorService;
-import com.jingoal.skylb.SkyLBConst;
-import com.jingoal.skylb.SkyLBNameResolverFactory;
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-import com.jingoal.skylb.demo.proto.DemoGrpc;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingRequest;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingResponse;
-import com.jingoal.skylb.metrics.MetricsClientInterceptor;
+import com.binchencoder.skylb.MonitorService;
+import com.binchencoder.skylb.SkyLBConst;
+import com.binchencoder.skylb.SkyLBNameResolverFactory;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.demo.proto.DemoGrpc;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingRequest;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingResponse;
+import com.binchencoder.skylb.metrics.MetricsClientInterceptor;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -39,7 +39,7 @@ public class ConsistentHashClient {
         // Use consistent hash load balancer.
         .defaultLoadBalancingPolicy(SkyLBConst.JG_CONSISTEN_HASH)
         .intercept(MetricsClientInterceptor.create(
-            com.jingoal.skylb.metrics.Configuration.allMetrics(),
+            com.binchencoder.skylb.metrics.Configuration.allMetrics(),
             calleeServiceName, callerServiceName))
         .usePlaintext()
         .build();

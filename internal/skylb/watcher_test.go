@@ -6,7 +6,7 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 	"google.golang.org/grpc/naming"
 
-	pb "jingoal.com/skylb-api/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 func TestSkylbWatcher(t *testing.T) {

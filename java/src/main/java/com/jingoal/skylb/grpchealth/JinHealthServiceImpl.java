@@ -1,4 +1,4 @@
-package com.jingoal.skylb.grpchealth;
+package com.binchencoder.skylb.grpchealth;
 
 import io.grpc.health.v1.HealthCheckRequest;
 import io.grpc.health.v1.HealthCheckResponse;

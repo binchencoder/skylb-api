@@ -1,4 +1,4 @@
-package com.jingoal.skylb.demo;
+package com.binchencoder.skylb.demo;
 
 import java.io.IOException;
 import java.util.Random;
@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jingoal.skylb.demo.proto.DemoGrpc.DemoImplBase;
-import com.jingoal.skylb.demo.proto.GreetingProtos;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingResponse;
+import com.binchencoder.skylb.demo.proto.DemoGrpc.DemoImplBase;
+import com.binchencoder.skylb.demo.proto.GreetingProtos;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingResponse;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

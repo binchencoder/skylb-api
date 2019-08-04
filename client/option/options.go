@@ -5,8 +5,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/naming"
 
-	pb "jingoal.com/skylb-api/proto"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // SkyLbKeeper defines the interface for a SkyLB keeper.

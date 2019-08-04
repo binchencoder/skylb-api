@@ -13,7 +13,7 @@ VER=1.0.0-SNAPSHOT
 set -x
 
 mvn install:install-file \
--DgroupId=com.jingoal.skylb \
+-DgroupId=com.binchencoder.skylb \
 -DartifactId=demo-proto \
 -Dversion=$VER \
 -Dfile=bazel-bin/skylb-api/cmd/demo/proto/libgreeting.jar \
@@ -21,7 +21,7 @@ mvn install:install-file \
 -DgeneratePom=true
 
 mvn install:install-file \
--DgroupId=com.jingoal.api \
+-DgroupId=com.binchencoder.api \
 -DartifactId=janus-gateway-option \
 -Dversion=$VER \
 -Dfile=bazel-bin/janus/gateway/options/liboptions.jar \

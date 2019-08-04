@@ -110,7 +110,7 @@ Demo code: skylb-api/cmd/demo/servermulti.go
 How do I write a program which is both a client and a server?
 -------------------------------------------------------------
 
-Demo code: src/jingoal.com/skylb-api/cmd/demo/serverclient.go
+Demo code: src/github.com/binchencoder/skylb-api/cmd/demo/serverclient.go
 
 It largely combines demo/client.go and demo/server.go together.
 

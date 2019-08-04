@@ -4,7 +4,7 @@ package proto;
 
 option java_multiple_files = false;
 option java_outer_classname = "GreetingProtos";
-option java_package = "com.jingoal.skylb.demo.proto";
+option java_package = "com.binchencoder.skylb.demo.proto";
 
 import "janus/gateway/options/annotations.proto";
 

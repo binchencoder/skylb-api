@@ -1,4 +1,4 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;

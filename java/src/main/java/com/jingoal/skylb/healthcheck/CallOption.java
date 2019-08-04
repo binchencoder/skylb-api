@@ -1,4 +1,4 @@
-package com.jingoal.skylb.healthcheck;
+package com.binchencoder.skylb.healthcheck;
 
 import io.grpc.CallOptions.Key;
 

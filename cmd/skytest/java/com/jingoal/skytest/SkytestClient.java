@@ -1,11 +1,11 @@
-package com.jingoal.skytest;
+package com.binchencoder.skytest;
 
-import com.jingoal.skylb.MonitorService;
-import com.jingoal.skylb.grpc.Channels;
-import com.jingoal.skylb.grpc.ClientTemplate;
-import com.jingoal.skylb.skytest.proto.SkytestGrpc;
-import com.jingoal.skylb.skytest.proto.SkytestProtos.GreetingRequest;
-import com.jingoal.skylb.skytest.proto.SkytestProtos.GreetingResponse;
+import com.binchencoder.skylb.MonitorService;
+import com.binchencoder.skylb.grpc.Channels;
+import com.binchencoder.skylb.grpc.ClientTemplate;
+import com.binchencoder.skylb.skytest.proto.SkytestGrpc;
+import com.binchencoder.skylb.skytest.proto.SkytestProtos.GreetingRequest;
+import com.binchencoder.skylb.skytest.proto.SkytestProtos.GreetingResponse;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;

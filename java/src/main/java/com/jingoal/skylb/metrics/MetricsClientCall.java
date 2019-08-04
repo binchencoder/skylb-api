@@ -1,4 +1,4 @@
-package com.jingoal.skylb.metrics;
+package com.binchencoder.skylb.metrics;
 
 import java.time.Clock;
 

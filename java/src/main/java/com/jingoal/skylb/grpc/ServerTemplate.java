@@ -1,11 +1,11 @@
-package com.jingoal.skylb.grpc;
+package com.binchencoder.skylb.grpc;
 
-import com.jingoal.skylb.ReportCallback;
-import com.jingoal.skylb.SkyLBServiceReporter;
-import com.jingoal.skylb.grpchealth.JinHealthServiceImpl;
-import com.jingoal.skylb.grpchealth.JinHealthServiceInterceptor;
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.MetricsServerInterceptor;
+import com.binchencoder.skylb.ReportCallback;
+import com.binchencoder.skylb.SkyLBServiceReporter;
+import com.binchencoder.skylb.grpchealth.JinHealthServiceImpl;
+import com.binchencoder.skylb.grpchealth.JinHealthServiceInterceptor;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.MetricsServerInterceptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

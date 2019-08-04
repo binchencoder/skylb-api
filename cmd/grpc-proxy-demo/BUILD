@@ -6,17 +6,17 @@ go_binary(
     srcs = ["client.go"],
     deps = [
         "//letsgo:go_default_library",
-        "//letsgo/hashring:go_default_library",
-        "//skylb-api/balancer:go_default_library",
-        "//skylb-api/client:go_default_library",
-        "//skylb-api/client/option:go_default_library",
-        "//skylb-api/cmd/grpc-proxy-demo/proto:go_default_library",
-        "//skylb-api/handlers:go_default_library",
+        "@binchencoder_letsgo//hashring:go_default_library",
+        "//balancer:go_default_library",
+        "//client:go_default_library",
+        "//client/option:go_default_library",
+        "//cmd/grpc-proxy-demo/proto:go_default_library",
+        "//handlers:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
-        "//vexillary-client/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -25,13 +25,13 @@ go_binary(
     srcs = ["server.go"],
     deps = [
         "//letsgo:go_default_library",
-        "//skylb-api/client:go_default_library",
-        "//skylb-api/cmd/grpc-proxy-demo/proto:go_default_library",
-        "//skylb-api/server:go_default_library",
+        "//client:go_default_library",
+        "//cmd/grpc-proxy-demo/proto:go_default_library",
+        "//server:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "//vexillary-client/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 

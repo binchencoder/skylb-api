@@ -1,4 +1,4 @@
-package com.jingoal.skylb.balancer.consistenthash;
+package com.binchencoder.skylb.balancer.consistenthash;
 
 import java.util.zip.CRC32;
 

@@ -7,11 +7,11 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	lgrpc "jingoal.com/letsgo/testing/mocks/grpc"
-	ltracing "jingoal.com/letsgo/testing/mocks/tracing"
-	"jingoal.com/skylb-api/client/option"
-	pb "jingoal.com/skylb-api/proto"
-	jt "jingoal.com/skylb-api/testing"
+	lgrpc "github.com/binchencoder/letsgo/testing/mocks/grpc"
+	ltracing "github.com/binchencoder/letsgo/testing/mocks/tracing"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/proto"
+	jt "github.com/binchencoder/skylb-api/testing"
 )
 
 func TestGrpcLoadBalanceHandler(t *testing.T) {

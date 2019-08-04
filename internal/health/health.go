@@ -6,12 +6,13 @@ import (
 
 	"github.com/golang/glog"
 	prom "github.com/prometheus/client_golang/prometheus"
+
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	hpb "google.golang.org/grpc/health/grpc_health_v1"
 
-	"jingoal.com/letsgo/hashring"
+	"github.com/binchencoder/letsgo/hashring"
 )
 
 var (

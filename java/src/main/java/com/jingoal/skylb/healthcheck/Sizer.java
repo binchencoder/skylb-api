@@ -1,4 +1,4 @@
-package com.jingoal.skylb.healthcheck;
+package com.binchencoder.skylb.healthcheck;
 
 public interface Sizer {
   int getSize();

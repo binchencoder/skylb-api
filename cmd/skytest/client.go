@@ -15,12 +15,12 @@ import (
 	"google.golang.org/grpc"
 	hpb "google.golang.org/grpc/health/grpc_health_v1"
 
-	"jingoal.com/letsgo"
-	skylb "jingoal.com/skylb-api/client"
-	pb "jingoal.com/skylb-api/cmd/skytest/proto"
-	"jingoal.com/skylb-api/handlers"
-	skypb "jingoal.com/skylb-api/proto"
-	vexpb "jingoal.com/vexillary-client/proto/data"
+	"github.com/binchencoder/letsgo"
+	skylb "github.com/binchencoder/skylb-api/client"
+	pb "github.com/binchencoder/skylb-api/cmd/skytest/proto"
+	"github.com/binchencoder/skylb-api/handlers"
+	skypb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/ease-gateway/proto/data"
 )
 
 var (

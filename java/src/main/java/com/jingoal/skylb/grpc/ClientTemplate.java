@@ -1,4 +1,4 @@
-package com.jingoal.skylb.grpc;
+package com.binchencoder.skylb.grpc;
 
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
@@ -8,14 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Strings;
-import com.jingoal.skylb.Properties;
-import com.jingoal.skylb.SkyLBNameResolverFactory;
-import com.jingoal.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-import com.jingoal.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
-import com.jingoal.skylb.healthcheck.SizerLBFactory;
-import com.jingoal.skylb.metrics.Configuration;
-import com.jingoal.skylb.metrics.MetricsClientInterceptor;
-import com.jingoal.skylb.util.ServiceNameUtil;
+import com.binchencoder.skylb.Properties;
+import com.binchencoder.skylb.SkyLBNameResolverFactory;
+import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
+import com.binchencoder.skylb.balancer.roundrobin.RoundRobinLoadBalancerFactory;
+import com.binchencoder.skylb.healthcheck.SizerLBFactory;
+import com.binchencoder.skylb.metrics.Configuration;
+import com.binchencoder.skylb.metrics.MetricsClientInterceptor;
+import com.binchencoder.skylb.util.ServiceNameUtil;
 
 import io.grpc.Channel;
 import io.grpc.ClientInterceptors;
@@ -83,7 +83,7 @@ public class ClientTemplate {
       logger.debug("host {} port {}", uri.getHost(), uri.getPort());
       builder = ManagedChannelBuilder.forAddress(uri.getHost(), uri.getPort())
           .intercept(MetricsClientInterceptor.create(
-              com.jingoal.skylb.metrics.Configuration.allMetrics(),
+              com.binchencoder.skylb.metrics.Configuration.allMetrics(),
               calleeServiceName, callerServiceName))
           .loadBalancerFactory(lbFactory)
           .usePlaintext(true);

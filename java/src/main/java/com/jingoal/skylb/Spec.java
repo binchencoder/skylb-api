@@ -1,10 +1,10 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
-import com.jingoal.skylb.proto.ClientProtos.ServiceSpec;
+import com.binchencoder.skylb.proto.ClientProtos.ServiceSpec;
 
 public class Spec implements Comparable<Spec> {
   private String serviceName;

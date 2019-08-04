@@ -1,4 +1,4 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

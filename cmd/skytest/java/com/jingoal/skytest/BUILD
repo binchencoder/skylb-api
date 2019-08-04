@@ -3,14 +3,14 @@ java_binary(
     srcs = [
         "SkytestClient.java",
     ],
-    main_class = "com.jingoal.skytest.SkytestClient",
+    main_class = "com.binchencoder.skytest.SkytestClient",
     resources = [
-        "//skylb-api/cmd/skytest/java:logback",
+        "//cmd/skytest/java:logback",
     ],
     deps = [
-        "//skylb-api/cmd/skytest/proto:skytest",
-        "//skylb-api/java/src/main/java/com/jingoal/skylb:skylb-client",
-        "//skylb-api/java/src/main/java/com/jingoal/skylb/grpc",
+        "//cmd/skytest/proto:skytest",
+        "//java/src/main/java/com/jingoal/skylb:skylb-client",
+        "//java/src/main/java/com/jingoal/skylb/grpc",
         "//third-party-java/dependencies/lib:grpc-1.5.0",
         "//third-party-java/dependencies/lib:jetty-http-9.3.6.v20151106",
         "//third-party-java/dependencies/lib:jetty-io-9.3.6.v20151106",

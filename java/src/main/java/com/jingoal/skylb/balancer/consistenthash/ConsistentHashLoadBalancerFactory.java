@@ -1,7 +1,7 @@
-package com.jingoal.skylb.balancer.consistenthash;
+package com.binchencoder.skylb.balancer.consistenthash;
 
-import com.jingoal.skylb.healthcheck.SizerLBFactory;
-import com.jingoal.skylb.healthcheck.SizerUser;
+import com.binchencoder.skylb.healthcheck.SizerLBFactory;
+import com.binchencoder.skylb.healthcheck.SizerUser;
 
 import io.grpc.CallOptions.Key;
 import io.grpc.ExperimentalApi;

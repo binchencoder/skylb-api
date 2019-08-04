@@ -95,7 +95,7 @@
             <MaxFileSize>100MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-    <logger name="com.jingoal.skylb" level="DEBUG" additivity="false">
+    <logger name="com.binchencoder.skylb" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="INFO"/>
         <appender-ref ref="WARN"/>

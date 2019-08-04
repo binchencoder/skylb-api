@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package proto;
+
+import "janus/gateway/options/annotations.proto";
+
+enum Gender {
+	MALE = 0;
+	FEMALE = 1;
+}
+
+message SayHelloReq {
+	string name = 1;
+	Gender gender = 2;
+}
+
+message SayHelloResp {
+	string greeting   = 1;
+	string peer       = 2;
+	int32  service_id = 3;
+	string tid        = 4;
+}
+
+// Stress service definition.
+service StressService {
+	option (jingoal.api.service_spec) = {
+		service_id: DORY_SERVICE
+		gen_controller: true
+	};
+
+	// Get value from Dory service data storage
+	rpc SayHello(SayHelloReq) returns (SayHelloResp){
+		option (jingoal.api.http) = {
+			get: "/stress/v1/say-hello/{name}/gender/{gender}"
+		};
+	}
+
+	// SayHelloDisabled is a disabled API to get value from Dory service data
+	// storage
+	rpc SayHelloDisabled(SayHelloReq) returns (SayHelloResp){
+		option (jingoal.api.http) = {
+			get: "/stress/v1/say-hello-disabled/{name}/gender/{gender}"
+		};
+	}
+}

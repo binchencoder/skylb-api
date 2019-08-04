@@ -5,10 +5,10 @@ go_binary(
     srcs = ["main.go"],
     deps = [
         "//letsgo:go_default_library",
-        "//letsgo/service/naming:go_default_library",
-        "//skylb-api/client:go_default_library",
-        "//skylb-api/internal/skylb:go_default_library",
-        "//skylb-api/server:go_default_library",
+        "@binchencoder_letsgo//service/naming:go_default_library",
+        "//client:go_default_library",
+        "//internal/skylb:go_default_library",
+        "//server:go_default_library",
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
     ],
 )

@@ -1,6 +1,6 @@
-package com.jingoal.skylb.metrics;
+package com.binchencoder.skylb.metrics;
 
-import com.jingoal.skylb.SkyLBUtils;
+import com.binchencoder.skylb.SkyLBUtils;
 
 import java.time.Clock;
 

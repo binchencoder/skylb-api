@@ -1,4 +1,4 @@
-package com.jingoal.skylb;
+package com.binchencoder.skylb;
 
 import static spark.Spark.get;
 import static spark.Spark.ipAddress;
@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
-import com.jingoal.skylb.metrics.SimpleTextFormat;
+import com.binchencoder.skylb.metrics.SimpleTextFormat;
 
 import io.prometheus.client.CollectorRegistry;
 import spark.Request;

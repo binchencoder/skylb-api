@@ -1,14 +1,14 @@
-package com.jingoal.skylb.demo;
+package com.binchencoder.skylb.demo;
 
-import com.jingoal.skylb.MonitorService;
-import com.jingoal.skylb.SkyLBServiceReporter;
-import com.jingoal.skylb.demo.proto.DemoGrpc.DemoImplBase;
-import com.jingoal.skylb.demo.proto.GreetingProtos;
-import com.jingoal.skylb.demo.proto.GreetingProtos.GreetingResponse;
-import com.jingoal.skylb.grpc.ServerTemplate;
-import com.jingoal.skylb.grpchealth.JinHealthServiceImpl;
-import com.jingoal.skylb.grpchealth.JinHealthServiceInterceptor;
-import com.jingoal.skylb.metrics.MetricsServerInterceptor;
+import com.binchencoder.skylb.MonitorService;
+import com.binchencoder.skylb.SkyLBServiceReporter;
+import com.binchencoder.skylb.demo.proto.DemoGrpc.DemoImplBase;
+import com.binchencoder.skylb.demo.proto.GreetingProtos;
+import com.binchencoder.skylb.demo.proto.GreetingProtos.GreetingResponse;
+import com.binchencoder.skylb.grpc.ServerTemplate;
+import com.binchencoder.skylb.grpchealth.JinHealthServiceImpl;
+import com.binchencoder.skylb.grpchealth.JinHealthServiceInterceptor;
+import com.binchencoder.skylb.metrics.MetricsServerInterceptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +49,7 @@ public class GreetingServer {
               new GreeterImpl(),
               // Enable metrics.
               MetricsServerInterceptor.create(
-                  com.jingoal.skylb.metrics.Configuration.allMetrics(), serviceName)))
+                  com.binchencoder.skylb.metrics.Configuration.allMetrics(), serviceName)))
           // Enable grpc health checking.
           .addService(ServerInterceptors.intercept(new JinHealthServiceImpl(),
               new JinHealthServiceInterceptor()))

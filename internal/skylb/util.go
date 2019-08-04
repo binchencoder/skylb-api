@@ -5,7 +5,7 @@ import (
 
 	"google.golang.org/grpc/naming"
 
-	pb "jingoal.com/skylb-api/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 func calcServiceKey(spec *pb.ServiceSpec) string {

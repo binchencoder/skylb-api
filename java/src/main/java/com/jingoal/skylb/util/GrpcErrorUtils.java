@@ -1,4 +1,4 @@
-package com.jingoal.skylb.util;
+package com.binchencoder.skylb.util;
 
 
 import java.io.IOException;
@@ -13,8 +13,8 @@ import com.google.protobuf.util.JsonFormat;
 
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import com.jingoal.vexillary.errors.Frontend.Error;
-import com.jingoal.vexillary.errors.Frontend.ErrorCode;
+import com.binchencoder.vexillary.errors.Frontend.Error;
+import com.binchencoder.vexillary.errors.Frontend.ErrorCode;
 
 public class GrpcErrorUtils {
 
