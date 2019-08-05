@@ -21,7 +21,7 @@ message GreetingResponse {
 
 // The gRPC service definition for SkyLB demo.
 service Demo {
-	option (jingoal.api.service_spec) = {
+	option (ease.api.service_spec) = {
 		service_id: VEXILLARY_TEST_SERVICE
 		port_name : "portname"
 		namespace : "namespace_0"
@@ -29,7 +29,7 @@ service Demo {
 	};
 
 	rpc Greeting (GreetingRequest) returns (GreetingResponse) {
-		option (jingoal.api.http) = {
+		option (ease.api.http) = {
 			get: "/v1/greeting/{name}"
 		};
 	};
@@ -39,7 +39,7 @@ service Demo {
 
 // The gRPC service definition for SkyLB demo.
 service Demo1 {
-	option (jingoal.api.service_spec) = {
+	option (ease.api.service_spec) = {
 		service_id: SHARED_TEST_SERVER_SERVICE
 		port_name : "portname"
 		namespace : "namespace_0"
@@ -47,7 +47,7 @@ service Demo1 {
 	};
 
 	rpc Greeting (GreetingRequest) returns (GreetingResponse) {
-		option (jingoal.api.http) = {
+		option (ease.api.http) = {
 			get: "/v1/greeting/{name}"
 		};
 	};

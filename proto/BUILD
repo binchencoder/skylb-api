@@ -15,7 +15,6 @@ go_proto_library(
     name = "api_go_proto",
     compilers = [
         "@io_bazel_rules_go//proto:go_grpc",
-        "//ease-gateway/gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
     ],
     importpath = "github.com/binchencoder/skylb-api/proto",
     proto = ":api_proto",
@@ -33,7 +32,7 @@ go_library(
         "//third-party-go/vendor/github.com/golang/protobuf/proto:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 

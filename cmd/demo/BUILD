@@ -1,4 +1,4 @@
-load("@io_bazel_rules_docker//docker:docker.bzl", "docker_build")
+#load("@io_bazel_rules_docker//docker:docker.bzl", "docker_build")
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_test")
 
 go_binary(
@@ -25,7 +25,7 @@ go_binary(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -44,7 +44,7 @@ go_binary(
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -60,7 +60,7 @@ go_binary(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -76,7 +76,7 @@ go_binary(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -93,8 +93,8 @@ go_binary(
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/codes:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
-        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
+        "//ease-gateway/proto/frontend:go_default_library",
     ],
 )
 
@@ -109,7 +109,7 @@ go_binary(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -124,7 +124,7 @@ go_binary(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -132,7 +132,7 @@ go_binary(
     name = "gateway",
     srcs = ["gateway.go"],
     deps = [
-        "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
+        "//ease-gateway/gateway/runtime:go_default_library",
         "//letsgo:go_default_library",
         "//cmd/demo/proto:go_default_library",
     ],
@@ -151,21 +151,21 @@ go_test(
         "//third-party-go/vendor/github.com/golang/glog:go_default_library",
         "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
 # Build and test this image locally. No need to push to repository.
-docker_build(
-    name = "latest",
-    base = "//bld_tools/docker/ubuntu:base",
-    directory = "/skylb",
-    files = [
-        ":client",
-        ":consistenthash",
-        ":server",
-    ],
-    repository = "harbor.jingoal.ltd",
-    tag = "skylb/demo-go",
-    workdir = "/skylb",
-)
+#docker_build(
+#    name = "latest",
+#    base = "//bld_tools/docker/ubuntu:base",
+#    directory = "/skylb",
+#    files = [
+#        ":client",
+#        ":consistenthash",
+#        ":server",
+#    ],
+#    repository = "harbor.jingoal.ltd",
+#    tag = "skylb/demo-go",
+#    workdir = "/skylb",
+#)

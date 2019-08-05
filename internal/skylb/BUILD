@@ -29,7 +29,7 @@ go_library(
         "//third-party-go/vendor/google.golang.org/grpc/codes:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/status:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )
 
@@ -53,6 +53,6 @@ go_test(
         "//third-party-go/vendor/github.com/smartystreets/goconvey/convey:go_default_library",
         "//third-party-go/vendor/github.com/stretchr/testify/mock:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "//ease-gateway/proto/data:go_default_library",
     ],
 )

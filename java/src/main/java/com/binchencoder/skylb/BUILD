@@ -10,8 +10,8 @@ java_library(
         "metrics/*.java",
     ]),
     deps = [
-        "//java/src/main/java/com/jingoal/skylb/balancer/consistenthash",
-        "//java/src/main/java/com/jingoal/skylb/balancer/roundrobin",
+        "//java/src/main/java/com/binchencoder/skylb/balancer/consistenthash",
+        "//java/src/main/java/com/binchencoder/skylb/balancer/roundrobin",
         "//proto:skylb-proto",
         "//third-party-java/dependencies/lib:commons-lang3-3.4",
         "//third-party-java/dependencies/lib:grpc-1.18.0",

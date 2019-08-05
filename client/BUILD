@@ -10,12 +10,12 @@ go_library(
     ),
     importpath = "github.com/binchencoder/skylb-api/client",
     deps = [
-        "//skylb-api/proto:go_default_library",
+         "//ease-gateway/proto/data:go_default_library",
         "//letsgo/flags:go_default_library",
         "//letsgo/service/naming:go_default_library",
+        "//skylb-api/proto:go_default_library",
         "//skylb-api/client/option:go_default_library",
         "//skylb-api/internal/skylb:go_default_library",
         "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
