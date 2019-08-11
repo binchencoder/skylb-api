@@ -9,8 +9,8 @@ proto_library(
     name = "api_proto",
     srcs = ["api.proto"],
     deps = [
-        "//ease-gateway/gateway/options:options_proto",
-        "//ease-gateway/proto/data:data_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_proto",
+        "@binchencoder_ease_gateway//proto/data:data_proto",
     ],
 )
 
@@ -18,16 +18,16 @@ go_proto_library(
     name = "api_go_proto",
     compilers = [
         "@io_bazel_rules_go//proto:go_grpc",
-        "//ease-gateway/gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
+        "@binchencoder_ease_gateway//gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
     proto = ":api_proto",
     deps = [
-        "//ease-gateway/gateway/protoc-gen-swagger/options:go_default_library",
-        "//ease-gateway/gateway/options:options_go_proto",
-        "//ease-gateway/gateway/runtime:go_default_library",
-        "//ease-gateway/proto/data:data_go_proto",
-        "//ease-gateway/proto/frontend:error_go_proto",
+        "@binchencoder_ease_gateway//gateway/protoc-gen-swagger/options:go_default_library",
+        "@binchencoder_ease_gateway//gateway/options:options_go_proto",
+        "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:data_go_proto",
+        "@binchencoder_ease_gateway//proto/frontend:error_go_proto",
         "@binchencoder_letsgo//grpc:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
@@ -44,10 +44,10 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
     deps = [
-        "//ease-gateway/gateway/options:go_default_library",
-        "//ease-gateway/gateway/runtime:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
-        "//ease-gateway/proto/frontend:go_default_library",
+        "@binchencoder_ease_gateway//gateway/options:go_default_library",
+        "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
         "@binchencoder_letsgo//grpc:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
@@ -66,9 +66,9 @@ go_library(
 #    srcs = ["api.proto"],
 #    has_service = 1,
 #    deps = [
-#        "//ease-gateway/gateway/options:options_proto",
+#        "@binchencoder_ease_gateway//gateway/options:options_proto",
 #        "@binchencoder_third_party_go//vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
-#        "//ease-gateway/proto/data:data_srcjar",
+#        "@binchencoder_ease_gateway//proto/data:data_srcjar",
 #    ],
 #)
 
@@ -76,7 +76,7 @@ go_library(
 #    name = "greeting",
 #    srcs = [":greeting_src"],
 #    deps = [
-#        "//ease-gateway/gateway/options",
+#        "@binchencoder_ease_gateway//gateway/options",
 #        "//third-party-java/dependencies/lib:grpc-1.18.0",
 #    ],
 #)

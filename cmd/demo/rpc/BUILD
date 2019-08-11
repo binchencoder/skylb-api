@@ -14,6 +14,6 @@ go_library(
         "//cmd/demo/proto:go_default_library",
         "//proto:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )

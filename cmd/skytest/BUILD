@@ -6,7 +6,7 @@ go_binary(
     name = "skytest-client",
     srcs = ["client.go"],
     deps = [
-        "//letsgo:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/skytest/proto:go_default_library",
         "//handlers:go_default_library",
@@ -16,7 +16,7 @@ go_binary(
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/health/grpc_health_v1:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -24,7 +24,7 @@ go_binary(
     name = "skytest-server",
     srcs = ["server.go"],
     deps = [
-        "//letsgo:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/skytest/proto:go_default_library",
         "//server:go_default_library",
@@ -32,7 +32,7 @@ go_binary(
         "@binchencoder_third_party_go//vendor/github.com/prometheus/client_golang/prometheus:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 

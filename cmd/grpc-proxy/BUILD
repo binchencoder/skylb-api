@@ -6,7 +6,7 @@ go_binary(
     name = "grpc-proxy",
     srcs = ["main.go"],
     deps = [
-        "//letsgo:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "@binchencoder_letsgo//metrics:go_default_library",
         "@binchencoder_letsgo//runtime/pprof:go_default_library",
         "//balancer:go_default_library",
@@ -20,7 +20,7 @@ go_binary(
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/metadata:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 

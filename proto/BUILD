@@ -7,7 +7,7 @@ proto_library(
     name = "api_proto",
     srcs = ["api.proto"],
     deps = [
-        "//ease-gateway/proto/data:data_proto",
+        "@binchencoder_ease_gateway//proto/data:data_proto",
     ],
 )
 
@@ -19,8 +19,8 @@ go_proto_library(
     importpath = "github.com/binchencoder/skylb-api/proto",
     proto = ":api_proto",
     deps = [
-        "//ease-gateway/proto/data:data_go_proto",
-        "//ease-gateway/gateway/options:options_go_proto",
+        "@binchencoder_ease_gateway//proto/data:data_go_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_go_proto",
     ],
 )
 
@@ -32,7 +32,7 @@ go_library(
         "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 

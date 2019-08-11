@@ -8,7 +8,7 @@ def go_repositories():
     )
     go_repository(
         name = "binchencoder_ease_gateway",
-        commit = "267a6471666091ec09c88a3eae061b31162c5bf7",
+        commit = "8bf7d17544b09ab743bda0b4ef49f8065ed61f18",
         importpath = "gitee.com/binchencoder/ease-gateway",
     )
     go_repository(

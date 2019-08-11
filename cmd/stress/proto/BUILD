@@ -7,8 +7,8 @@ proto_library(
     name = "apipb_proto",
     srcs = glob(["*.proto"]),
     deps = [
-        "//ease-gateway/gateway/options:options_proto",
-        "//ease-gateway/proto/data:data_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_proto",
+        "@binchencoder_ease_gateway//proto/data:data_proto",
         "@com_google_protobuf//:duration_proto",
         "@com_google_protobuf//:empty_proto",
         "@com_google_protobuf//:field_mask_proto",
@@ -22,14 +22,14 @@ go_proto_library(
     name = "apipb_go_proto",
     compilers = [
         "@io_bazel_rules_go//proto:go_grpc",
-        "//ease-gateway/gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
+        "@binchencoder_ease_gateway//gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/stress/proto",
     proto = ":apipb_proto",
     deps = [
-        "//ease-gateway/gateway/options:options_go_proto",
-        "//ease-gateway/proto/data:data_go_proto",
-        "//ease-gateway/proto/frontend:error_go_proto",
+        "@binchencoder_ease_gateway//gateway/options:options_go_proto",
+        "@binchencoder_ease_gateway//proto/data:data_go_proto",
+        "@binchencoder_ease_gateway//proto/frontend:error_go_proto",
         "@go_googleapis//google/api:annotations_go_proto",
     ],
 )
@@ -39,9 +39,9 @@ go_library(
     embed = [":apipb_go_proto"],
     importpath = "github.com/binchencoder/skylb-api/cmd/stress/proto",
     deps = [
-        "//ease-gateway/gateway/options:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
-        "//ease-gateway/proto/frontend:go_default_library",
+        "@binchencoder_ease_gateway//gateway/options:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
         "@grpc_ecosystem_grpc_gateway//runtime:go_default_library",
         "@grpc_ecosystem_grpc_gateway//utilities:go_default_library",
         "@binchencoder_letsgo//grpc:go_default_library",

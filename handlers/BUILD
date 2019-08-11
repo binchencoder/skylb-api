@@ -25,7 +25,7 @@ go_library(
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
-        "//ease-gateway/proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
