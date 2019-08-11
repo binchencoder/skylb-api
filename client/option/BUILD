@@ -10,10 +10,10 @@ go_library(
     ),
     importpath = "github.com/binchencoder/skylb-api/client/option",
     deps = [
-        "//skylb-api/proto:go_default_library",
-        "//third-party-go/vendor/github.com/opentracing/opentracing-go:go_default_library",
-        "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
-        "//third-party-go/vendor/google.golang.org/grpc/naming:go_default_library",
+        "//proto:go_default_library",
+        "@binchencoder_third_party_go//vendor/github.com/opentracing/opentracing-go:go_default_library",
+        "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
+        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
         "//ease-gateway/proto/data:go_default_library",
     ],
 )

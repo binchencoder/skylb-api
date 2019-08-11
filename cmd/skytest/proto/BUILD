@@ -18,9 +18,9 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/skytest/proto",
     deps = [
-        "//third-party-go/vendor/github.com/golang/protobuf/proto:go_default_library",
-        "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
-        "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
+        "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
+        "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
+        "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
     ],
 )
 
@@ -30,7 +30,7 @@ genproto_java(
     has_service = 1,
     deps = [
         "//ease-gateway/gateway/options:options_proto",
-        "//third-party-go/vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
+        "@binchencoder_third_party_go//vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
         "//ease-gateway/proto/data:data_srcjar",
     ],
 )

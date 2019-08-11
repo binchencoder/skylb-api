@@ -18,8 +18,8 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/mainservice-demo/proto",
     deps = [
-        "//third-party-go/vendor/github.com/golang/protobuf/proto:go_default_library",
-        "//third-party-go/vendor/golang.org/x/net/context:go_default_library",
-        "//third-party-go/vendor/google.golang.org/grpc:go_default_library",
+        "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
+        "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
+        "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
     ],
 )
