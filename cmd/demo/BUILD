@@ -5,10 +5,10 @@ go_binary(
     name = "client",
     srcs = ["client.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
-        "@binchencoder_letsgo//metrics:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
+        "@binchencoder_letsgo//metrics:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
     ],
@@ -18,14 +18,14 @@ go_binary(
     name = "client_failfast",
     srcs = ["client_failfast.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//proto:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -33,18 +33,18 @@ go_binary(
     name = "consistenthash",
     srcs = ["consistenthash.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
-        "@binchencoder_letsgo//hashring:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//proto:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
+        "@binchencoder_letsgo//hashring:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -52,15 +52,15 @@ go_binary(
     name = "webclient",
     srcs = ["webclient.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
         "//proto:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -68,15 +68,15 @@ go_binary(
     name = "streamclient",
     srcs = ["streamclient.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
         "//proto:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -84,17 +84,17 @@ go_binary(
     name = "server",
     srcs = ["server.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
-        "@binchencoder_letsgo//grpc:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
         "//server:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
+        "@binchencoder_letsgo//grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc/codes:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
-        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
     ],
 )
 
@@ -102,14 +102,14 @@ go_binary(
     name = "servermulti",
     srcs = ["servermulti.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
         "//server:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -117,14 +117,14 @@ go_binary(
     name = "serverclient",
     srcs = ["serverclient.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
         "//cmd/demo/proto:go_default_library",
         "//cmd/demo/rpc:go_default_library",
         "//server:go_default_library",
+        "@binchencoder_letsgo//:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
@@ -132,9 +132,9 @@ go_binary(
     name = "gateway",
     srcs = ["gateway.go"],
     deps = [
+        "//cmd/demo/proto:go_default_library",
         "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
         "@binchencoder_letsgo//:go_default_library",
-        "//cmd/demo/proto:go_default_library",
     ],
 )
 
@@ -148,10 +148,10 @@ go_test(
         "//cmd/demo/rpc:go_default_library",
         "//proto:go_default_library",
         "//server:go_default_library",
+        "@binchencoder_ease_gateway//proto/data:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
     ],
 )
 
