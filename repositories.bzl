@@ -3,7 +3,7 @@ load("@bazel_gazelle//:deps.bzl", "go_repository")
 def go_repositories():
     go_repository(
         name = "binchencoder_third_party_go",
-        commit = "d315c8c6aeab36114ee245515150906d434e92b3",
+        commit = "884a585d57639840ae3a617bf51443951bde4724",
         importpath = "gitee.com/binchencoder/third-party-go",
     )
     go_repository(
