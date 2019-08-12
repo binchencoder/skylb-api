@@ -13,7 +13,7 @@ def go_repositories():
     )
     go_repository(
         name = "binchencoder_letsgo",
-        commit = "16c8caf20f0a9601808ec77da4ae5d26ed60f5ac",
+        commit = "d43bf202de7e0bd45f50810bad8aa83a5813c941",
         importpath = "gitee.com/binchencoder/letsgo",
     )
 
