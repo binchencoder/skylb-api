@@ -117,6 +117,6 @@ go_register_toolchains()
 gazelle_dependencies()
 
 # Use gazelle to declare Go dependencies in Bazel.
-# gazelle:repository_macro repositories.bzl%go_repositories
+# gazelle:repository_macro repositories.bzl%go_repositories repositories.bzl%http_archive_repositories
 load("//:repositories.bzl", "go_repositories")
 go_repositories()
