@@ -18,7 +18,7 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/grpc-proxy-demo/proto",
     deps = [
-        "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
         "@org_golang_google_grpc//:go_default_library",
     ],

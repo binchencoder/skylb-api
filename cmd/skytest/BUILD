@@ -6,7 +6,7 @@ go_binary(
     name = "skytest-client",
     srcs = ["client.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/skytest/proto:go_default_library",
         "//handlers:go_default_library",
@@ -24,7 +24,7 @@ go_binary(
     name = "skytest-server",
     srcs = ["server.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/skytest/proto:go_default_library",
         "//server:go_default_library",

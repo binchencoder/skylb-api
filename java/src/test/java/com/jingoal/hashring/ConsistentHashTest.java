@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.util.Collections;
 
 /**
- * The test cases are adapted from @binchencoder_letsgo//hashring/hashring_test.go.
+ * The test cases are adapted from @com_github_binchencoder_letsgo//hashring/hashring_test.go.
  *
  * @author fuyc@github.com/binchencoder
  */

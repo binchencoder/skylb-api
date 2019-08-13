@@ -5,7 +5,7 @@ go_binary(
     name = "mainservice-client",
     srcs = ["client.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",
@@ -23,7 +23,7 @@ go_binary(
     name = "mainservice-server",
     srcs = ["server.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/mainservice-demo/proto:go_default_library",
         "//server:go_default_library",

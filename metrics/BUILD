@@ -10,7 +10,7 @@ go_library(
     ),
     importpath = "github.com/binchencoder/skylb-api/metrics",
     deps = [
-        "@binchencoder_letsgo//grpc:go_default_library",
+        "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "//proto:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/prometheus/client_golang/prometheus:go_default_library",

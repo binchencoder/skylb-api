@@ -10,8 +10,8 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/handlers",
     deps = [
-        "@binchencoder_letsgo//grpc:go_default_library",
-        "@binchencoder_letsgo//sql:go_default_library",
+        "@com_github_binchencoder_letsgo//grpc:go_default_library",
+        "@com_github_binchencoder_letsgo//sql:go_default_library",
         "//balancer:go_default_library",
         "//client/option:go_default_library",
         "//internal/flags:go_default_library",
@@ -39,8 +39,8 @@ go_test(
         ":go_default_library",
     ],
     deps = [
-        "@binchencoder_letsgo//testing/mocks/grpc:go_default_library",
-        "@binchencoder_letsgo//testing/mocks/tracing:go_default_library",
+        "@com_github_binchencoder_letsgo//testing/mocks/grpc:go_default_library",
+        "@com_github_binchencoder_letsgo//testing/mocks/tracing:go_default_library",
         "//client/option:go_default_library",
         "//proto:go_default_library",
         "//testing:go_default_library",

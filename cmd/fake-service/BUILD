@@ -4,8 +4,8 @@ go_binary(
     name = "fake-service",
     srcs = ["main.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
-        "@binchencoder_letsgo//service/naming:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//service/naming:go_default_library",
         "//client:go_default_library",
         "//internal/skylb:go_default_library",
         "//server:go_default_library",

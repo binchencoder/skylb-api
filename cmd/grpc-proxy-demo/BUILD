@@ -5,8 +5,8 @@ go_binary(
     name = "grpc-proxy-client",
     srcs = ["client.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
-        "@binchencoder_letsgo//hashring:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//hashring:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",
@@ -24,7 +24,7 @@ go_binary(
     name = "grpc-proxy-server",
     srcs = ["server.go"],
     deps = [
-        "@binchencoder_letsgo//:go_default_library",
+        "@com_github_binchencoder_letsgo//:go_default_library",
         "//client:go_default_library",
         "//cmd/grpc-proxy-demo/proto:go_default_library",
         "//server:go_default_library",
