@@ -33,7 +33,7 @@ go_proto_library(
         "//client:go_default_library",
         "//client/option:go_default_library",
         "//proto:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
+        "@org_golang_google_grpc//naming:go_default_library",
     ],
 )
 
@@ -53,7 +53,7 @@ go_library(
         "//client:go_default_library",
         "//client/option:go_default_library",
         "//proto:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
+        "@org_golang_google_grpc//naming:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/protoc-gen-go/generator:go_default_library",

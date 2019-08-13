@@ -51,9 +51,9 @@ go_library(
         "//proto:go_default_library",
         "@binchencoder_third_party_go//vendor/github.com/golang/protobuf/proto:go_default_library",
         "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/codes:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/grpclog:go_default_library",
-        "@binchencoder_third_party_go//vendor/google.golang.org/grpc/naming:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes:go_default_library",
+        "@org_golang_google_grpc//grpclog:go_default_library",
+        "@org_golang_google_grpc//naming:go_default_library",
     ],
 )
