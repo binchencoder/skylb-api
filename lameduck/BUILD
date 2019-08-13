@@ -1,6 +1,6 @@
 package(default_visibility = [
     "//skylb:__subpackages__",
-    "//skylb-api:__subpackages__",
+    "//visibility:public",
 ])
 
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
