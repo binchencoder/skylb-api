@@ -10,9 +10,18 @@ def go_repositories():
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
         urls = [
-            "https://codeload.github.com/binchencoder/letsgo/tar.gz/4aa9d379feec705d2d0d168c3c2266bed4521fb4",
+            "https://codeload.github.com/binchencoder/letsgo/tar.gz/e420efa5f54077d1405bdc0414d5b257c0fe5df6",
         ],
-        strip_prefix = "letsgo-4aa9d379feec705d2d0d168c3c2266bed4521fb4",
+        strip_prefix = "letsgo-e420efa5f54077d1405bdc0414d5b257c0fe5df6",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_binchencoder_ease_gateway",
+        importpath = "github.com/binchencoder/ease-gateway",
+        urls = [
+            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/10db28d194fed45b703c0832293c0fabad268e7c",
+        ],
+        strip_prefix = "ease-gateway-10db28d194fed45b703c0832293c0fabad268e7c",
         type = "tar.gz",
     )
 
@@ -49,15 +58,6 @@ def go_repositories():
         importpath = "github.com/golang/glog",
         sum = "h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=",
         version = "v0.0.0-20160126235308-23def4e6c14b",
-    )
-    go_repository(
-        name = "com_github_golang_protobuf",
-        importpath = "github.com/golang/protobuf",
-        urls = [
-            "https://codeload.github.com/golang/protobuf/tar.gz/4c88cc3f1a34ffade77b79abc53335d1e511f25b",
-        ],
-        strip_prefix = "protobuf-4c88cc3f1a34ffade77b79abc53335d1e511f25b",
-        type = "tar.gz",
     )
     go_repository(
         name = "com_github_mwitkow_grpc_proxy",

@@ -35,18 +35,18 @@ go_binary(
     ],
 )
 
-docker_build(
-    name = "latest",
-    base = "//bld_tools/docker/ubuntu:base",
-    directory = "/skylb",
-    files = [
-        ":grpc-proxy-client",
-        ":grpc-proxy-server",
-    ],
-    ports = [
-        "8901",
-    ],
-    repository = "harbor.jingoal.ltd",
-    tag = "skylb/grpc-proxy-demo",
-    workdir = "/skylb",
-)
+# docker_build(
+#     name = "latest",
+#     base = "//bld_tools/docker/ubuntu:base",
+#     directory = "/skylb",
+#     files = [
+#         ":grpc-proxy-client",
+#         ":grpc-proxy-server",
+#     ],
+#     ports = [
+#         "8901",
+#     ],
+#     repository = "harbor.jingoal.ltd",
+#     tag = "skylb/grpc-proxy-demo",
+#     workdir = "/skylb",
+# )

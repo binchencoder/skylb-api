@@ -133,7 +133,7 @@ go_binary(
     srcs = ["gateway.go"],
     deps = [
         "//cmd/demo/proto:go_default_library",
-        "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
+        "@com_github_binchencoder_ease_gateway//gateway/runtime:go_default_library",
         "@com_github_binchencoder_letsgo//:go_default_library",
     ],
 )

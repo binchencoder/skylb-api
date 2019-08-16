@@ -55,13 +55,13 @@ pkg_tar(
     package_dir = "/skylb",
 )
 
-docker_build(
-    name = "latest",
-    base = "//bld_tools/docker/ubuntu:base",
-    cmd = "/skylb/start.sh",
-    repository = "harbor.jingoal.ltd",
-    tag = "skylb/skytest",
-    tars = [
-        ":binary",
-    ],
-)
+# docker_build(
+#     name = "latest",
+#     base = "//bld_tools/docker/ubuntu:base",
+#     cmd = "/skylb/start.sh",
+#     repository = "harbor.jingoal.ltd",
+#     tag = "skylb/skytest",
+#     tars = [
+#         ":binary",
+#     ],
+# )

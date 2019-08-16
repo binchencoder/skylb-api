@@ -32,11 +32,11 @@ go_binary(
     name = "stress-gateway",
     srcs = [
         ":gateway.go",
-        "@binchencoder_ease_gateway//cmd/custom-janus:main.go",
+        "@com_github_binchencoder_ease_gateway//cmd/custom-janus:main.go",
     ],
     deps = [
         "@grpc_ecosystem_grpc_gateway//runtime:go_default_library",
-        "@binchencoder_ease_gateway//integrate:go_default_library",
+        "@com_github_binchencoder_ease_gateway//integrate:go_default_library",
         "@com_github_binchencoder_gateway_proto//data:go_default_library",
         "@com_github_binchencoder_letsgo//:go_default_library",
         "//cmd/stress/proto:go_default_library",

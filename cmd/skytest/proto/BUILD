@@ -3,17 +3,26 @@ package(
 )
 
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
-genproto_go(
+proto_library(
     name = "api_proto",
     srcs = ["api.proto"],
-    has_service = 1,
+)
+
+go_proto_library(
+    name = "api_go_proto",
+    compilers = [
+        "@io_bazel_rules_go//proto:go_grpc",
+    ],
+    importpath = "github.com/binchencoder/skylb-api/cmd/skytest/proto",
+    proto = ":api_proto",
 )
 
 go_library(
     name = "go_default_library",
     srcs = [
-        ":api_proto",
+        ":api_go_proto",
     ],
     importpath = "github.com/binchencoder/skylb-api/cmd/skytest/proto",
     deps = [
@@ -28,7 +37,7 @@ go_library(
 #     srcs = ["api.proto"],
 #     has_service = 1,
 #     deps = [
-#         "@binchencoder_ease_gateway//gateway/options:options_proto",
+#         "@com_github_binchencoder_ease_gateway//gateway/options:options_proto",
 #         "@binchencoder_third_party_go//vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
 #         "@com_github_binchencoder_gateway_proto//data:data_srcjar",
 #     ],
@@ -38,7 +47,7 @@ go_library(
 #     name = "skytest",
 #     srcs = [":skytest_src"],
 #     deps = [
-#         "@binchencoder_ease_gateway//gateway/options",
+#         "@com_github_binchencoder_ease_gateway//gateway/options",
 #         "//third-party-java/dependencies/lib:grpc-1.18.0",
 #     ],
 # )

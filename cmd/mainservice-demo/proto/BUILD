@@ -2,13 +2,12 @@ package(
     default_visibility = ["//visibility:public"],
 )
 
-load("//bld_tools/bazel/rules_jingoal/protobuf:def.bzl", "genproto_go")
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
-genproto_go(
+proto_library(
     name = "api_proto",
-    srcs = ["api.proto"],
-    has_service = 1,
+    srcs = ["api.proto"]
 )
 
 go_library(

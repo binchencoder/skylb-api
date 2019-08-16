@@ -13,6 +13,20 @@ http_archive(
 # 从下载的扩展里载入 go_rules_dependencies go_register_toolchains 函数
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 
+# ---------- io_bazel_rules_docker ----------
+# Download the rules_docker repository at release v0.9.0
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "e513c0ac6534810eb7a14bf025a0f159726753f97f74ab7863c650d26e01d677",
+    strip_prefix = "rules_docker-0.9.0",
+    urls = ["https://github.com/bazelbuild/rules_docker/archive/v0.9.0.tar.gz"],
+)
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
+)
+container_repositories()
+
 # ---------- bazel_gazelle ----------
 # 一般来说都会使用gazelle工具来自动生成 BUILD 文件, 而不是手写.
 http_archive(

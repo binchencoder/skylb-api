@@ -34,18 +34,18 @@ go_binary(
     ],
 )
 
-docker_build(
-    name = "latest",
-    base = "//bld_tools/docker/ubuntu:base",
-    directory = "/skylb",
-    files = [
-        ":mainservice-client",
-        ":mainservice-server",
-    ],
-    ports = [
-        "8901",
-    ],
-    repository = "harbor.jingoal.ltd",
-    tag = "skylb/mainservice-demo",
-    workdir = "/skylb",
-)
+# docker_build(
+#     name = "latest",
+#     base = "//bld_tools/docker/ubuntu:base",
+#     directory = "/skylb",
+#     files = [
+#         ":mainservice-client",
+#         ":mainservice-server",
+#     ],
+#     ports = [
+#         "8901",
+#     ],
+#     repository = "harbor.jingoal.ltd",
+#     tag = "skylb/mainservice-demo",
+#     workdir = "/skylb",
+# )
