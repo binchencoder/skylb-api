@@ -11,8 +11,8 @@ go_library(
     deps = [
         "//prefix:go_default_library",
         "//util:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/coreos/etcd/client:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
+        "@com_github_coreos_etcd//client:go_default_library",
+        "@com_github_golang_glog//:go_default_library",
     ],
 )
 
@@ -27,7 +27,7 @@ go_test(
     ],
     deps = [
         "//util:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/coreos/etcd/client:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/smartystreets/goconvey/convey:go_default_library",
+        "@com_github_coreos_etcd//client:go_default_library",
+        "@com_github_smartystreets_goconvey//convey:go_default_library",
     ],
 )

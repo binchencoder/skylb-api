@@ -9,7 +9,7 @@ go_library(
     ],
     importpath = "github.com/binchencoder/skylb-api/prefix",
     deps = [
-        "@binchencoder_third_party_go//vendor/github.com/coreos/etcd/client:go_default_library",
-        "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
+        "@com_github_coreos_etcd//client:go_default_library",
+        "@org_golang_x_net//context:go_default_library",
     ],
 )

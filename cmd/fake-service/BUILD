@@ -9,6 +9,6 @@ go_binary(
         "//client:go_default_library",
         "//internal/skylb:go_default_library",
         "//server:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
+        "@com_github_golang_glog//:go_default_library",
     ],
 )

@@ -10,7 +10,7 @@ proto_library(
     srcs = ["api.proto"],
     deps = [
         "@binchencoder_ease_gateway//gateway/options:options_proto",
-        "@binchencoder_ease_gateway//proto/data:data_proto",
+        "@com_github_binchencoder_gateway_proto//data:data_proto",
     ],
 )
 
@@ -26,8 +26,8 @@ go_proto_library(
         "@binchencoder_ease_gateway//gateway/protoc-gen-swagger/options:go_default_library",
         "@binchencoder_ease_gateway//gateway/options:options_go_proto",
         "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:data_go_proto",
-        "@binchencoder_ease_gateway//proto/frontend:error_go_proto",
+        "@com_github_binchencoder_gateway_proto//data:data_go_proto",
+        "@com_github_binchencoder_gateway_proto//frontend:error_go_proto",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
@@ -46,15 +46,15 @@ go_library(
     deps = [
         "@binchencoder_ease_gateway//gateway/options:go_default_library",
         "@binchencoder_ease_gateway//gateway/runtime:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
-        "@binchencoder_ease_gateway//proto/frontend:go_default_library",
+        "@com_github_binchencoder_gateway_proto//data:go_default_library",
+        "@com_github_binchencoder_gateway_proto//frontend:go_default_library",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "//balancer:go_default_library",
         "//client:go_default_library",
         "//client/option:go_default_library",
         "//proto:go_default_library",
         "@org_golang_google_grpc//naming:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/golang/glog:go_default_library",
+        "@com_github_golang_glog//:go_default_library",
         "@com_github_golang_protobuf//proto:go_default_library",
         "@com_github_golang_protobuf//protoc-gen-go/generator:go_default_library",
         "@grpc_ecosystem_grpc_gateway//utilities:go_default_library",
@@ -68,7 +68,7 @@ go_library(
 #    deps = [
 #        "@binchencoder_ease_gateway//gateway/options:options_proto",
 #        "@binchencoder_third_party_go//vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
-#        "@binchencoder_ease_gateway//proto/data:data_srcjar",
+#        "@com_github_binchencoder_gateway_proto//data:data_srcjar",
 #    ],
 #)
 

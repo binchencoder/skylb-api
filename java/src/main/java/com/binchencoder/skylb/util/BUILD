@@ -12,7 +12,7 @@ java_library(
         "//third-party-java/dependencies/lib:grpc-1.18.0",
         "//third-party-java/dependencies/lib:protobuf-java-util-3.2.0",
         "//third-party-java/dependencies/lib:slf4j-api-1.7.21",
-        "@binchencoder_ease_gateway//proto/data",
-        "@binchencoder_ease_gateway//proto/frontend:error",
+        "@com_github_binchencoder_gateway_proto//data",
+        "@com_github_binchencoder_gateway_proto//frontend:error",
     ],
 )

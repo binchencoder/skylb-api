@@ -19,7 +19,7 @@ go_library(
     importpath = "github.com/binchencoder/skylb-api/cmd/mainservice-demo/proto",
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",
-        "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
+        "@org_golang_x_net//context:go_default_library",
         "@org_golang_google_grpc//:go_default_library",
     ],
 )

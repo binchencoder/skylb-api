@@ -14,13 +14,13 @@ go_binary(
         "//client/option:go_default_library",
         "//handlers:go_default_library",
         "//server:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/mwitkow/grpc-proxy/proxy:go_default_library",
-        "@binchencoder_third_party_go//vendor/github.com/soheilhy/cmux:go_default_library",
-        "@binchencoder_third_party_go//vendor/golang.org/x/net/context:go_default_library",
+        "@com_github_mwitkow_grpc_proxy//proxy:go_default_library",
+        "@com_github_soheilhy_cmux//:go_default_library",
+        "@org_golang_x_net//context:go_default_library",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//metadata:go_default_library",
         "@org_golang_google_grpc//naming:go_default_library",
-        "@binchencoder_ease_gateway//proto/data:go_default_library",
+        "@com_github_binchencoder_gateway_proto//data:go_default_library",
     ],
 )
 
