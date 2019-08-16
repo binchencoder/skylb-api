@@ -32,6 +32,20 @@ go_library(
     ],
 )
 
+java_proto_library(
+    name = "api_java_proto",
+    deps = [
+        ":api_proto",
+    ],
+)
+
+# java_lite_proto_library(
+#     name = "api_java_lite_proto",
+#     deps = [
+#         ":api_proto",
+#     ],
+# )
+
 # genproto_java(
 #     name = "skytest_src",
 #     srcs = ["api.proto"],
@@ -43,11 +57,14 @@ go_library(
 #     ],
 # )
 
-# java_library(
-#     name = "skytest",
-#     srcs = [":skytest_src"],
-#     deps = [
-#         "@com_github_binchencoder_ease_gateway//gateway/options",
-#         "//third-party-java/dependencies/lib:grpc-1.18.0",
-#     ],
-# )
+java_library(
+    name = "skytest",
+    # srcs = [":api_proto"],
+    runtime_deps = [
+        ":api_java_proto",
+    ],
+    deps = [
+        # "@com_github_binchencoder_ease_gateway//gateway/options",
+        "@com_github_binchencoder_third_party_java//dependencies/lib:grpc-1.18.0",
+    ],
+)
