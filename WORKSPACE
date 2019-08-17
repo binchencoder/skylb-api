@@ -67,6 +67,16 @@ go_repository(
     # gazelle args: -go_prefix golang.org/x/net -proto disable
 )
 go_repository(
+    name = "org_golang_x_sys",
+    importpath = "golang.org/x/sys",
+    urls = [
+        "https://codeload.github.com/golang/sys/tar.gz/fde4db37ae7ad8191b03d30d27f258b5291ae4e3",
+    ],
+    strip_prefix = "sys-fde4db37ae7ad8191b03d30d27f258b5291ae4e3",
+    type = "tar.gz",
+    # gazelle args: -go_prefix golang.org/x/sys
+)
+go_repository(
     name = "org_golang_x_text",
     importpath = "golang.org/x/text",
     urls = [
