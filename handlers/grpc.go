@@ -20,7 +20,7 @@ import (
 	"github.com/binchencoder/skylb-api/internal/health"
 	"github.com/binchencoder/skylb-api/metrics"
 	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // GrpcLoadBalanceHandler implements interface LoadBalanceHandler defined in

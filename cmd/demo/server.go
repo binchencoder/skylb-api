@@ -17,8 +17,8 @@ import (
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
-	fepb "github.com/binchencoder/ease-gateway/proto/frontend"
+	vexpb "github.com/binchencoder/gateway-proto/data"
+	fepb "github.com/binchencoder/gateway-proto/frontend"
 )
 
 var (

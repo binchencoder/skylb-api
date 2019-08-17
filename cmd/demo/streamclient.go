@@ -14,7 +14,7 @@ import (
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 	skypb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 func usage() {

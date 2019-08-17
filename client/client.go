@@ -6,7 +6,7 @@ import (
 	"github.com/binchencoder/skylb-api/client/option"
 	"github.com/binchencoder/skylb-api/internal/skylb"
 	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // TODO(zhwang): remove this file once we migrate all references to the

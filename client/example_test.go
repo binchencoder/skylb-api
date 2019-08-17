@@ -4,7 +4,7 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/binchencoder/skylb-api/handlers"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 func ExampleNewServiceLocator() {

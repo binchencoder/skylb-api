@@ -15,7 +15,7 @@ import (
 	cli "github.com/binchencoder/skylb-api/client"
 	pb "github.com/binchencoder/skylb-api/cmd/grpc-proxy-demo/proto"
 	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (

@@ -22,7 +22,7 @@ import (
 	"github.com/binchencoder/skylb-api/client/option"
 	"github.com/binchencoder/skylb-api/handlers"
 	skysrv "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // grpc-proxy is a generic proxy server for SkyLB grpc services.

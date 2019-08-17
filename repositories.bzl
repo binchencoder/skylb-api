@@ -63,10 +63,29 @@ def go_repositories():
     )
 
     go_repository(
+        name = "com_github_cenkalti_backoff",
+        importpath = "github.com/cenkalti/backoff",
+        urls = ["https://github.com/cenkalti/backoff/archive/v2.2.1.tar.gz"],
+        strip_prefix = "backoff-2.2.1",
+        type = "tar.gz",
+    )
+    go_repository(
         name = "com_github_golang_glog",
         importpath = "github.com/golang/glog",
         sum = "h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=",
         version = "v0.0.0-20160126235308-23def4e6c14b",
+    )
+    go_repository(
+        name = "com_github_google_uuid",
+        importpath = "github.com/google/uuid",
+        commit = "c2e93f3ae59f2904160ceaab466009f965df46d6",
+        # gazelle args: -go_prefix github.com/google/uuid
+    )
+    go_repository(
+        name = "com_github_pborman_uuid",
+        importpath = "github.com/pborman/uuid",
+        commit = "8b1b92947f46224e3b97bb1a3a5b0382be00d31e",
+        # gazelle args: -go_prefix github.com/pborman/uuid
     )
     go_repository(
         name = "com_github_mwitkow_grpc_proxy",
@@ -76,6 +95,11 @@ def go_repositories():
         ],
         strip_prefix = "grpc-proxy-0f1106ef9c766333b9acb4b81e705da4bade7215",
         type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_matttproud_golang_protobuf_extension",
+        importpath = "github.com/matttproud/golang_protobuf_extensions",
+        commit = "c182affec369e30f25d3eb8cd8a478dee585ae7d",
     )
     go_repository(
         name = "com_github_opentracing_opentracing_go",
@@ -135,6 +159,45 @@ def go_repositories():
         ],
         strip_prefix = "common-637d7c34db122e2d1a25d061423098663758d2d3",
         type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_prometheus_procfs",
+        importpath = "github.com/prometheus/procfs",
+        urls = [
+            "https://codeload.github.com/prometheus/procfs/tar.gz/6df11039f8de6804bb01c0ebd52cde9c26091e1c",
+        ],
+        strip_prefix = "procfs-6df11039f8de6804bb01c0ebd52cde9c26091e1c",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_beorn7_perks",
+        importpath = "github.com/beorn7/perks",
+        urls = ["https://codeload.github.com/beorn7/perks/tar.gz/37c8de3658fcb183f997c4e13e8337516ab753e6"],
+        strip_prefix = "perks-37c8de3658fcb183f997c4e13e8337516ab753e6",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_pborman_uuid",
+        importpath = "github.com/pborman/uuid",
+        commit = "8b1b92947f46224e3b97bb1a3a5b0382be00d31e",
+        # gazelle args: -go_prefix github.com/pborman/uuid
+    )
+    go_repository(
+        name = "com_github_go_kit_kit",
+        importpath = "github.com/go-kit/kit",
+        urls = ["https://codeload.github.com/go-kit/kit/tar.gz/dc489b75b9cdbf29c739534c2aa777cabb034954"],
+        strip_prefix = "kit-dc489b75b9cdbf29c739534c2aa777cabb034954",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_pkg_errors",
+        importpath = "github.com/pkg/errors",
+        commit = "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7",
+    )
+    go_repository(
+        name = "com_github_vividcortex_gohistogram",
+        importpath = "github.com/VividCortex/gohistogram",
+        commit = "51564d9861991fb0ad0f531c99ef602d0f9866e6",
     )
     go_repository(
         name = "com_github_smartystreets_goconvey",

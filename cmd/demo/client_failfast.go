@@ -19,7 +19,7 @@ import (
 	skylbclient "github.com/binchencoder/skylb-api/client"
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	skypb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (

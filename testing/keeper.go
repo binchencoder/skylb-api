@@ -5,7 +5,7 @@ import (
 	"google.golang.org/grpc/naming"
 
 	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // SkyLbKeeperMock mocks SkyLB API option.SkyLbKeeper.

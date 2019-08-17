@@ -64,7 +64,7 @@ implementation:
 ```golang
 import (
 	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 ...
@@ -122,7 +122,7 @@ import (
 	skylb "github.com/binchencoder/skylb-api/client"
 	pb "..." // Protocol buffer of your gRPC server.
 	skypb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/ease-gateway/proto/data"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (
