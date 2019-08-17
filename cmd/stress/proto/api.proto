@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-import "ease-gateway/gateway/options/annotations.proto";
+import "gateway/options/annotations.proto";
 
 enum Gender {
 	MALE = 0;
@@ -24,7 +24,7 @@ message SayHelloResp {
 // Stress service definition.
 service StressService {
 	option (ease.api.service_spec) = {
-		service_id: SKYLB_DEMO_SERVICE
+		service_id: SHARED_TEST_SERVER_SERVICE
 		gen_controller: true
 	};
 

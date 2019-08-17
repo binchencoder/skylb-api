@@ -57,7 +57,7 @@ go_library(
         "@com_github_golang_glog//:go_default_library",
         "@com_github_golang_protobuf//proto:go_default_library",
         "@com_github_golang_protobuf//protoc-gen-go/generator:go_default_library",
-        "@grpc_ecosystem_grpc_gateway//utilities:go_default_library",
+        "@com_github_grpc_ecosystem_grpc_gateway//utilities:go_default_library",
     ],
 )
 

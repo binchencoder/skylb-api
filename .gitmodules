@@ -1,0 +1,3 @@
+[submodule "vendor/github.com/binchencoder/third-party-java"]
+	path = vendor/github.com/binchencoder/third-party-java
+	url = https://github.com/binchencoder/third-party-java.git

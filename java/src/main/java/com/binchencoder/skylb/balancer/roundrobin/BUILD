@@ -7,8 +7,8 @@ java_library(
     srcs = glob(["*.java"]),
     deps = [
         "//java/src/main/java/com/binchencoder/skylb/healthcheck",
-        "//third-party-java/dependencies/lib:grpc-1.18.0",
-        "//third-party-java/dependencies/lib:jsr305-3.0.1",
-        "//third-party-java/dependencies/lib:slf4j-api-1.7.21",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:grpc-1.18.0",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:jsr305-3.0.2",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:slf4j-api-1.7.21",
     ],
 )

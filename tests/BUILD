@@ -7,8 +7,8 @@ go_test(
     size = "medium",
     srcs = glob(["*_test.go"]),
     deps = [
-        "@com_github_binchencoder_letsgo//trace:go_default_library",
         "//cmd/stress/proto:go_default_library",
+        "@com_github_binchencoder_letsgo//trace:go_default_library",
         "@com_github_golang_protobuf//jsonpb:go_default_library",
         "@com_github_smartystreets_goconvey//convey:go_default_library",
     ],

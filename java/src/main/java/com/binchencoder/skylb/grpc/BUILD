@@ -14,9 +14,9 @@ java_library(
         "//java/src/main/java/com/binchencoder/skylb/grpchealth",
         "//java/src/main/java/com/binchencoder/skylb/healthcheck",
         "//java/src/main/java/com/binchencoder/skylb/util",
-        "//third-party-java/dependencies/lib:commons-lang3-3.4",
-        "//third-party-java/dependencies/lib:grpc-1.18.0",
-        "//third-party-java/dependencies/lib:simpleclient-0.0.15",
-        "//third-party-java/dependencies/lib:slf4j-api-1.7.21",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:commons-lang3-3.4",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:grpc-1.18.0",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:simpleclient-0.0.15",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:slf4j-api-1.7.21",
     ],
 )

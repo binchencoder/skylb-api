@@ -5,9 +5,9 @@ def go_repositories():
         name = "com_github_binchencoder_ease_gateway",
         importpath = "github.com/binchencoder/ease-gateway",
         urls = [
-            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/10db28d194fed45b703c0832293c0fabad268e7c",
+            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/7af2b0a4ec8f54df5b766760c8ab92eb16de8de0",
         ],
-        strip_prefix = "ease-gateway-10db28d194fed45b703c0832293c0fabad268e7c",
+        strip_prefix = "ease-gateway-7af2b0a4ec8f54df5b766760c8ab92eb16de8de0",
         type = "tar.gz",
     )
     go_repository(
@@ -19,20 +19,20 @@ def go_repositories():
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
         urls = [
-            "https://codeload.github.com/binchencoder/letsgo/tar.gz/e420efa5f54077d1405bdc0414d5b257c0fe5df6",
+            "https://codeload.github.com/binchencoder/letsgo/tar.gz/c227bc4824d51e2820ea3e9116c22094d6049b45",
         ],
-        strip_prefix = "letsgo-e420efa5f54077d1405bdc0414d5b257c0fe5df6",
+        strip_prefix = "letsgo-c227bc4824d51e2820ea3e9116c22094d6049b45",
         type = "tar.gz",
     )
-    go_repository(
-        name = "com_github_binchencoder_third_party_java",
-        importpath = "github.com/binchencoder/third-party-java",
-        urls = [
-            "https://codeload.github.com/binchencoder/third-party-java/tar.gz/d53d935453929c0447de67bd8ab1467a8c91c57d",
-        ],
-        strip_prefix = "third-party-java-d53d935453929c0447de67bd8ab1467a8c91c57d",
-        type = "tar.gz",
-    )
+    # go_repository(
+    #     name = "com_github_binchencoder_third_party_java",
+    #     importpath = "github.com/binchencoder/third-party-java",
+    #     urls = [
+    #         "https://codeload.github.com/binchencoder/third-party-java/tar.gz/d1493964494fa7b91d55d89bb630fb04dfa09229",
+    #     ],
+    #     strip_prefix = "third-party-java-d1493964494fa7b91d55d89bb630fb04dfa09229",
+    #     type = "tar.gz",
+    # )
 
     go_repository(
         name = "com_github_grpc_ecosystem_grpc_gateway",
@@ -68,6 +68,18 @@ def go_repositories():
         urls = ["https://github.com/cenkalti/backoff/archive/v2.2.1.tar.gz"],
         strip_prefix = "backoff-2.2.1",
         type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_jtolds_gls",
+        importpath = "github.com/jtolds/gls",
+        commit = "b4936e06046bbecbb94cae9c18127ebe510a2cb9",
+        # gazelle args: -go_prefix github.com/jtolds/gls
+    )
+    go_repository(
+        name = "com_github_ghodss_yaml",
+        importpath = "github.com/ghodss/yaml",
+        sum = "h1:wQHKEahhL6wmXdzwWG11gIVCkOv05bNOh+Rxn0yngAk=",
+        version = "v1.0.0",
     )
     go_repository(
         name = "com_github_golang_glog",
@@ -135,9 +147,9 @@ def go_repositories():
         name = "com_github_prometheus_client_golang",
         importpath = "github.com/prometheus/client_golang",
         urls = [
-            "https://codeload.github.com/prometheus/client_golang/tar.gz/b7953aabc651bb0e5748a8b314e339b3ab60248f",
+            "https://codeload.github.com/prometheus/client_golang/tar.gz/b12dd9c58c3d7ce96f9e1ede31d02f6df3d50c61",
         ],
-        strip_prefix = "client_golang-b7953aabc651bb0e5748a8b314e339b3ab60248f",
+        strip_prefix = "client_golang-b12dd9c58c3d7ce96f9e1ede31d02f6df3d50c61",
         type = "tar.gz",
         # gazelle args: -go_prefix github.com/prometheus/client_golang
     )
@@ -212,12 +224,37 @@ def go_repositories():
         commit = "221dbe5ed46703ee255b1da0dec05086f5035f62",
     )
     go_repository(
+        name = "com_github_soheilhy_cmux",
+        importpath = "github.com/soheilhy/cmux",
+        commit = "8a8ea3c53959009183d7914522833c1ed8835020",
+    )
+    go_repository(
+        name = "com_github_smartystreets_assertions",
+        importpath = "github.com/smartystreets/assertions",
+        urls = ["https://github.com/smartystreets/assertions/archive/v1.0.1.tar.gz"],
+        strip_prefix = "assertions-1.0.1",
+        type = "tar.gz",
+    )
+    go_repository(
         name = "com_github_coreos_etcd",
         importpath = "github.com/coreos/etcd",
         urls = ["https://codeload.github.com/etcd-io/etcd/tar.gz/98d308426819d892e149fe45f6fd542464cb1f9d"],
         strip_prefix = "etcd-98d308426819d892e149fe45f6fd542464cb1f9d",
         type = "tar.gz",
         build_file_generation = "on",
+    )
+    go_repository(
+        name = "com_github_coreos_go_semver",
+        importpath = "github.com/coreos/go-semver",
+        commit = "e214231b295a8ea9479f11b70b35d5acf3556d9b",
+    )
+    go_repository(
+        name = "in_gopkg_yaml_v2",
+        importpath = "gopkg.in/yaml.v2",
+        replace = "github.com/go-yaml/yaml",
+        sum = "h1:eZqMvILvSB6AhTa+FGXHupLRXfU8SFxBP4IW1wetpT4=",
+        version = "v2.0.0-20170812160011-eb3733d160e7",
+        # gazelle args: -go-prefix gopkg.in/yaml.v2
     )
     go_repository(
         name = "org_golang_google_grpc",

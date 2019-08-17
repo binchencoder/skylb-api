@@ -65,6 +65,6 @@ java_library(
     ],
     deps = [
         # "@com_github_binchencoder_ease_gateway//gateway/options",
-        "@com_github_binchencoder_third_party_java//dependencies/lib:grpc-1.18.0",
+        "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:grpc-1.18.0",
     ],
 )

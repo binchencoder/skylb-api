@@ -35,11 +35,11 @@ go_binary(
         "@com_github_binchencoder_ease_gateway//cmd/custom-janus:main.go",
     ],
     deps = [
-        "@grpc_ecosystem_grpc_gateway//runtime:go_default_library",
+        "//cmd/stress/proto:go_default_library",
+        "@com_github_binchencoder_ease_gateway//gateway/runtime:go_default_library",
         "@com_github_binchencoder_ease_gateway//integrate:go_default_library",
         "@com_github_binchencoder_gateway_proto//data:go_default_library",
         "@com_github_binchencoder_letsgo//:go_default_library",
-        "//cmd/stress/proto:go_default_library",
         "@com_github_golang_glog//:go_default_library",
     ],
 )
