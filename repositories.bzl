@@ -212,6 +212,16 @@ def go_repositories():
         commit = "51564d9861991fb0ad0f531c99ef602d0f9866e6",
     )
     go_repository(
+        name = "io_upper_db_v3",
+        importpath = "upper.io/db.v3",
+        urls = [
+            "https://codeload.github.com/upper/db/tar.gz/ff77bee152d24abc0668e7c6f145b329f2952657",
+        ],
+        strip_prefix = "db-ff77bee152d24abc0668e7c6f145b329f2952657",
+        type = "tar.gz",
+        # gazelle args: -go_prefix upper.io/db.v3
+    )
+    go_repository(
         name = "com_github_smartystreets_goconvey",
         importpath = "github.com/smartystreets/goconvey",
         urls = ["https://github.com/smartystreets/goconvey/archive/1.6.3.tar.gz"],
