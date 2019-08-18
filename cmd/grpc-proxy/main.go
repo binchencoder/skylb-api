@@ -14,15 +14,15 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/naming"
 
-	"github.com/binchencoder/letsgo"
-	lmetrics "github.com/binchencoder/letsgo/metrics"
-	"github.com/binchencoder/letsgo/runtime/pprof"
-	"github.com/binchencoder/skylb-api/balancer"
-	skycli "github.com/binchencoder/skylb-api/client"
-	"github.com/binchencoder/skylb-api/client/option"
-	"github.com/binchencoder/skylb-api/handlers"
-	skysrv "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	"binchencoder.com/letsgo"
+	lmetrics "binchencoder.com/letsgo/metrics"
+	"binchencoder.com/letsgo/runtime/pprof"
+	"binchencoder.com/skylb-api/balancer"
+	skycli "binchencoder.com/skylb-api/client"
+	"binchencoder.com/skylb-api/client/option"
+	"binchencoder.com/skylb-api/handlers"
+	skysrv "binchencoder.com/skylb-api/server"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 // grpc-proxy is a generic proxy server for SkyLB grpc services.

@@ -10,9 +10,9 @@ import (
 
 	"github.com/golang/protobuf/jsonpb"
 
-	"github.com/binchencoder/letsgo"
-	"github.com/binchencoder/letsgo/token"
-	pb "github.com/binchencoder/skylb-api/cmd/stress/proto"
+	"binchencoder.com/letsgo"
+	"binchencoder.com/letsgo/token"
+	pb "binchencoder.com/skylb-api/cmd/stress/proto"
 )
 
 const urlPattern = "http://%s/stress/v1/say-hello/dory/gender/FEMALE"

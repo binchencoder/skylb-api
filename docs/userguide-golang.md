@@ -63,8 +63,8 @@ implementation:
 
 ```golang
 import (
-	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	skylb "binchencoder.com/skylb-api/server"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 ...
@@ -119,10 +119,10 @@ In rpc.go, you need to define some global variables to hold the shared states:
 import (
 	"google.golang.org/grpc"
 
-	skylb "github.com/binchencoder/skylb-api/client"
+	skylb "binchencoder.com/skylb-api/client"
 	pb "..." // Protocol buffer of your gRPC server.
-	skypb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	skypb "binchencoder.com/skylb-api/proto"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (
@@ -205,7 +205,7 @@ With the rpc package ready, we only need to hook it in your main program, like:
 
 ```golang
 import (
-	"github.com/binchencoder/<repo-name>/cmd/mygrpcclient/rpc"
+	"binchencoder.com/<repo-name>/cmd/mygrpcclient/rpc"
 )
 
 func main() {

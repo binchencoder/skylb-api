@@ -23,12 +23,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	skylbclient "github.com/binchencoder/skylb-api/client"
-	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
-	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
-	skypb "github.com/binchencoder/skylb-api/proto"
-	skylbserver "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	skylbclient "binchencoder.com/skylb-api/client"
+	pb "binchencoder.com/skylb-api/cmd/demo/proto"
+	"binchencoder.com/skylb-api/cmd/demo/rpc"
+	skypb "binchencoder.com/skylb-api/proto"
+	skylbserver "binchencoder.com/skylb-api/server"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (

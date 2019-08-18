@@ -11,7 +11,7 @@ go_library(
         "mainservice.go",
         "roundrobin.go",
     ],
-    importpath = "github.com/binchencoder/skylb-api/balancer",
+    importpath = "binchencoder.com/skylb-api/balancer",
     deps = [
         "//internal/health:go_default_library",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",

@@ -9,7 +9,7 @@ import (
 	"github.com/golang/glog"
 	"google.golang.org/grpc"
 
-	pb "github.com/binchencoder/skylb-api/cmd/skytest/proto"
+	pb "binchencoder.com/skylb-api/cmd/skytest/proto"
 )
 
 var (

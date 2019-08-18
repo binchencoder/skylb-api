@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/naming"
 
-	"github.com/binchencoder/skylb-api/internal/health"
+	"binchencoder.com/skylb-api/internal/health"
 )
 
 // mainService implements interface grpc.Balancer.

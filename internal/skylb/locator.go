@@ -9,12 +9,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/naming"
 
-	jg "github.com/binchencoder/letsgo/grpc"
-	jn "github.com/binchencoder/letsgo/service/naming"
-	"github.com/binchencoder/skylb-api/client/option"
-	"github.com/binchencoder/skylb-api/metrics"
-	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	jg "binchencoder.com/letsgo/grpc"
+	jn "binchencoder.com/letsgo/service/naming"
+	"binchencoder.com/skylb-api/client/option"
+	"binchencoder.com/skylb-api/metrics"
+	pb "binchencoder.com/skylb-api/proto"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (

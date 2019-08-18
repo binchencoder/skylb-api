@@ -3,7 +3,7 @@ load("@bazel_gazelle//:deps.bzl", "go_repository")
 def go_repositories():
     go_repository(
         name = "com_github_binchencoder_ease_gateway",
-        importpath = "github.com/binchencoder/ease-gateway",
+        importpath = "binchencoder.com/ease-gateway",
         urls = [
             "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/7af2b0a4ec8f54df5b766760c8ab92eb16de8de0",
         ],
@@ -12,21 +12,25 @@ def go_repositories():
     )
     go_repository(
         name = "com_github_binchencoder_gateway_proto",
-        importpath = "github.com/binchencoder/gateway-proto",
-        commit = "1ee4b0a8951fda57f986695253374d7847adbec6",
+        importpath = "binchencoder.com/gateway-proto",
+        urls = [
+            "https://codeload.github.com/binchencoder/gateway-proto/tar.gz/0e94d2e1eb41da66afa9e1184221a32ec559ce13",
+        ],
+        strip_prefix = "gateway-proto-0e94d2e1eb41da66afa9e1184221a32ec559ce13",
+        type = "tar.gz",
     )
     go_repository(
         name = "com_github_binchencoder_letsgo",
-        importpath = "github.com/binchencoder/letsgo",
+        importpath = "binchencoder.com/letsgo",
         urls = [
-            "https://codeload.github.com/binchencoder/letsgo/tar.gz/c227bc4824d51e2820ea3e9116c22094d6049b45",
+            "https://codeload.github.com/binchencoder/letsgo/tar.gz/3a34eef5d1546b1be444e2e053d425e80afe100e",
         ],
-        strip_prefix = "letsgo-c227bc4824d51e2820ea3e9116c22094d6049b45",
+        strip_prefix = "letsgo-3a34eef5d1546b1be444e2e053d425e80afe100e",
         type = "tar.gz",
     )
     # go_repository(
     #     name = "com_github_binchencoder_third_party_java",
-    #     importpath = "github.com/binchencoder/third-party-java",
+    #     importpath = "binchencoder.com/third-party-java",
     #     urls = [
     #         "https://codeload.github.com/binchencoder/third-party-java/tar.gz/d1493964494fa7b91d55d89bb630fb04dfa09229",
     #     ],

@@ -22,15 +22,15 @@ import (
 	hpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/peer"
 
-	jg "github.com/binchencoder/letsgo/grpc"
-	lmetrics "github.com/binchencoder/letsgo/metrics"
-	"github.com/binchencoder/letsgo/runtime/pprof"
-	"github.com/binchencoder/letsgo/service/naming"
-	"github.com/binchencoder/skylb-api/internal/flags"
-	"github.com/binchencoder/skylb-api/internal/rpccli"
-	"github.com/binchencoder/skylb-api/metrics"
-	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	jg "binchencoder.com/letsgo/grpc"
+	lmetrics "binchencoder.com/letsgo/metrics"
+	"binchencoder.com/letsgo/runtime/pprof"
+	"binchencoder.com/letsgo/service/naming"
+	"binchencoder.com/skylb-api/internal/flags"
+	"binchencoder.com/skylb-api/internal/rpccli"
+	"binchencoder.com/skylb-api/metrics"
+	pb "binchencoder.com/skylb-api/proto"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 const (

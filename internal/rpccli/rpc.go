@@ -12,9 +12,9 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	"github.com/binchencoder/letsgo/strings"
-	"github.com/binchencoder/skylb-api/internal/flags"
-	pb "github.com/binchencoder/skylb-api/proto"
+	"binchencoder.com/letsgo/strings"
+	"binchencoder.com/skylb-api/internal/flags"
+	pb "binchencoder.com/skylb-api/proto"
 )
 
 func init() {

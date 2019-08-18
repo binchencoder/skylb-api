@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/binchencoder/ease-gateway/gateway/runtime"
-	"github.com/binchencoder/letsgo"
-	gw "github.com/binchencoder/skylb-api/cmd/demo/proto"
+	"binchencoder.com/ease-gateway/gateway/runtime"
+	"binchencoder.com/letsgo"
+	gw "binchencoder.com/skylb-api/cmd/demo/proto"
 )
 
 func usage() {

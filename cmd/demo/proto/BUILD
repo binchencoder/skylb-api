@@ -20,7 +20,7 @@ go_proto_library(
         "@io_bazel_rules_go//proto:go_grpc",
         "@com_github_binchencoder_ease_gateway//gateway/protoc-gen-grpc-gateway:go_gen_grpc_gateway",  # keep
     ],
-    importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
+    importpath = "binchencoder.com/skylb-api/cmd/demo/proto",
     proto = ":api_proto",
     deps = [
         "@com_github_binchencoder_ease_gateway//gateway/protoc-gen-swagger/options:go_default_library",
@@ -42,7 +42,7 @@ go_library(
     embed = [
         ":api_go_proto",
     ],
-    importpath = "github.com/binchencoder/skylb-api/cmd/demo/proto",
+    importpath = "binchencoder.com/skylb-api/cmd/demo/proto",
     deps = [
         "@com_github_binchencoder_ease_gateway//gateway/options:go_default_library",
         "@com_github_binchencoder_ease_gateway//gateway/runtime:go_default_library",

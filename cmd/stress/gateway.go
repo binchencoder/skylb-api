@@ -1,5 +1,5 @@
 package main
 
 import (
-	_ "github.com/binchencoder/skylb-api/cmd/stress/proto"
+	_ "binchencoder.com/skylb-api/cmd/stress/proto"
 )

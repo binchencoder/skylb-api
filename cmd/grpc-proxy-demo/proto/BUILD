@@ -18,7 +18,7 @@ go_proto_library(
     compilers = [
         "@io_bazel_rules_go//proto:go_grpc",
     ],
-    importpath = "github.com/binchencoder/skylb-api/cmd/grpc-proxy-demo/proto",
+    importpath = "binchencoder.com/skylb-api/cmd/grpc-proxy-demo/proto",
     proto = ":api_proto",
 )
 
@@ -27,7 +27,7 @@ go_library(
     srcs = [
         ":api_go_proto",
     ],
-    importpath = "github.com/binchencoder/skylb-api/cmd/grpc-proxy-demo/proto",
+    importpath = "binchencoder.com/skylb-api/cmd/grpc-proxy-demo/proto",
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",
         "@org_golang_x_net//context:go_default_library",

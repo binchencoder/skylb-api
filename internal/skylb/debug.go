@@ -6,7 +6,7 @@ import (
 	"github.com/golang/glog"
 	"google.golang.org/grpc/naming"
 
-	pb "github.com/binchencoder/skylb-api/proto"
+	pb "binchencoder.com/skylb-api/proto"
 )
 
 // debugWatcher implements grpc naming.Watcher.

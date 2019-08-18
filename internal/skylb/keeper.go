@@ -14,12 +14,12 @@ import (
 	"google.golang.org/grpc/naming"
 	"google.golang.org/grpc/status"
 
-	"github.com/binchencoder/letsgo/sync"
-	"github.com/binchencoder/skylb-api/internal/flags"
-	"github.com/binchencoder/skylb-api/internal/rpccli"
-	"github.com/binchencoder/skylb-api/metrics"
-	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
+	"binchencoder.com/letsgo/sync"
+	"binchencoder.com/skylb-api/internal/flags"
+	"binchencoder.com/skylb-api/internal/rpccli"
+	"binchencoder.com/skylb-api/metrics"
+	pb "binchencoder.com/skylb-api/proto"
+	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (

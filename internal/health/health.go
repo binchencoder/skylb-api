@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/codes"
 	hpb "google.golang.org/grpc/health/grpc_health_v1"
 
-	"github.com/binchencoder/letsgo/hashring"
+	"binchencoder.com/letsgo/hashring"
 )
 
 var (
