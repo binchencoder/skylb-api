@@ -24,7 +24,7 @@ build:
 	@# In order to run this successfully, add this line:
 	@# build --genrule_strategy=standalone --spawn_strategy=standalone
 	@# to  ~/.bazelrc;
-	@# or wait for janus to fix.
+	@# or wait for ease-gateway to fix.
 	@bazel build --embed_label="$${BUILD_EMBED_LABEL}" ...
 	@bazel run cmd/stress:latest
 	@bazel run cmd/demo:latest

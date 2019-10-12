@@ -80,10 +80,10 @@
             <artifactId>demo-proto</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!-- janus jar, required by java demo server. -->
+        <!-- ease-gateway jar, required by java demo server. -->
         <dependency>
             <groupId>com.binchencoder.api</groupId>
-            <artifactId>janus-gateway-option</artifactId>
+            <artifactId>ease-gateway-option</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 

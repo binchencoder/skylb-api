@@ -6,7 +6,7 @@ cd `dirname $0`
 cd ../..
 
 bazel build skylb-api/cmd/demo/proto/greeting
-bazel build janus/gateway/options/options
+bazel build ease-gateway/gateway/options/options
 
 VER=1.0.0-SNAPSHOT
 
@@ -22,9 +22,8 @@ mvn install:install-file \
 
 mvn install:install-file \
 -DgroupId=com.binchencoder.api \
--DartifactId=janus-gateway-option \
+-DartifactId=ease-gateway-option \
 -Dversion=$VER \
--Dfile=bazel-bin/janus/gateway/options/liboptions.jar \
+-Dfile=bazel-bin/ease-gateway/gateway/options/liboptions.jar \
 -Dpackaging=jar \
 -DgeneratePom=true
-
