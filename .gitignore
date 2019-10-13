@@ -1,6 +1,12 @@
 _output/
+
+# for IntelliJ IDEA description files
 .idea
-.iml
+*.iml
+*.idb
+target/
+logs/
+.DS_Store
 
 # Eclipse
 .classpath
@@ -22,4 +28,3 @@ bazel-testlogs
 
 # Java files
 *.exe
-target/
