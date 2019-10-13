@@ -93,17 +93,17 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Jingoal services. -->
-        <!-- vexillary-data-proto and vexillary-error-proto have only one
+        <!-- Self services. -->
+        <!-- data-proto and frontend-proto have only one
          version (the SNAPSHOT version), thus can be enclosed by skylb-client. -->
         <dependency>
-            <groupId>com.binchencoder.vexillary</groupId>
-            <artifactId>vexillary-data-proto</artifactId>
+            <groupId>com.binchencoder.gateway.proto</groupId>
+            <artifactId>data-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.binchencoder.vexillary</groupId>
-            <artifactId>vexillary-error-proto</artifactId>
+            <groupId>com.binchencoder.gateway.proto</groupId>
+            <artifactId>frontend-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
