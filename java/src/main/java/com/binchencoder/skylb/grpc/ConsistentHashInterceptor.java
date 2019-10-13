@@ -1,10 +1,6 @@
 package com.binchencoder.skylb.grpc;
 
 import com.binchencoder.skylb.balancer.consistenthash.ConsistentHashLoadBalancerFactory;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.grpc.CallOptions;
 import io.grpc.Channel;
 import io.grpc.ClientCall;
@@ -13,11 +9,14 @@ import io.grpc.ForwardingClientCall.SimpleForwardingClientCall;
 import io.grpc.ForwardingClientCallListener.SimpleForwardingClientCallListener;
 import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A interceptor to set HashKey.
  */
 public class ConsistentHashInterceptor implements ClientInterceptor {
+
   private static final Logger logger = LoggerFactory.getLogger(ConsistentHashInterceptor.class);
 
   // Key of hash key in GRPC implementation.
@@ -28,7 +27,7 @@ public class ConsistentHashInterceptor implements ClientInterceptor {
 
   @Override
   public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(MethodDescriptor<ReqT, RespT> method,
-                                                             CallOptions callOptions, Channel next) {
+      final CallOptions callOptions, Channel next) {
     return new SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
 
       @Override

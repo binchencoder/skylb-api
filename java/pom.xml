@@ -12,10 +12,12 @@
 
     <organization>
         <name>Binchencoder</name>
-        <url>http://www.github.com/binchencoder</url>
+        <url>https://www.github.com/binchencoder</url>
     </organization>
 
     <properties>
+        <java.version>1.8</java.version>
+
         <grpc.version>1.18.0</grpc.version>
         <protobuf.version>3.6.1</protobuf.version>
         <googleapis.version>0.0.3</googleapis.version>
@@ -106,6 +108,11 @@
             <artifactId>frontend-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.binchencoder.skylb</groupId>
+            <artifactId>skylb-api-proto</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Logging. -->
         <dependency>
@@ -153,7 +160,16 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
                 <configuration>
                     <outputDirectory>${basedir}/../target</outputDirectory>
                 </configuration>

@@ -13,8 +13,8 @@ import com.google.protobuf.util.JsonFormat;
 
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import com.binchencoder.vexillary.errors.Frontend.Error;
-import com.binchencoder.vexillary.errors.Frontend.ErrorCode;
+import com.binchencoder.grpc.errors.Errors.Error;
+import com.binchencoder.grpc.errors.Errors.ErrorCode;
 
 public class GrpcErrorUtils {
 

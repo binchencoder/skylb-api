@@ -1,6 +1,6 @@
 package com.binchencoder.skylb.util;
 
-import com.binchencoder.vexillary.grpc.DataProtos.ServiceId;
+import com.binchencoder.grpc.data.DataProtos.ServiceId;
 
 public class ServiceNameUtil {
 

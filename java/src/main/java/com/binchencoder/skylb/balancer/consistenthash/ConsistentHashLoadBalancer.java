@@ -51,7 +51,7 @@ final class ConsistentHashLoadBalancer extends LoadBalancer implements Sizer {
   private final Map<EquivalentAddressGroup, Subchannel> subchannels =
       new HashMap<EquivalentAddressGroup, Subchannel>();
 
-  ConsistentHash hashChannels = new ConsistentHash(new Crc32Hash(), 20, Collections.emptyList());
+  ConsistentHash hashChannels = new ConsistentHash(new Crc32Hash(), 20, Collections.EMPTY_LIST);
 
   @VisibleForTesting
   static final Attributes.Key<Ref<ConnectivityStateInfo>> STATE_INFO =

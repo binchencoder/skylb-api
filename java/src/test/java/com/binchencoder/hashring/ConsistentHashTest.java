@@ -43,7 +43,7 @@ public class ConsistentHashTest {
   }
 
   ConsistentHashPrototype<String> New() {
-    return new ConsistentHashPrototype<>(new Crc32Hash(), 20, Collections.emptyList());
+    return new ConsistentHashPrototype<>(new Crc32Hash(), 20, Collections.EMPTY_LIST);
   }
 
   /**
