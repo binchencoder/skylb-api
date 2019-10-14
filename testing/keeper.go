@@ -4,8 +4,8 @@ import (
 	"github.com/stretchr/testify/mock"
 	"google.golang.org/grpc/naming"
 
-	pb "binchencoder.com/skylb-api/proto"
 	vexpb "binchencoder.com/gateway-proto/data"
+	pb "binchencoder.com/skylb-api/proto"
 )
 
 // SkyLbKeeperMock mocks SkyLB API option.SkyLbKeeper.

@@ -11,8 +11,6 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"github.com/grpc-ecosystem/go-grpc-middleware"
-	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	prom "github.com/prometheus/client_golang/prometheus"
 	"github.com/soheilhy/cmux"
@@ -22,6 +20,7 @@ import (
 	hpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/peer"
 
+	vexpb "binchencoder.com/gateway-proto/data"
 	jg "binchencoder.com/letsgo/grpc"
 	lmetrics "binchencoder.com/letsgo/metrics"
 	"binchencoder.com/letsgo/runtime/pprof"
@@ -30,7 +29,6 @@ import (
 	"binchencoder.com/skylb-api/internal/rpccli"
 	"binchencoder.com/skylb-api/metrics"
 	pb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 const (
