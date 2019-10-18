@@ -9,13 +9,13 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	vexpb "binchencoder.com/gateway-proto/data"
 	"binchencoder.com/letsgo"
 	jg "binchencoder.com/letsgo/grpc"
 	"binchencoder.com/letsgo/trace"
 	cli "binchencoder.com/skylb-api/client"
 	pb "binchencoder.com/skylb-api/cmd/stress/proto"
 	skylb "binchencoder.com/skylb-api/server"
-	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (
@@ -37,7 +37,7 @@ Options:`)
 func main() {
 	letsgo.Init(letsgo.FlagUsage(usage))
 
-	skylb.Register(vexpb.ServiceId_DORY_SERVICE, cli.DefaultPortName, *port)
+	skylb.Register(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, cli.DefaultPortName, *port)
 	skylb.Start(fmt.Sprintf(":%d", *port), func(s *grpc.Server) error {
 		pb.RegisterStressServiceServer(s, &stressServer{})
 		return nil

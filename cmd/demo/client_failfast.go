@@ -15,11 +15,11 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	vexpb "binchencoder.com/gateway-proto/data"
 	"binchencoder.com/letsgo"
 	skylbclient "binchencoder.com/skylb-api/client"
 	pb "binchencoder.com/skylb-api/cmd/demo/proto"
 	skypb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
 )
 
 var (
@@ -48,7 +48,7 @@ func main() {
 	skycli.EnableFailFast()
 
 	// Resolve service
-	demoSpec := skylbclient.NewServiceSpec("default", vexpb.ServiceId_DORY_SERVICE, "grpc")
+	demoSpec := skylbclient.NewServiceSpec("default", vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, "grpc")
 	skycli.Resolve(demoSpec)
 
 	skycli.Start(func(spec *skypb.ServiceSpec, conn *grpc.ClientConn) {

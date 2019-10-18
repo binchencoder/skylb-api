@@ -4,9 +4,9 @@ go_binary(
     name = "stress-client",
     srcs = ["client.go"],
     deps = [
+        "//cmd/stress/proto:go_default_library",
         "@com_github_binchencoder_letsgo//:go_default_library",
         "@com_github_binchencoder_letsgo//token:go_default_library",
-        "//cmd/stress/proto:go_default_library",
         "@com_github_golang_protobuf//jsonpb:go_default_library",
     ],
 )

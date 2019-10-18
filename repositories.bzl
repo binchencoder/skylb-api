@@ -5,9 +5,9 @@ def go_repositories():
         name = "com_github_binchencoder_ease_gateway",
         importpath = "binchencoder.com/ease-gateway",
         urls = [
-            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/7af2b0a4ec8f54df5b766760c8ab92eb16de8de0",
+            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/c26c553d267ba8853c00463e5e0facd1cfa366c5",
         ],
-        strip_prefix = "ease-gateway-7af2b0a4ec8f54df5b766760c8ab92eb16de8de0",
+        strip_prefix = "ease-gateway-c26c553d267ba8853c00463e5e0facd1cfa366c5",
         type = "tar.gz",
     )
     go_repository(
@@ -67,6 +67,13 @@ def go_repositories():
     )
 
     go_repository(
+        name = "com_github_beorn7_perks",
+        importpath = "github.com/beorn7/perks",
+        urls = ["https://codeload.github.com/beorn7/perks/tar.gz/37c8de3658fcb183f997c4e13e8337516ab753e6"],
+        strip_prefix = "perks-37c8de3658fcb183f997c4e13e8337516ab753e6",
+        type = "tar.gz",
+    )
+    go_repository(
         name = "com_github_cenkalti_backoff",
         importpath = "github.com/cenkalti/backoff",
         urls = ["https://github.com/cenkalti/backoff/archive/v2.2.1.tar.gz"],
@@ -74,10 +81,15 @@ def go_repositories():
         type = "tar.gz",
     )
     go_repository(
-        name = "com_github_jtolds_gls",
-        importpath = "github.com/jtolds/gls",
-        commit = "b4936e06046bbecbb94cae9c18127ebe510a2cb9",
-        # gazelle args: -go_prefix github.com/jtolds/gls
+        name = "com_github_dgrijalva_jwt_go",
+        importpath = "github.com/dgrijalva/jwt-go",
+        commit = "e1403b0ab234872a9a95375ba84b346f72940166",
+        # gazelle args: -go_prefix github.com/dgrijalva/jwt-go
+    )
+    go_repository(
+        name = "com_github_fatih_color",
+        importpath = "github.com/fatih/color",
+        commit = "3f9d52f7176a6927daacff70a3e8d1dc2025c53e",
     )
     go_repository(
         name = "com_github_ghodss_yaml",
@@ -98,10 +110,29 @@ def go_repositories():
         # gazelle args: -go_prefix github.com/google/uuid
     )
     go_repository(
-        name = "com_github_pborman_uuid",
-        importpath = "github.com/pborman/uuid",
-        commit = "8b1b92947f46224e3b97bb1a3a5b0382be00d31e",
-        # gazelle args: -go_prefix github.com/pborman/uuid
+        name = "com_github_go_kit_kit",
+        importpath = "github.com/go-kit/kit",
+        urls = ["https://codeload.github.com/go-kit/kit/tar.gz/dc489b75b9cdbf29c739534c2aa777cabb034954"],
+        strip_prefix = "kit-dc489b75b9cdbf29c739534c2aa777cabb034954",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_jtolds_gls",
+        importpath = "github.com/jtolds/gls",
+        commit = "b4936e06046bbecbb94cae9c18127ebe510a2cb9",
+        # gazelle args: -go_prefix github.com/jtolds/gls
+    )
+    go_repository(
+        name = "com_github_klauspost_compress",
+        importpath = "github.com/klauspost/compress",
+        urls = ["https://codeload.github.com/klauspost/compress/tar.gz/f82c96c236f2249d76676da0d91e798e619acb35"],
+        strip_prefix = "compress-f82c96c236f2249d76676da0d91e798e619acb35",
+        type = "tar.gz",
+    )
+    go_repository(
+        name = "com_github_klauspost_cpuid",
+        importpath = "github.com/klauspost/cpuid",
+        commit = "cf2ded4aa83357cbc18366e6e1c64eda3c26eaf2",
     )
     go_repository(
         name = "com_github_mwitkow_grpc_proxy",
@@ -128,24 +159,10 @@ def go_repositories():
         # gazelle args: -go_prefix github.com/opentracing/opentracing-go
     )
     go_repository(
-        name = "com_github_uber_jaeger_client_go",
-        importpath = "github.com/uber/jaeger-client-go",
-        urls = [
-            "https://codeload.github.com/jaegertracing/jaeger-client-go/tar.gz/d8999ab8c9e71b2d71022f26f21bf39a3c428301",
-        ],
-        strip_prefix = "jaeger-client-go-d8999ab8c9e71b2d71022f26f21bf39a3c428301",
-        type = "tar.gz",
-        # gazelle args: -go_prefix github.com/uber/jaeger-client-go
-    )
-    go_repository(
-        name = "com_github_uber_jaeger_lib",
-        importpath = "github.com/uber/jaeger-lib",
-        urls = [
-            "https://codeload.github.com/jaegertracing/jaeger-lib/tar.gz/ec4562394c7d7c18dc238aad0fc921a4325a8b0a",
-        ],
-        strip_prefix = "jaeger-lib-ec4562394c7d7c18dc238aad0fc921a4325a8b0a",
-        type = "tar.gz",
-        # gazelle args: -go-prefix github.com/uber/jaeger-lib
+        name = "com_github_pborman_uuid",
+        importpath = "github.com/pborman/uuid",
+        commit = "8b1b92947f46224e3b97bb1a3a5b0382be00d31e",
+        # gazelle args: -go_prefix github.com/pborman/uuid
     )
     go_repository(
         name = "com_github_prometheus_client_golang",
@@ -186,24 +203,30 @@ def go_repositories():
         type = "tar.gz",
     )
     go_repository(
-        name = "com_github_beorn7_perks",
-        importpath = "github.com/beorn7/perks",
-        urls = ["https://codeload.github.com/beorn7/perks/tar.gz/37c8de3658fcb183f997c4e13e8337516ab753e6"],
-        strip_prefix = "perks-37c8de3658fcb183f997c4e13e8337516ab753e6",
-        type = "tar.gz",
-    )
-    go_repository(
         name = "com_github_pborman_uuid",
         importpath = "github.com/pborman/uuid",
         commit = "8b1b92947f46224e3b97bb1a3a5b0382be00d31e",
         # gazelle args: -go_prefix github.com/pborman/uuid
     )
     go_repository(
-        name = "com_github_go_kit_kit",
-        importpath = "github.com/go-kit/kit",
-        urls = ["https://codeload.github.com/go-kit/kit/tar.gz/dc489b75b9cdbf29c739534c2aa777cabb034954"],
-        strip_prefix = "kit-dc489b75b9cdbf29c739534c2aa777cabb034954",
+        name = "com_github_uber_jaeger_client_go",
+        importpath = "github.com/uber/jaeger-client-go",
+        urls = [
+            "https://codeload.github.com/jaegertracing/jaeger-client-go/tar.gz/d8999ab8c9e71b2d71022f26f21bf39a3c428301",
+        ],
+        strip_prefix = "jaeger-client-go-d8999ab8c9e71b2d71022f26f21bf39a3c428301",
         type = "tar.gz",
+        # gazelle args: -go_prefix github.com/uber/jaeger-client-go
+    )
+    go_repository(
+        name = "com_github_uber_jaeger_lib",
+        importpath = "github.com/uber/jaeger-lib",
+        urls = [
+            "https://codeload.github.com/jaegertracing/jaeger-lib/tar.gz/ec4562394c7d7c18dc238aad0fc921a4325a8b0a",
+        ],
+        strip_prefix = "jaeger-lib-ec4562394c7d7c18dc238aad0fc921a4325a8b0a",
+        type = "tar.gz",
+        # gazelle args: -go-prefix github.com/uber/jaeger-lib
     )
     go_repository(
         name = "com_github_pkg_errors",

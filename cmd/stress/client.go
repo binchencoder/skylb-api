@@ -20,7 +20,7 @@ const disabledUrlPattern = "http://%s/stress/v1/say-hello-disabled/dory/gender/F
 const signingKey = "BX4DR-FY8YF-SECRET-G7RHK-KBXFV-"
 
 var (
-	flagServer = flag.String("server", "", "The server host:port")
+	flagServer = flag.String("server", "localhost:8080", "The server host:port")
 	onceOnly   = flag.Bool("send-once", false, "Send the request once only")
 	clientId   = flag.String("client-id", "", "Client ID")
 	xSource    = flag.String("x-source", "web", "X-Source to use")
