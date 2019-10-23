@@ -7,16 +7,32 @@
     <groupId>com.binchencoder.skylb</groupId>
     <artifactId>skylb-client</artifactId>
     <packaging>jar</packaging>
-    <version>1.18.0</version>
+    <version>1.0</version>
     <name>skylb-java-client</name>
 
     <organization>
         <name>Binchencoder</name>
         <url>https://www.github.com/binchencoder</url>
     </organization>
+    <repositories>
+        <repository>
+            <id>github-maven-snapshot-repository</id>
+            <name>github-maven-snapshot-repository</name>
+            <url>https://raw.github.com/binchencoder/maven/snapshot/</url>
+        </repository>
+        <repository>
+            <id>github-maven-release-repository</id>
+            <name>github-maven-release-repository</name>
+            <url>https://raw.github.com/binchencoder/maven/release/</url>
+        </repository>
+    </repositories>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
         <grpc.version>1.18.0</grpc.version>
         <protobuf.version>3.6.1</protobuf.version>
@@ -99,12 +115,12 @@
         <!-- data-proto and frontend-proto have only one
          version (the SNAPSHOT version), thus can be enclosed by skylb-client. -->
         <dependency>
-            <groupId>com.binchencoder.gateway.proto</groupId>
+            <groupId>com.binchencoder.gateway</groupId>
             <artifactId>data-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.binchencoder.gateway.proto</groupId>
+            <groupId>com.binchencoder.gateway</groupId>
             <artifactId>frontend-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -189,14 +205,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.0</version>
                 <configuration>
-                    <!-- The version of protoc must match protobuf-java. If you don't depend
-                        on protobuf-java directly, you will be transitively depending on the protobuf-java
-                        version that grpc depends on. -->
                     <protocArtifact>
                         com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
                     </protocArtifact>
@@ -217,7 +230,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 </project>

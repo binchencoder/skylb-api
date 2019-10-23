@@ -8,6 +8,19 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
+     <repositories>
+        <repository>
+            <id>github-maven-snapshot-repository</id>
+            <name>github-maven-snapshot-repository</name>
+            <url>https://raw.github.com/binchencoder/maven/snapshot/</url>
+        </repository>
+        <repository>
+            <id>github-maven-release-repository</id>
+            <name>github-maven-release-repository</name>
+            <url>https://raw.github.com/binchencoder/maven/release/</url>
+        </repository>
+    </repositories>
+
     <properties>
 		<!-- gRPC -->
 		<grpc.version>1.3.1</grpc.version>
@@ -50,7 +63,7 @@
             </exclusions>
         </dependency>
 		<dependency>
-            <groupId>com.binchencoder.gateway.proto</groupId>
+            <groupId>com.binchencoder.gateway</groupId>
             <artifactId>data-proto</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -90,7 +103,7 @@
 					<protoSourceRoot>../../</protoSourceRoot>
 					<includes>
 						<param>skylb-api/proto/api.proto</param>
-						<param>gateway-proto/data/*.proto</param>
+						<!-- <param>gateway-proto/data/*.proto</param> -->
 					</includes>
 				</configuration>
 				<executions>

@@ -6,6 +6,7 @@ option java_multiple_files = false;
 option java_outer_classname = "ClientProtos";
 option java_package = "com.binchencoder.skylb.proto";
 
+//import "gateway-proto/data/data.proto";
 import "data/data.proto";
 
 // The message describing a service spec.
