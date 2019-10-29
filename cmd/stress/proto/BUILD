@@ -7,7 +7,7 @@ proto_library(
     name = "apipb_proto",
     srcs = glob(["*.proto"]),
     deps = [
-        "@com_github_binchencoder_ease_gateway//gateway/options:options_proto",
+        "@com_github_binchencoder_ease_gateway//httpoptions:options_proto",
         "@com_github_binchencoder_gateway_proto//data:data_proto",
         "@com_google_protobuf//:duration_proto",
         "@com_google_protobuf//:empty_proto",
@@ -27,7 +27,7 @@ go_proto_library(
     importpath = "binchencoder.com/skylb-api/cmd/stress/proto",
     proto = ":apipb_proto",
     deps = [
-        "@com_github_binchencoder_ease_gateway//gateway/options:options_go_proto",
+        "@com_github_binchencoder_ease_gateway//httpoptions:options_go_proto",
         "@com_github_binchencoder_ease_gateway//gateway/runtime:go_default_library",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "@com_github_binchencoder_skylb_api//balancer:go_default_library",
@@ -45,7 +45,7 @@ go_library(
     deps = [
         "//balancer:go_default_library",
         "//client:go_default_library",
-        "@com_github_binchencoder_ease_gateway//gateway/options:go_default_library",
+        "@com_github_binchencoder_ease_gateway//httpoptions:go_default_library",
         "@com_github_binchencoder_ease_gateway//gateway/runtime:go_default_library",
         "@com_github_binchencoder_gateway_proto//data:go_default_library",
         "@com_github_binchencoder_gateway_proto//frontend:go_default_library",

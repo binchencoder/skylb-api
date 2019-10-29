@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-import "gateway/options/annotations.proto";
+import "httpoptions/annotations.proto";
 
 enum Gender {
 	MALE = 0;

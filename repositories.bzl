@@ -5,9 +5,9 @@ def go_repositories():
         name = "com_github_binchencoder_ease_gateway",
         importpath = "binchencoder.com/ease-gateway",
         urls = [
-            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/c26c553d267ba8853c00463e5e0facd1cfa366c5",
+            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/232387fdd8981ab9db4c6ad1d36fe1ce601b853e",
         ],
-        strip_prefix = "ease-gateway-c26c553d267ba8853c00463e5e0facd1cfa366c5",
+        strip_prefix = "ease-gateway-232387fdd8981ab9db4c6ad1d36fe1ce601b853e",
         type = "tar.gz",
     )
     go_repository(

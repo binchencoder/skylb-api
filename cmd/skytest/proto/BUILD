@@ -51,7 +51,7 @@ java_proto_library(
 #     srcs = ["api.proto"],
 #     has_service = 1,
 #     deps = [
-#         "@com_github_binchencoder_ease_gateway//gateway/options:options_proto",
+#         "@com_github_binchencoder_ease_gateway//httpoptions:options_proto",
 #         "@binchencoder_third_party_go//vendor/github.com/google/protobuf/src/google/protobuf:protos_java",
 #         "@com_github_binchencoder_gateway_proto//data:data_srcjar",
 #     ],
@@ -64,7 +64,7 @@ java_library(
         ":api_java_proto",
     ],
     deps = [
-        # "@com_github_binchencoder_ease_gateway//gateway/options",
+        # "@com_github_binchencoder_ease_gateway//httpoptions",
         "//vendor/github.com/binchencoder/third-party-java/dependencies/lib:grpc-1.18.0",
     ],
 )

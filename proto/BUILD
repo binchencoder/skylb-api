@@ -20,7 +20,7 @@ go_proto_library(
     proto = ":api_proto",
     deps = [
         "@com_github_binchencoder_gateway_proto//data:data_go_proto",
-        # "@com_github_binchencoder_ease_gateway//gateway/options:options_go_proto",
+        # "@com_github_binchencoder_ease_gateway//httpoptions:options_go_proto",
     ],
 )
 
