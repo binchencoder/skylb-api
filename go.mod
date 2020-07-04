@@ -6,8 +6,8 @@ require (
 	github.com/VividCortex/gohistogram v1.0.0
 	github.com/beorn7/perks v1.0.1
 	github.com/binchencoder/ease-gateway v0.0.1
-	github.com/binchencoder/gateway-proto v0.0.0-20200704102811-d2a56b43832b
-	github.com/binchencoder/letsgo v0.0.1
+	github.com/binchencoder/gateway-proto v0.0.1
+	github.com/binchencoder/letsgo v0.0.2
 	github.com/cenkalti/backoff v2.2.1+incompatible
 	github.com/cespare/xxhash/v2 v2.1.1
 	github.com/coreos/etcd v3.3.13+incompatible
