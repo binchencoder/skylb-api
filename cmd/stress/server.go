@@ -9,13 +9,13 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	vexpb "binchencoder.com/gateway-proto/data"
-	"binchencoder.com/letsgo"
-	jg "binchencoder.com/letsgo/grpc"
-	"binchencoder.com/letsgo/trace"
-	cli "binchencoder.com/skylb-api/client"
-	pb "binchencoder.com/skylb-api/cmd/stress/proto"
-	skylb "binchencoder.com/skylb-api/server"
+	vexpb "github.com/binchencoder/gateway-proto/data"
+	"github.com/binchencoder/letsgo"
+	jg "github.com/binchencoder/letsgo/grpc"
+	"github.com/binchencoder/letsgo/trace"
+	cli "github.com/binchencoder/skylb-api/client"
+	pb "github.com/binchencoder/skylb-api/cmd/stress/proto"
+	skylb "github.com/binchencoder/skylb-api/server"
 )
 
 var (

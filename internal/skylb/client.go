@@ -13,16 +13,16 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/naming"
 
-	jg "binchencoder.com/letsgo/grpc"
-	jn "binchencoder.com/letsgo/service/naming"
-	jb "binchencoder.com/skylb-api/balancer"
-	"binchencoder.com/skylb-api/client/option"
-	"binchencoder.com/skylb-api/internal/flags"
-	cflags "binchencoder.com/skylb-api/internal/flags/client"
-	"binchencoder.com/skylb-api/internal/health"
-	"binchencoder.com/skylb-api/metrics"
-	pb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
+	jg "github.com/binchencoder/letsgo/grpc"
+	jn "github.com/binchencoder/letsgo/service/naming"
+	jb "github.com/binchencoder/skylb-api/balancer"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	cflags "github.com/binchencoder/skylb-api/internal/flags/client"
+	"github.com/binchencoder/skylb-api/internal/health"
+	"github.com/binchencoder/skylb-api/metrics"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // serviceClient implements interface skylb-api/client/ServiceClient.

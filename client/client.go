@@ -3,10 +3,10 @@ package client
 import (
 	"google.golang.org/grpc"
 
-	"binchencoder.com/skylb-api/client/option"
-	"binchencoder.com/skylb-api/internal/skylb"
-	pb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/skylb"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // TODO(zhwang): remove this file once we migrate all references to the

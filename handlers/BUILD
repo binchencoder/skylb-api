@@ -8,7 +8,7 @@ go_library(
         "grpc.go",
         "sql.go",
     ],
-    importpath = "binchencoder.com/skylb-api/handlers",
+    importpath = "github.com/binchencoder/skylb-api/handlers",
     deps = [
         "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "@com_github_binchencoder_letsgo//sql:go_default_library",

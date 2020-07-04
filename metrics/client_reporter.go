@@ -9,7 +9,7 @@ import (
 	prom "github.com/prometheus/client_golang/prometheus"
 	"google.golang.org/grpc/codes"
 
-	pb "binchencoder.com/skylb-api/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 var (

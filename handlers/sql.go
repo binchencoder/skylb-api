@@ -16,14 +16,14 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/naming"
 
-	lsql "binchencoder.com/letsgo/sql"
-	jb "binchencoder.com/skylb-api/balancer"
-	"binchencoder.com/skylb-api/client/option"
-	"binchencoder.com/skylb-api/internal/flags"
-	cflags "binchencoder.com/skylb-api/internal/flags/client"
-	health "binchencoder.com/skylb-api/internal/health"
-	pb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
+	lsql "github.com/binchencoder/letsgo/sql"
+	jb "github.com/binchencoder/skylb-api/balancer"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	cflags "github.com/binchencoder/skylb-api/internal/flags/client"
+	health "github.com/binchencoder/skylb-api/internal/health"
+	pb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 const (

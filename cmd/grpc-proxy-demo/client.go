@@ -11,14 +11,14 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/naming"
 
-	"binchencoder.com/letsgo"
-	"binchencoder.com/letsgo/hashring"
-	"binchencoder.com/skylb-api/balancer"
-	skylb "binchencoder.com/skylb-api/client"
-	"binchencoder.com/skylb-api/client/option"
-	pb "binchencoder.com/skylb-api/cmd/grpc-proxy-demo/proto"
-	"binchencoder.com/skylb-api/handlers"
-	vexpb "binchencoder.com/gateway-proto/data"
+	"github.com/binchencoder/letsgo"
+	"github.com/binchencoder/letsgo/hashring"
+	"github.com/binchencoder/skylb-api/balancer"
+	skylb "github.com/binchencoder/skylb-api/client"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/cmd/grpc-proxy-demo/proto"
+	"github.com/binchencoder/skylb-api/handlers"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (

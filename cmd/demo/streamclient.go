@@ -9,12 +9,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	"binchencoder.com/letsgo"
-	skylb "binchencoder.com/skylb-api/client"
-	pb "binchencoder.com/skylb-api/cmd/demo/proto"
-	"binchencoder.com/skylb-api/cmd/demo/rpc"
-	skypb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
+	"github.com/binchencoder/letsgo"
+	skylb "github.com/binchencoder/skylb-api/client"
+	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
+	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
+	skypb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 func usage() {

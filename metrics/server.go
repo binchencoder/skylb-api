@@ -10,8 +10,8 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	jgrpc "binchencoder.com/letsgo/grpc"
-	pb "binchencoder.com/skylb-api/proto"
+	jgrpc "github.com/binchencoder/letsgo/grpc"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // PreregisterServices takes a gRPC server and pre-initializes all counters to 0.

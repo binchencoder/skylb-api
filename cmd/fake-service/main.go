@@ -7,11 +7,11 @@ import (
 
 	"github.com/golang/glog"
 
-	"binchencoder.com/letsgo"
-	"binchencoder.com/letsgo/service/naming"
-	skycli "binchencoder.com/skylb-api/client"
-	"binchencoder.com/skylb-api/internal/skylb"
-	skysvr "binchencoder.com/skylb-api/server"
+	"github.com/binchencoder/letsgo"
+	"github.com/binchencoder/letsgo/service/naming"
+	skycli "github.com/binchencoder/skylb-api/client"
+	"github.com/binchencoder/skylb-api/internal/skylb"
+	skysvr "github.com/binchencoder/skylb-api/server"
 )
 
 func usage() {

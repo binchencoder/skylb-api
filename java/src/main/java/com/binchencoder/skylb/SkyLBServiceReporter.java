@@ -37,7 +37,7 @@ import io.grpc.stub.StreamObserver;
 public class SkyLBServiceReporter {
   private static final Logger logger = LoggerFactory.getLogger(SkyLBServiceReporter.class);
 
-  private AtomicInteger curIndex = new AtomicInteger(0);
+  private AtomicInteger curIndex;
   private List<InetSocketAddress> address;
 
   private ManagedChannel channel;

@@ -7,7 +7,7 @@ go_library(
     srcs = [
         "lameduck.go",
     ],
-    importpath = "binchencoder.com/skylb-api/lameduck",
+    importpath = "github.com/binchencoder/skylb-api/lameduck",
     deps = [
         "//prefix:go_default_library",
         "//util:go_default_library",

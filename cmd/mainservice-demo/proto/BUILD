@@ -15,7 +15,7 @@ go_library(
     srcs = [
         ":api_proto",
     ],
-    importpath = "binchencoder.com/skylb-api/cmd/mainservice-demo/proto",
+    importpath = "github.com/binchencoder/skylb-api/cmd/mainservice-demo/proto",
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",
         "@org_golang_x_net//context:go_default_library",

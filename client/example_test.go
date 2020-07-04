@@ -3,8 +3,8 @@ package client
 import (
 	"google.golang.org/grpc"
 
-	"binchencoder.com/skylb-api/handlers"
-	vexpb "binchencoder.com/gateway-proto/data"
+	"github.com/binchencoder/skylb-api/handlers"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 func ExampleNewServiceLocator() {

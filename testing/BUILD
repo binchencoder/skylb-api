@@ -8,7 +8,7 @@ go_library(
         "handler.go",
         "keeper.go",
     ],
-    importpath = "binchencoder.com/skylb-api/testing",
+    importpath = "github.com/binchencoder/skylb-api/testing",
     deps = [
         "//client/option:go_default_library",
         "//proto:go_default_library",

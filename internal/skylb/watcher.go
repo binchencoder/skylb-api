@@ -6,7 +6,7 @@ import (
 	"github.com/golang/glog"
 	"google.golang.org/grpc/naming"
 
-	pb "binchencoder.com/skylb-api/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // skylbWatcher implements grpc naming.Watcher.

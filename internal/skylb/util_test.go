@@ -6,7 +6,7 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 	"google.golang.org/grpc/naming"
 
-	pb "binchencoder.com/skylb-api/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 func TestCalcServiceKey(t *testing.T) {

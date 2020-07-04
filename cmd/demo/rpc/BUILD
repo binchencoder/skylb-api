@@ -8,7 +8,7 @@ go_library(
         ["*.go"],
         exclude = ["*_test.go"],
     ),
-    importpath = "binchencoder.com/skylb-api/cmd/demo/rpc",
+    importpath = "github.com/binchencoder/skylb-api/cmd/demo/rpc",
     deps = [
         "//client:go_default_library",
         "//cmd/demo/proto:go_default_library",

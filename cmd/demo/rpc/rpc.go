@@ -5,10 +5,10 @@ import (
 
 	"google.golang.org/grpc"
 
-	skylb "binchencoder.com/skylb-api/client"
-	pb "binchencoder.com/skylb-api/cmd/demo/proto"
-	skypb "binchencoder.com/skylb-api/proto"
-	vexpb "binchencoder.com/gateway-proto/data"
+	skylb "github.com/binchencoder/skylb-api/client"
+	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
+	skypb "github.com/binchencoder/skylb-api/proto"
+	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 const (
