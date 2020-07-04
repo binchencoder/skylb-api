@@ -19,8 +19,8 @@ def go_repositories():
     go_repository(
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
-        sum = "h1:zh7nP3AffFa2vWEHSJhS8SQL/glce+ssoeVT0GxIvdM=",
-        version = "v0.0.0-20200704063552-797969751687",
+        sum = "h1:VKiaQOatUCmm0qZcM2y6w/3jPS6I3NmysgsVb4olpEM=",
+        version = "v0.0.0-20200704091533-eaa763a25eeb",
     )
 
     go_repository(
@@ -177,8 +177,8 @@ def go_repositories():
     go_repository(
         name = "com_github_prometheus_client_golang",
         importpath = "github.com/prometheus/client_golang",
-        sum = "h1:NTGy1Ja9pByO+xAeH/qiWnLrKtr3hJPNjaVUwnjpdpA=",
-        version = "v1.7.1",
+        sum = "h1:Y8E/JaaPbmFSW2V81Ab/d8yZFYQQGbni1b1jPcG9Y6A=",
+        version = "v0.9.4",
     )
     go_repository(
         name = "com_github_prometheus_client_model",
