@@ -1,4 +1,4 @@
-module github.com
+module github.com/binchencoder/skylb-api
 
 go 1.13
 
