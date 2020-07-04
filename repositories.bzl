@@ -4,11 +4,8 @@ def go_repositories():
     go_repository(
         name = "com_github_binchencoder_ease_gateway",
         importpath = "github.com/binchencoder/ease-gateway",
-        urls = [
-            "https://codeload.github.com/binchencoder/ease-gateway/tar.gz/232387fdd8981ab9db4c6ad1d36fe1ce601b853e",
-        ],
-        strip_prefix = "ease-gateway-232387fdd8981ab9db4c6ad1d36fe1ce601b853e",
-        type = "tar.gz",
+        sum = "h1:ziJ6qIP0/ao5pQVHBG8jT2qEJREbdVAhDepzYoJK65c=",
+        version = "v0.0.1",
     )
     go_repository(
         name = "com_github_binchencoder_gateway_proto",
@@ -19,8 +16,8 @@ def go_repositories():
     go_repository(
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
-        sum = "h1:TogXrqAuQgeUKJjoiFcZDfIfivRrRwcFrLcQTU+SyVw=",
-        version = "v0.0.0-20200704112152-304bb8b58b21",
+        sum = "h1:8E8vMuWkOJ5JSTEY6v9ksOKwVQOzUEJ23mtPayS/BW4=",
+        version = "v0.0.1",
     )
 
     go_repository(

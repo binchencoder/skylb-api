@@ -5,8 +5,9 @@ go 1.13
 require (
 	github.com/VividCortex/gohistogram v1.0.0
 	github.com/beorn7/perks v1.0.1
+	github.com/binchencoder/ease-gateway v0.0.1
 	github.com/binchencoder/gateway-proto v0.0.0-20200704102811-d2a56b43832b
-	github.com/binchencoder/letsgo v0.0.0-20200704112152-304bb8b58b21
+	github.com/binchencoder/letsgo v0.0.1
 	github.com/cenkalti/backoff v2.2.1+incompatible
 	github.com/cespare/xxhash/v2 v2.1.1
 	github.com/coreos/etcd v3.3.13+incompatible
@@ -46,4 +47,9 @@ require (
 	gopkg.in/yaml.v2 v2.0.0
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776
 	upper.io/db.v3 v3.7.1+incompatible
+)
+
+replace (
+
+
 )
