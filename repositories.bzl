@@ -13,14 +13,14 @@ def go_repositories():
     go_repository(
         name = "com_github_binchencoder_gateway_proto",
         importpath = "github.com/binchencoder/gateway-proto",
-        sum = "h1:9ri5ICziCE4CB6BMVhLlnDEqu/asdIoOr8/TDCJ+qGI=",
-        version = "v0.0.0-20200704042644-d47e63e63f70",
+        sum = "h1:KpWitMoQrtFMJBxdrhQ2Uexu/y/1UiiVwihy23aI44I=",
+        version = "v0.0.0-20200704102811-d2a56b43832b",
     )
     go_repository(
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
-        sum = "h1:VKiaQOatUCmm0qZcM2y6w/3jPS6I3NmysgsVb4olpEM=",
-        version = "v0.0.0-20200704091533-eaa763a25eeb",
+        sum = "h1:TogXrqAuQgeUKJjoiFcZDfIfivRrRwcFrLcQTU+SyVw=",
+        version = "v0.0.0-20200704112152-304bb8b58b21",
     )
 
     go_repository(
