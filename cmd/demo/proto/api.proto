@@ -6,7 +6,7 @@ option java_multiple_files = false;
 option java_outer_classname = "GreetingProtos";
 option java_package = "com.binchencoder.skylb.demo.proto";
 
-import "ease-gateway/httpoptions/annotations.proto";
+import "httpoptions/annotations.proto";
 
 // The request message to be greeted.
 message GreetingRequest {
@@ -22,7 +22,7 @@ message GreetingResponse {
 // The gRPC service definition for SkyLB demo.
 service Demo {
 	option (ease.api.service_spec) = {
-		service_id: VEXILLARY_TEST_SERVICE
+		service_id: CUSTOM_EASE_GATEWAY_TEST
 		port_name : "portname"
 		namespace : "namespace_0"
 		gen_controller: true

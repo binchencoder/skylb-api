@@ -18,11 +18,11 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo"
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (
@@ -54,7 +54,7 @@ func main() {
 	letsgo.Init(letsgo.FlagUsage(usage))
 
 	skylb.RegisterMulti(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, rpc.PortName, *port, fmt.Sprintf(":%d", *port))
-	skylb.RegisterMulti(vexpb.ServiceId_VEXILLARY_TEST_SERVICE, rpc.PortName, *port2, fmt.Sprintf(":%d", *port2))
+	skylb.RegisterMulti(vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, rpc.PortName, *port2, fmt.Sprintf(":%d", *port2))
 
 	skylb.EnableHistogram() // optional
 
@@ -66,7 +66,7 @@ func main() {
 				myServiceId: serviceId,
 			})
 			return nil
-		case vexpb.ServiceId_VEXILLARY_TEST_SERVICE:
+		case vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST:
 			pb.RegisterDemoServer(s, &greetingServer{
 				token:       randString(20),
 				myServiceId: serviceId,

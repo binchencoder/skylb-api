@@ -12,13 +12,13 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
+	fepb "github.com/binchencoder/gateway-proto/frontend"
 	"github.com/binchencoder/letsgo"
 	grpcerr "github.com/binchencoder/letsgo/grpc"
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 	skylb "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
-	fepb "github.com/binchencoder/gateway-proto/frontend"
 )
 
 var (
@@ -56,7 +56,7 @@ func main() {
 	// This is to reuse the same binary both as vexillary-demo and vexillary-test
 	// services.
 	if *test {
-		myServiceId = vexpb.ServiceId_VEXILLARY_TEST_SERVICE
+		myServiceId = vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST
 	} else {
 		myServiceId = vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE
 	}

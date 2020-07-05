@@ -23,12 +23,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
 	skylbclient "github.com/binchencoder/skylb-api/client"
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	"github.com/binchencoder/skylb-api/cmd/demo/rpc"
 	skypb "github.com/binchencoder/skylb-api/proto"
 	skylbserver "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (
@@ -88,7 +88,7 @@ func TestOneClientToMulti(t *testing.T) {
 	demoSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, rpc.PortName)
 	skycli.Resolve(demoSpec)
 
-	testSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_VEXILLARY_TEST_SERVICE, rpc.PortName)
+	testSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, rpc.PortName)
 	skycli.Resolve(testSpec)
 
 	// Enables histogram.
@@ -105,7 +105,7 @@ func TestOneClientToMulti(t *testing.T) {
 }
 
 func TestMultiClientToMulti(t *testing.T) {
-	skycli = skylbclient.NewServiceCli(vexpb.ServiceId_AD_EXCHANGE)
+	skycli = skylbclient.NewServiceCli(vexpb.ServiceId_APPROVAL_GRPC_SERVICE)
 
 	demoSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, rpc.PortName)
 	skycli.Resolve(demoSpec)
@@ -118,8 +118,8 @@ func TestMultiClientToMulti(t *testing.T) {
 		}
 	})
 
-	skycli2 = skylbclient.NewServiceCli(vexpb.ServiceId_AD_EXCHANGE)
-	testSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_VEXILLARY_TEST_SERVICE, rpc.PortName)
+	skycli2 = skylbclient.NewServiceCli(vexpb.ServiceId_APPROVAL_GRPC_SERVICE)
+	testSpec := skylbclient.NewServiceSpec(namespace, vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, rpc.PortName)
 	skycli2.Resolve(testSpec)
 	skycli2.Start(func(spec *skypb.ServiceSpec, conn *grpc.ClientConn) {
 		switch spec.String() {
@@ -148,7 +148,7 @@ func TestOneService(t *testing.T) {
 
 func TestMultiService(t *testing.T) {
 	skylbserver.RegisterMulti(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, rpc.PortName, *port3, fmt.Sprintf(":%d", *port3))
-	skylbserver.RegisterMulti(vexpb.ServiceId_VEXILLARY_TEST_SERVICE, rpc.PortName, *port2, fmt.Sprintf(":%d", *port2))
+	skylbserver.RegisterMulti(vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, rpc.PortName, *port2, fmt.Sprintf(":%d", *port2))
 
 	skylbserver.EnableHistogram() // optional
 
@@ -161,7 +161,7 @@ func TestMultiService(t *testing.T) {
 					myServiceId: serviceId,
 				})
 				return nil
-			case vexpb.ServiceId_VEXILLARY_TEST_SERVICE:
+			case vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST:
 				pb.RegisterDemoServer(s, &greetingServer{
 					token:       randString(20),
 					myServiceId: serviceId,

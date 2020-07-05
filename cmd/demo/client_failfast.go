@@ -42,7 +42,7 @@ func main() {
 	letsgo.Init(letsgo.FlagUsage(usage))
 
 	// Initialize gRPC service client.
-	skycli := skylbclient.NewServiceCli(vexpb.ServiceId_NOTIFICATION_PUSH_SERVICE)
+	skycli := skylbclient.NewServiceCli(vexpb.ServiceId_ACCOUNT_SERVICE)
 
 	// Make it fail fast.
 	skycli.EnableFailFast()

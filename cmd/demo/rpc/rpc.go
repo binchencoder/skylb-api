@@ -5,10 +5,10 @@ import (
 
 	"google.golang.org/grpc"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
 	skylb "github.com/binchencoder/skylb-api/client"
 	pb "github.com/binchencoder/skylb-api/cmd/demo/proto"
 	skypb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 const (
@@ -39,7 +39,7 @@ func Init() {
 	skycli.Resolve(demoSpec)
 
 	// Resolve another service
-	testSpec := skylb.NewServiceSpec(namespace, vexpb.ServiceId_VEXILLARY_TEST_SERVICE, PortName)
+	testSpec := skylb.NewServiceSpec(namespace, vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, PortName)
 
 	if !*FlagSingleService {
 		skycli.Resolve(testSpec)
@@ -66,7 +66,7 @@ func Init() {
 func Init1() {
 	skycli = skylb.NewServiceCli(vexpb.ServiceId_SHARED_TEST_CLIENT_SERVICE)
 
-	demoSpec := skylb.NewServiceSpec(namespace, vexpb.ServiceId_VEXILLARY_TEST_SERVICE, PortName)
+	demoSpec := skylb.NewServiceSpec(namespace, vexpb.ServiceId_CUSTOM_EASE_GATEWAY_TEST, PortName)
 	skycli.Resolve(demoSpec)
 
 	// Enables histogram for client api.
