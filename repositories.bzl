@@ -16,8 +16,8 @@ def go_repositories():
     go_repository(
         name = "com_github_binchencoder_letsgo",
         importpath = "github.com/binchencoder/letsgo",
-        sum = "h1:TJt33qi4WOB85ZlWqrbyB41WG29HiJobyksvdI/vGrc=",
-        version = "v0.0.2",
+        sum = "h1:hEDDOeGdX9R/JPYMdVo9N/9iQa5BeBLluTssrNYy/ng=",
+        version = "v0.0.3",
     )
 
     go_repository(
