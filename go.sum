@@ -30,6 +30,8 @@ github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6r
 github.com/bgentry/speakeasy v0.1.0/go.mod h1:+zsyZBPWlz7T6j88CTgSN5bM796AkVf0kBD4zp0CCIs=
 github.com/binchencoder/ease-gateway v0.0.3 h1:lidKn7mdWYh2Gl+3/mfeo8qCR3bMy4p19fSyCVWPZFg=
 github.com/binchencoder/ease-gateway v0.0.3/go.mod h1:I96nn1eajrogw7UHF7tbscWCCNocbDWfTOKLLsitqM0=
+github.com/binchencoder/ease-gateway v0.0.4 h1:hRpJwksSTfcSQeKWW7CpjH/Gq2BteNwhI8hzI0nn/z4=
+github.com/binchencoder/ease-gateway v0.0.4/go.mod h1:L8fCaUA1FaYO0ReFNAri15ozAj9NeJ9B+Q6CQAyPFqY=
 github.com/binchencoder/gateway-proto v0.0.3 h1:xU2ZVx5Zjub5P/WIl12FeCII1vGdV2THWtfm7fUR7z8=
 github.com/binchencoder/gateway-proto v0.0.3/go.mod h1:081rlF+665EejkDRHi7gTLpZvK0eDwVX23xviXQCjV0=
 github.com/binchencoder/gateway-proto v0.0.5 h1:2oh9Y8/qlMX1K3m73XDMU9U3mA06WMkLmJrMi4nFlCc=

@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
-load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_push")
+# load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_push")
 load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 
 go_binary(
@@ -32,19 +32,19 @@ pkg_tar(
     package_dir = "/skylb/bin",
 )
 
-container_image(
-    name = "latest",
-    base = "@base//image",
-    tars = [
-        ":grpc_proxy_tar",
-        "//production/config/vexconfig",
-    ],
-)
+# container_image(
+#     name = "latest",
+#     base = "@base//image",
+#     tars = [
+#         ":grpc_proxy_tar",
+#         "//production/config/vexconfig",
+#     ],
+# )
 
-container_push(
-    name = "release",
-    format = "Docker",
-    image = ":latest",
-    registry = "",
-    repository = "skylb/grpc-proxy",
-)
+# container_push(
+#     name = "release",
+#     format = "Docker",
+#     image = ":latest",
+#     registry = "",
+#     repository = "skylb/grpc-proxy",
+# )

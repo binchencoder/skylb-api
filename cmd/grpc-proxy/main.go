@@ -14,6 +14,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/naming"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo"
 	lmetrics "github.com/binchencoder/letsgo/metrics"
 	"github.com/binchencoder/letsgo/runtime/pprof"
@@ -22,7 +23,6 @@ import (
 	"github.com/binchencoder/skylb-api/client/option"
 	"github.com/binchencoder/skylb-api/handlers"
 	skysrv "github.com/binchencoder/skylb-api/server"
-	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 // grpc-proxy is a generic proxy server for SkyLB grpc services.
@@ -92,7 +92,7 @@ func main() {
 }
 
 func startSkylbAPI() *grpc.ClientConn {
-	sl = skycli.NewServiceLocator(vexpb.ServiceId_GRPC_PROXY)
+	sl = skycli.NewServiceLocator(vexpb.ServiceId_CUSTOM_GATEWAY)
 
 	spec := skycli.NewServiceSpec(*namespace, vexpb.ServiceId(vexpb.ServiceId_value[*targetService]), *portName)
 	var cc *grpc.ClientConn
@@ -113,7 +113,7 @@ func startSkylbAPI() *grpc.ClientConn {
 }
 
 func registerToSkylb() {
-	spec := skycli.NewServiceSpec(*namespace, vexpb.ServiceId_GRPC_PROXY, *portName)
+	spec := skycli.NewServiceSpec(*namespace, vexpb.ServiceId_CUSTOM_GATEWAY, *portName)
 	skysrv.StartSkylbReportLoad(spec, *port)
 }
 
