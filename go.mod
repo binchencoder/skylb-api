@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/binchencoder/ease-gateway v0.0.3
+	github.com/binchencoder/gateway-proto v0.0.5
 	github.com/binchencoder/letsgo v0.0.3
 	github.com/coreos/bbolt v1.3.5 // indirect
 	github.com/coreos/etcd v3.3.13+incompatible
@@ -24,4 +25,5 @@ require (
 replace (
 	github.com/coreos/bbolt v1.3.4 => go.etcd.io/bbolt v1.3.4
 	github.com/coreos/bbolt v1.3.5 => go.etcd.io/bbolt v1.3.5
+	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.27.1
 )
