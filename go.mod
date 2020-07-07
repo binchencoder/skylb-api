@@ -20,11 +20,10 @@ require (
 	github.com/soheilhy/cmux v0.1.4
 	github.com/stretchr/testify v1.6.1
 	golang.org/x/net v0.0.0-20200625001655-4c5254603344
-	google.golang.org/grpc v1.30.0
+	google.golang.org/grpc v1.27.1
 )
 
 replace (
 	github.com/coreos/bbolt v1.3.4 => go.etcd.io/bbolt v1.3.4
 	github.com/coreos/bbolt v1.3.5 => go.etcd.io/bbolt v1.3.5
-	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.27.1
 )
