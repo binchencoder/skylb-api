@@ -14,12 +14,12 @@ import (
 	"google.golang.org/grpc/naming"
 	"google.golang.org/grpc/status"
 
+	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo/sync"
 	"github.com/binchencoder/skylb-api/internal/flags"
 	"github.com/binchencoder/skylb-api/internal/rpccli"
 	"github.com/binchencoder/skylb-api/metrics"
 	pb "github.com/binchencoder/skylb-api/proto"
-	vexpb "github.com/binchencoder/gateway-proto/data"
 )
 
 var (
@@ -172,7 +172,6 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 		resp, err := stream.Recv()
 		if err != nil {
 			close(stopCh)
-			glog.Errorf("Failed to receive load balance update from SkyLB, %+v", err)
 			cancel()
 			return err
 		}
