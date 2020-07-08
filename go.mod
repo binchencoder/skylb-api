@@ -26,5 +26,5 @@ require (
 replace (
 	github.com/coreos/bbolt v1.3.4 => go.etcd.io/bbolt v1.3.4
 	github.com/coreos/bbolt v1.3.5 => go.etcd.io/bbolt v1.3.5
-    google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.27.1
+	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.27.1
 )
