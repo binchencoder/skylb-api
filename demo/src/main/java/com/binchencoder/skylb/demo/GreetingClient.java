@@ -102,7 +102,7 @@ public class GreetingClient {
         this.channel = ManagedChannelBuilder
             // 1. forTarget
             .forTarget(target)
-            // 2. use jingoal resolver
+            // 2. use binchencoder resolver
             .nameResolverFactory(SkyLBNameResolverFactory.getInstance(callerServiceName))
             .defaultLoadBalancingPolicy(loadBalancerDesc)
             .intercept(MetricsClientInterceptor.create(

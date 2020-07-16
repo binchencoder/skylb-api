@@ -59,7 +59,7 @@ pkg_tar(
 #     name = "latest",
 #     base = "//bld_tools/docker/ubuntu:base",
 #     cmd = "/skylb/start.sh",
-#     repository = "harbor.jingoal.ltd",
+#     repository = "harbor.binchencoder.ltd",
 #     tag = "skylb/skytest",
 #     tars = [
 #         ":binary",

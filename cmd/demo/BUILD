@@ -165,7 +165,7 @@ go_test(
 #        ":consistenthash",
 #        ":server",
 #    ],
-#    repository = "harbor.jingoal.ltd",
+#    repository = "harbor.binchencoder.ltd",
 #    tag = "skylb/demo-go",
 #    workdir = "/skylb",
 #)

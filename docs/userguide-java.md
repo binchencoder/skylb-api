@@ -8,7 +8,7 @@ SkyLB API User Guide (in Java)
 
 -   在 vexillary-client/proto/data/data.proto 定义 service id。
 
--   Java API 代码示例参见 demo/com/jingoal/skylb/demo
+-   Java API 代码示例参见 demo/com/binchencoder/skylb/demo
 
 启动
 ----

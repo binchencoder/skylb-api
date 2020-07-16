@@ -46,7 +46,7 @@ go_binary(
 #     ports = [
 #         "8901",
 #     ],
-#     repository = "harbor.jingoal.ltd",
+#     repository = "harbor.binchencoder.ltd",
 #     tag = "skylb/grpc-proxy-demo",
 #     workdir = "/skylb",
 # )
