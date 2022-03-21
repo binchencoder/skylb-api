@@ -1,0 +1,30 @@
+_output/
+
+# for IntelliJ IDEA description files
+.idea
+*.iml
+*.idb
+target/
+logs/
+.DS_Store
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Bazel.
+bazel-bin
+bazel-genfiles
+bazel-skylb-apiv2
+bazel-out
+bazel-testlogs
+
+# Go vendor directory
+#vendor
+
+# Generated travis files
+.travis.yml
+
+# Java files
+*.exe
