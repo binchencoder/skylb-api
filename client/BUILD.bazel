@@ -1,0 +1,21 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
+    importpath = "github.com/binchencoder/skylb-apiv2/client",
+    deps = [
+        "//proto:go_default_library",
+        "//client/option:go_default_library",
+        "//internal/skylb:go_default_library",
+        "@com_github_binchencoder_gateway_proto//data:go_default_library",
+        "@com_github_binchencoder_letsgo//flags:go_default_library",
+        "@com_github_binchencoder_letsgo//service/naming:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

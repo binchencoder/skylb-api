@@ -1,0 +1,15 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
+    importpath = "github.com/binchencoder/skylb-apiv2/resolver/internal",
+    deps = [
+        "@org_golang_google_grpc//resolver:go_default_library",
+    ],
+)

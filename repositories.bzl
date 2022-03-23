@@ -64,6 +64,14 @@ def go_repositories():
         sum = "h1:0IKlLyQ3Hs9nDaiK5cSHAGmcQEIC8l2Ts1u6x5Dfrqg=",
         version = "v1.2.0",
     )
+
+    go_repository(
+        name = "com_github_jtolds_gls",
+        importpath = "github.com/jtolds/gls",
+        sum = "h1:xdiiI2gbIgH/gLH7ADydsJ1uDOEzR8yvV7C0MuV77Wo=",
+        version = "v4.20.0+incompatible",
+    )
+
     go_repository(
         name = "com_github_matttproud_golang_protobuf_extension",
         importpath = "github.com/matttproud/golang_protobuf_extensions",
@@ -111,6 +119,20 @@ def go_repositories():
         importpath = "github.com/prometheus/procfs",
         sum = "h1:F0+tqvhOksq22sc6iCHF5WGlWjdwj92p0udFh1VFBS8=",
         version = "v0.1.3",
+    )
+
+    # smartystreets
+    go_repository(
+        name = "com_github_smartystreets_assertions",
+        importpath = "github.com/smartystreets/assertions",
+        sum = "h1:voD4ITNjPL5jjBfgR/r8fPIIBrliWrWHeiJApdr3r4w=",
+        version = "v1.0.1",
+    )
+    go_repository(
+        name = "com_github_smartystreets_goconvey",
+        importpath = "github.com/smartystreets/goconvey",
+        sum = "h1:QdmJJYlDQhMDFrFP8IvVnx66D8mCbaQM4TsxKf7BXzo=",
+        version = "v1.6.3",
     )
 
     go_repository(
