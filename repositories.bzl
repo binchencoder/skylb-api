@@ -161,6 +161,11 @@ def go_repositories():
         sum = "h1:6+hBz+qvs0JOrrNhhmR7lFxo5sINxBCGXrdtl/UvroE=",
         version = "v1.0.0",
     )
+    go_repository(
+        name = "com_github_zeromicro_gozero",
+        importpath = "github.com/zeromicro/go-zero",
+        commit = "0aeb49a6b059db2c245ea3f995af4a00c8acd7bd",
+    )
 
     go_repository(
         name = "org_uber_go_atomic",
