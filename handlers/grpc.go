@@ -38,6 +38,29 @@ func (glbh *GrpcLoadBalanceHandler) AddUnaryInterceptor(incept grpc.UnaryClientI
 	glbh.unaryInterceptors = append(glbh.unaryInterceptors, incept)
 }
 
+func (glbh *GrpcLoadBalanceHandler) BeforeResolve(spec *pb.ServiceSpec, ropts *option.ResolveOptions) {
+	// var balancer grpc.Balancer
+	// bc := ropts.BalancerCreator()
+	// if bc == nil {
+	// 	if *cflags.EnableHealthCheck {
+	// 		balancer = jb.RoundRobin(r)
+	// 	} else {
+	// 		balancer = grpc.RoundRobin(r)
+	// 	}
+	// 	glog.Infof("Skylb client created round-robin load balancer.")
+	// } else {
+	// 	balancer = bc(r)
+
+	// 	glog.Infof("Skylb client created %v load balancer.", reflect.TypeOf(balancer))
+	// }
+	// glbh.lbs[spec.String()] = balancer
+
+	// if lb, ok := balancer.(jb.DebugBalancer); ok {
+	// 	glog.Infof("StartDebugPrint for %v", reflect.TypeOf(lb))
+	// 	lb.StartDebugPrint(*cflags.DebugSvcInterval)
+	// }
+}
+
 func (glbh *GrpcLoadBalanceHandler) AfterResolve(spec *pb.ServiceSpec, csId vexpb.ServiceId, csName string, keeper option.SkyLbKeeper, tracer opentracing.Tracer, failFast bool) {
 	openTracingInterceptor := otgrpc.OpenTracingClientInterceptor(tracer)
 

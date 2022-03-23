@@ -5,8 +5,8 @@ import (
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo/flags"
-	"github.com/binchencoder/letsgo/service/naming"
 	"github.com/binchencoder/skylb-apiv2/client/option"
+	"github.com/binchencoder/skylb-apiv2/naming"
 
 	"github.com/binchencoder/skylb-apiv2/internal/skylb"
 	pb "github.com/binchencoder/skylb-apiv2/proto"

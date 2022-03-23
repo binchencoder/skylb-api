@@ -15,6 +15,7 @@ import (
 	"github.com/binchencoder/letsgo/strings"
 	"github.com/binchencoder/skylb-apiv2/internal/flags"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
+	"github.com/binchencoder/skylb-apiv2/resolver"
 )
 
 func init() {
@@ -61,7 +62,8 @@ func NewGrpcClient(ctx context.Context) (pb.SkylbClient, error) {
 	}
 	glog.Infof("Connecting SkyLB instance %s on port %s", ep, port)
 
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", ep, port), grpc.WithInsecure(), grpc.WithTimeout(time.Second), grpc.WithBlock())
+	conn, err := grpc.Dial(resolver.BuildSkyLBTarget(fmt.Sprintf("%s:%s", ep, port)),
+		grpc.WithInsecure(), grpc.WithTimeout(time.Second), grpc.WithBlock())
 	if err != nil {
 		glog.Errorf("Failed to dial to SkyLB instance %s, %+v.", ep, err)
 		return nil, err
