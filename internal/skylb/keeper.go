@@ -174,7 +174,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 		}
 		timer.Reset(*skylbAliveTimeout)
 
-		var updates []*resolver.Address
+		var updates []resolver.Address
 		if svcEps := resp.GetSvcEndpoints(); svcEps != nil {
 			lenEps := len(svcEps.InstEndpoints)
 			svcName := svcEps.Spec.ServiceName
@@ -202,7 +202,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 						if ep.Weight != 0 {
 							up.Metadata = ep.Weight
 						}
-						updates = append(updates, &up)
+						updates = append(updates, up)
 						localEps[addr] = struct{}{}
 					}
 				}
@@ -212,7 +212,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 							Attributes: toAttributes(pb.Operation_Delete),
 							Addr:       addr,
 						}
-						updates = append(updates, &up)
+						updates = append(updates, up)
 						delete(localEps, addr)
 					}
 				}
@@ -224,7 +224,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 						Attributes: toAttributes(ep.Op),
 						Addr:       fmt.Sprintf("%s:%d", ep.Host, ep.Port),
 					}
-					updates = append(updates, &up)
+					updates = append(updates, up)
 				}
 			}
 
