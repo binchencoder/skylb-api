@@ -106,15 +106,17 @@ func (sc *serviceClient) AddUnaryInterceptor(incept grpc.UnaryClientInterceptor)
 //
 // Start can only be called once in the whole lifecycle of an application.
 func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn)) {
+	csId := sc.clientServiceId
+	csName, err := naming.ServiceIdToName(csId)
+
 	// Only be called once
 	if sc.started {
+		glog.Warningf("Service client[%s] has started", csName)
 		return
 	}
 
-	csId := sc.clientServiceId
 	glog.Infof("Starting service client with %d service specs to resolve.", sc.skylbResolveCount)
 
-	csName, err := naming.ServiceIdToName(csId)
 	if nil != err {
 		glog.V(1).Infof("Invalid caller service id %d\n", csId)
 		csName = fmt.Sprintf("!%d", csId)

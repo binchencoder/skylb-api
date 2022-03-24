@@ -20,7 +20,7 @@ func ExampleNewServiceLocator() {
 	// )
 	// sl.Resolve(grpcHandler)
 
-	cli.Resolve(NewDefaultServiceSpec(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE))
+	cli.Resolve(NewDefaultServiceSpec(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE), grpc.WithBalancerName(""))
 
 	// Start the locator.
 	// sl.Start()
