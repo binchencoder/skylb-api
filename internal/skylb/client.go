@@ -106,6 +106,7 @@ func (sc *serviceClient) AddUnaryInterceptor(incept grpc.UnaryClientInterceptor)
 //
 // Start can only be called once in the whole lifecycle of an application.
 func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn)) {
+	// Only be called once
 	if sc.started {
 		return
 	}
