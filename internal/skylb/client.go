@@ -135,17 +135,7 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 			PortName:    spec.PortName,
 		}
 
-		tracer := jg.InitOpenTracing(getClientServiceName(sc.clientServiceId))
-		openTracingInterceptor := otgrpc.OpenTracingClientInterceptor(tracer)
-
-		metricsInterceptor := func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
-			ctx2 := jg.WithServiceId(ctx, int(csId))
-			return metrics.UnaryClientInterceptor(csName, specCopy, ctx2, method, req, reply, cc, invoker, opts...)
-		}
-
-		metadataInterceptor := func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
-			return jg.ClientToMetadataInterceptor(csName, ctx, method, req, reply, cc, invoker, opts...)
-		}
+		options := sc.buildDialOptions(specCopy)
 
 		var conn *grpc.ClientConn
 		var err error
@@ -157,37 +147,13 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 					}
 				}()
 
-				incepts := make([]grpc.UnaryClientInterceptor, 0, len(sc.unaryInterceptors)+3)
-				// openTracingInterceptor needs to be after
-				// ExpBackoffUnaryClientInterceptor so that retry request will
-				// have separate tracing.
-				incepts = append(incepts, metricsInterceptor, jg.ExpBackoffUnaryClientInterceptor, openTracingInterceptor)
-				incepts = append(incepts, sc.unaryInterceptors...)
-				// ClientToMetadataInterceptor needs to be the last.
-				incepts = append(incepts, metadataInterceptor)
-
-				options = append(options, grpc.WithInsecure(),
-					grpc.WithUnaryInterceptor(jg.ChainUnaryClient(incepts...)),
-					grpc.WithStreamInterceptor(func(ctx context.Context, desc *grpc.StreamDesc, cc *grpc.ClientConn, method string, streamer grpc.Streamer, opts ...grpc.CallOption) (grpc.ClientStream, error) {
-						ctx2 := jg.WithServiceId(ctx, int(csId))
-						return metrics.StreamClientInterceptor(csName, specCopy, ctx2, desc, cc, method, streamer, opts...)
-					}),
-				)
-				if sc.failFast {
-					options = append(options,
-						grpc.WithBlock(),
-						// TODO(fuyc): here use a relatively longer duration as dial timeout.
-						grpc.WithTimeout(*flags.SkylbRetryInterval*6),
-					)
-				}
-
 				var target string
 				if addrs, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
 					target = skyrs.DirectTarget(addrs)
 				} else {
 					target = skyrs.SkyLBTarget(spec)
 				}
-				conn, err = grpc.Dial(target, options...)
+				conn, err = grpc.Dial(target, options)
 			}()
 
 			if err == nil {
@@ -219,6 +185,62 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 	sc.started = true
 }
 
+func (sc *serviceClient) buildDialOptions(calledSpec *pb.ServiceSpec, opts ...grpc.DialOption) []grpc.DialOption {
+	var options []grpc.DialOption
+	if ops, ok := sc.dopts[calledSpec.String()]; ok {
+		options = append(options, ops)
+	}
+
+	csId := sc.clientServiceId
+	csName, err := naming.ServiceIdToName(csId)
+	if nil != err {
+		glog.V(1).Infof("Invalid caller service id %d\n", csId)
+		csName = fmt.Sprintf("!%d", csId)
+	}
+
+	tracer := jg.InitOpenTracing(getClientServiceName(sc.clientServiceId))
+	openTracingInterceptor := otgrpc.OpenTracingClientInterceptor(tracer)
+
+	metricsInterceptor := func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn,
+		invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
+		ctx2 := jg.WithServiceId(ctx, int(csId))
+		return metrics.UnaryClientInterceptor(csName, calledSpec, ctx2, method, req, reply, cc, invoker, opts...)
+	}
+
+	metadataInterceptor := func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn,
+		invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
+		return jg.ClientToMetadataInterceptor(csName, ctx, method, req, reply, cc, invoker, opts...)
+	}
+
+	incepts := make([]grpc.UnaryClientInterceptor, 0, len(sc.unaryInterceptors)+3)
+	// openTracingInterceptor needs to be after
+	// ExpBackoffUnaryClientInterceptor so that retry request will
+	// have separate tracing.
+	incepts = append(incepts, metricsInterceptor, jg.ExpBackoffUnaryClientInterceptor, openTracingInterceptor)
+	incepts = append(incepts, sc.unaryInterceptors...)
+	// ClientToMetadataInterceptor needs to be the last.
+	incepts = append(incepts, metadataInterceptor)
+
+	options = append(options, grpc.WithInsecure(),
+		grpc.WithUnaryInterceptor(jg.ChainUnaryClient(incepts...)),
+		grpc.WithStreamInterceptor(func(ctx context.Context, desc *grpc.StreamDesc, cc *grpc.ClientConn, method string,
+			streamer grpc.Streamer, opts ...grpc.CallOption) (grpc.ClientStream, error) {
+			ctx2 := jg.WithServiceId(ctx, int(csId))
+			return metrics.StreamClientInterceptor(csName, calledSpec, ctx2, desc, cc, method, streamer, opts...)
+		}),
+	)
+
+	if sc.failFast {
+		options = append(options,
+			grpc.WithBlock(),
+			// TODO(fuyc): here use a relatively longer duration as dial timeout.
+			grpc.WithTimeout(*flags.SkylbRetryInterval*6),
+		)
+	}
+
+	return options
+}
+
 // Shutdown turns the service client down. After shutdown all grpc.Balancer
 // objects returned from Resolve() call can not be used any more.
 func (sc *serviceClient) Shutdown() {
@@ -242,7 +264,7 @@ func (sc *serviceClient) EnableFailFast() {
 }
 
 func getClientServiceName(clientServiceId vexpb.ServiceId) string {
-	name, err := jn.ServiceIdToName(clientServiceId)
+	name, err := naming.ServiceIdToName(clientServiceId)
 	if nil != err {
 		glog.Errorf("Invalid client service id %d\n", clientServiceId)
 		return "unknownService"
