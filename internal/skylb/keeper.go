@@ -50,20 +50,21 @@ var (
 	)
 )
 
-type serviceEntry struct {
-	spec     *pb.ServiceSpec
-	updateCh chan []*resolver.Address
-}
+// type serviceEntry struct {
+// 	spec     *pb.ServiceSpec
+// 	updateCh chan []*resolver.Address
+// }
 
 // skyLbKeeper keeps connectivity to SkyLb instance.
 type skyLbKeeper struct {
 	sync.RWLock
 
-	services map[string]*serviceEntry
-	readyCh  chan struct{}
-	ready    bool
-	cancel   context.CancelFunc
-	stopped  bool
+	services         map[string]*pb.ServiceSpec
+	resolverCliConns map[string]resolver.ClientConn
+	readyCh          chan struct{}
+	ready            bool
+	cancel           context.CancelFunc
+	stopped          bool
 }
 
 func init() {
@@ -72,26 +73,20 @@ func init() {
 	prom.MustRegister(svcWatcherUpdatesGauge)
 }
 
-func (sk *skyLbKeeper) RegisterService(spec *pb.ServiceSpec) <-chan []*resolver.Address {
-	ch := make(chan []*resolver.Address, 100)
-
+func (sk *skyLbKeeper) RegisterServiceCliConn(spec *pb.ServiceSpec, cliConn resolver.ClientConn) {
 	key := calcServiceKey(spec)
-	se := serviceEntry{
-		spec:     spec,
-		updateCh: ch,
-	}
-	sk.services[key] = &se
+	sk.resolverCliConns[key] = cliConn
+	sk.services[key] = spec
 
-	glog.Infof("Registered to resolve service spec %s.%s on port name %q.", spec.Namespace, spec.ServiceName, spec.PortName)
-
-	return ch
+	glog.Infof("Registered to resolve service spec %s.%s on port name %q.",
+		spec.Namespace, spec.ServiceName, spec.PortName)
 }
 
 func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps bool) {
 	svcKeeperGauge.Inc()
 
 	glog.V(4).Infof("Starting SkyLB keeper for caller service ID %#v", csId)
-	if len(sk.services) == 0 {
+	if len(sk.resolverCliConns) == 0 {
 		svcKeeperGauge.Dec()
 		return
 	}
@@ -103,7 +98,7 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 		ResolveFullEndpoints: resolveFullEps,
 	}
 	for _, s := range sk.services {
-		req.Services = append(req.Services, s.spec)
+		req.Services = append(req.Services, s)
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -123,9 +118,6 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 		time.Sleep(*flags.SkylbRetryInterval)
 	}
 
-	for _, s := range sk.services {
-		close(s.updateCh)
-	}
 	svcKeeperGauge.Dec()
 }
 
@@ -224,6 +216,16 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 						delete(localEps, addr)
 					}
 				}
+			} else {
+				// TODO(chenbin): Remove the code once all clients changed
+				//             to use the new protocol.
+				for _, ep := range svcEps.InstEndpoints {
+					up := resolver.Address{
+						Attributes: toAttributes(ep.Op),
+						Addr:       fmt.Sprintf("%s:%d", ep.Host, ep.Port),
+					}
+					updates = append(updates, &up)
+				}
 			}
 
 			if len(updates) == 0 {
@@ -235,7 +237,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 			if !sk.ready {
 				if _, ok := readyMap[key]; !ok {
 					readyMap[key] = struct{}{}
-					if len(readyMap) == len(sk.services) {
+					if len(readyMap) == len(sk.resolverCliConns) {
 						close(sk.readyCh)
 						sk.ready = true
 					}
@@ -252,8 +254,12 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 				}
 				glog.Infof("Received endpoints update for %s with value %+v.", key, buf.String())
 			}
-			if svc, ok := sk.services[key]; ok {
-				svc.updateCh <- updates
+			if cliConn, ok := sk.resolverCliConns[key]; ok {
+				if err := cliConn.UpdateState(resolver.State{
+					Addresses: updates,
+				}); err != nil {
+
+				}
 			} else {
 				glog.Warningf("Nil serviceEntry for key %s", key)
 			}
@@ -278,7 +284,7 @@ func (sk *skyLbKeeper) WaitUntilReady() {
 // NewSkyLbKeeper returns a new skylb keeper.
 func NewSkyLbKeeper() *skyLbKeeper {
 	return &skyLbKeeper{
-		services: make(map[string]*serviceEntry),
-		readyCh:  make(chan struct{}, 1),
+		resolverCliConns: make(map[string]resolver.ClientConn),
+		readyCh:          make(chan struct{}, 1),
 	}
 }

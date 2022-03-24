@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"google.golang.org/grpc/attributes"
-	"google.golang.org/grpc/naming"
 
 	pb "github.com/binchencoder/skylb-apiv2/proto"
 )
@@ -23,7 +22,7 @@ func toAttributes(op pb.Operation) *attributes.Attributes {
 		return attributes.New(AddressOpKey{}, pb.Operation_Delete)
 	}
 
-	return naming.Add
+	return attributes.New(AddressOpKey{}, pb.Operation_Add)
 }
 
 func opToString(op pb.Operation) string {

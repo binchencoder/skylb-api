@@ -1,25 +1,36 @@
 package client
 
 import (
+	"flag"
+
 	"google.golang.org/grpc"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
-	"github.com/binchencoder/skylb-apiv2/client/option"
+	"github.com/binchencoder/letsgo/flags"
 	"github.com/binchencoder/skylb-apiv2/internal/skylb"
+	"github.com/binchencoder/skylb-apiv2/naming"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
 )
 
-// TODO(zhwang): remove this file once we migrate all references to the
-//               new API.
+const (
+	DefaultNameSpace = "default"
+	DefaultPortName  = "grpc"
+)
+
+var (
+	DebugSvcEndpoints = flags.StringMap{}
+)
+
+func init() {
+	flag.Var(&DebugSvcEndpoints, "debug-svc-endpoint", "The debug service endpoint. If not empty, disable SkyLB resolving for that service.")
+}
 
 // ServiceCli defines the interface through which the client app obtains
 // gRPC load balancing support from SkyLB.
-//
-// Deprecated: use ServiceLocator instead.
 type ServiceCli interface {
 	// Resolve resolves a service spec.
 	// It needs to be called for every service used by the client.
-	Resolve(spec *pb.ServiceSpec, opts ...option.ResolveOption)
+	Resolve(spec *pb.ServiceSpec, opts ...grpc.DialOption)
 
 	// EnableHistogram enables historgram in client api metrics.
 	//
@@ -39,11 +50,37 @@ type ServiceCli interface {
 	//
 	// Start can only be called once for each ServiceCli instance in the whole
 	// lifecycle of an application.
-	Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn), options ...grpc.DialOption)
+	Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn))
 
 	// Shutdown turns the service client down. After shutdown, all grpc.Balancer
 	// objects returned from Resolve() call can not be used any more.
 	Shutdown()
+}
+
+// NewServiceSpec returns a new ServiceSpec struct with the given parameters.
+func NewServiceSpec(namespace string, serviceId vexpb.ServiceId, portName string) *pb.ServiceSpec {
+	if namespace == "" {
+		namespace = DefaultNameSpace
+	}
+	if portName == "" {
+		portName = DefaultPortName
+	}
+	serviceName, err := naming.ServiceIdToName(serviceId)
+	if err != nil {
+		panic("Unknown service ID.")
+	}
+
+	return &pb.ServiceSpec{
+		Namespace:   namespace,
+		ServiceName: serviceName,
+		PortName:    portName,
+	}
+}
+
+// NewDefaultServiceSpec returns a new ServiceSpec struct with the default
+// namespace and default port name.
+func NewDefaultServiceSpec(serviceId vexpb.ServiceId) *pb.ServiceSpec {
+	return NewServiceSpec(DefaultNameSpace, serviceId, DefaultPortName)
 }
 
 // NewServiceCli returns a new service client. NewServiceCli() should be called

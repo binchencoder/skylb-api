@@ -1,4 +1,4 @@
-package internal
+package skylb
 
 import (
 	"errors"
@@ -8,6 +8,7 @@ import (
 var (
 	ErrUnsupportSchema = errors.New("unsupport schema skylb")
 	ErrMissServiceName = errors.New("target miss service name")
+	ErrInvalidTarget   = errors.New("Invalid target url")
 	ErrNoInstances     = errors.New("no valid instance")
 )
 

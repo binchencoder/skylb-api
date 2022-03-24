@@ -10,15 +10,20 @@ import (
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/naming"
+	"google.golang.org/grpc/resolver"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	jg "github.com/binchencoder/letsgo/grpc"
-	jn "github.com/binchencoder/letsgo/service/naming"
 	"github.com/binchencoder/skylb-apiv2/client/option"
 	"github.com/binchencoder/skylb-apiv2/internal/flags"
 	"github.com/binchencoder/skylb-apiv2/metrics"
+	"github.com/binchencoder/skylb-apiv2/naming"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
+	skyrs "github.com/binchencoder/skylb-apiv2/resolver"
+)
+
+var (
+	withPrometheusHistogram = false
 )
 
 // serviceClient implements interface skylb-api/client/ServiceClient.
@@ -29,52 +34,46 @@ type serviceClient struct {
 	conns           []*grpc.ClientConn
 	// lbs                map[string]grpc.Balancer
 	healthCheckClosers []chan<- struct{}
-	opts               map[string]option.ResolveOptions
+	dopts              map[string][]*grpc.DialOption
 	unaryInterceptors  []grpc.UnaryClientInterceptor
 	failFast           bool
-	resolveCount       int
+	skylbResolveCount  int
 
 	debugSvcEndpoints map[string]string
 
 	resolveFullEps bool
+	started        bool
 }
 
 // Resolve resolves a service spec and returns a load balancer handle.
 // It needs to be called for every service used by the client.
-func (sc *serviceClient) Resolve(spec *pb.ServiceSpec, opts ...option.ResolveOption) {
-	ropts := option.ResolveOptions{}
+func (sc *serviceClient) Resolve(spec *pb.ServiceSpec, opts ...grpc.DialOption) {
+	dopts := []*grpc.DialOption{}
 	for _, opt := range opts {
-		opt(&ropts)
+		dopts = append(dopts, &opt)
 	}
-	sc.opts[spec.String()] = ropts
+	sc.dopts[spec.String()] = dopts
 	sc.resolve(spec)
 }
 
 func (sc *serviceClient) resolve(spec *pb.ServiceSpec) {
-	ropts := sc.opts[spec.String()]
-
-	var r naming.Resolver
 	if ep, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
 		// Debug mode, do not need to register service.
 
-		parts := strings.SplitN(ep, ":", 2)
-		if len(parts) != 2 {
-			panic(fmt.Sprintf("Service instance endpoint should in format host:port, got %s", ep))
+		addrs := strings.Split(ep, ",")
+		// Check valid addrs
+		for _, addr := range addrs {
+			parts := strings.SplitN(addr, ":", 2)
+			if len(parts) != 2 {
+				panic(fmt.Sprintf("Service instance endpoint should in format host:port, got %s", ep))
+			}
+			_, err := strconv.Atoi(parts[1])
+			if err != nil {
+				panic(err)
+			}
 		}
-		port, err := strconv.Atoi(parts[1])
-		if err != nil {
-			panic(err)
-		}
-
-		ie := pb.InstanceEndpoint{
-			Op:   pb.Operation_Add,
-			Host: parts[0],
-			Port: int32(port),
-		}
-		r = NewDebugResolver(&ie, spec)
 	} else {
-		r, _ = NewResolver(sc.keeper, spec)
-		sc.resolveCount++
+		sc.skylbResolveCount++
 	}
 
 	sc.specs = append(sc.specs, spec)
@@ -102,29 +101,29 @@ func (sc *serviceClient) AddUnaryInterceptor(incept grpc.UnaryClientInterceptor)
 	sc.unaryInterceptors = append(sc.unaryInterceptors, incept)
 }
 
-func getClientServiceName(clientServiceId vexpb.ServiceId) string {
-	name, err := jn.ServiceIdToName(clientServiceId)
-	if nil != err {
-		glog.Errorf("Invalid client service id %d\n", clientServiceId)
-		return "unknownService"
-	}
-
-	return name
-}
-
 // Start starts the service resolver and returns the grpc connection for
 // each service through the callback function.
 //
 // Start can only be called once in the whole lifecycle of an application.
-func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn), options ...grpc.DialOption) {
+func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn)) {
+	if sc.started {
+		return
+	}
+
 	csId := sc.clientServiceId
+	glog.Infof("Starting service client with %d service specs to resolve.", sc.skylbResolveCount)
 
-	glog.Infof("Starting service client with %d service specs to resolve.", sc.resolveCount)
-
-	csName, err := jn.ServiceIdToName(csId)
+	csName, err := naming.ServiceIdToName(csId)
 	if nil != err {
 		glog.V(1).Infof("Invalid caller service id %d\n", csId)
 		csName = fmt.Sprintf("!%d", csId)
+	}
+
+	if sc.skylbResolveCount > 0 {
+		// Registers the skylb scheme to the resolver.
+		resolver.Register(&skylbBuilder{
+			keeper: sc.keeper,
+		})
 	}
 
 	go sc.keeper.Start(csId, csName, sc.resolveFullEps)
@@ -181,7 +180,14 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 						grpc.WithTimeout(*flags.SkylbRetryInterval*6),
 					)
 				}
-				conn, err = grpc.Dial(spec.ServiceName, options...)
+
+				var target string
+				if addrs, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
+					target = skyrs.DirectTarget(addrs)
+				} else {
+					target = skyrs.SkyLBTarget(spec)
+				}
+				conn, err = grpc.Dial(target, options...)
 			}()
 
 			if err == nil {
@@ -206,9 +212,11 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 		metrics.EnableClientHandlingTimeHistogram()
 	}
 
-	if !sc.failFast && sc.resolveCount > 0 {
+	if !sc.failFast && sc.skylbResolveCount > 0 {
 		sc.keeper.WaitUntilReady()
 	}
+
+	sc.started = true
 }
 
 // Shutdown turns the service client down. After shutdown all grpc.Balancer
@@ -233,15 +241,26 @@ func (sc *serviceClient) EnableFailFast() {
 	sc.failFast = true
 }
 
+func getClientServiceName(clientServiceId vexpb.ServiceId) string {
+	name, err := jn.ServiceIdToName(clientServiceId)
+	if nil != err {
+		glog.Errorf("Invalid client service id %d\n", clientServiceId)
+		return "unknownService"
+	}
+
+	return name
+}
+
 // NewServiceClient returns a new service client with the given debug service
 // endpoints map.
 func NewServiceClient(clientServiceId vexpb.ServiceId, dseps map[string]string) *serviceClient {
 	return &serviceClient{
 		clientServiceId:    clientServiceId,
+		keeper:             NewSkyLbKeeper(),
 		specs:              []*pb.ServiceSpec{},
 		conns:              []*grpc.ClientConn{},
 		healthCheckClosers: []chan<- struct{}{},
-		opts:               map[string]option.ResolveOptions{},
+		dopts:              map[string][]*grpc.DialOption{},
 		unaryInterceptors:  []grpc.UnaryClientInterceptor{},
 
 		debugSvcEndpoints: dseps,

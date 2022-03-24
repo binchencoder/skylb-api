@@ -2,25 +2,35 @@ package internal
 
 import (
 	"fmt"
-	"strings"
 
+	skyRs "github.com/binchencoder/skylb-apiv2/resolver"
 	"google.golang.org/grpc/resolver"
 )
 
 type skylbBuilder struct {
 }
 
+type skylbResolver struct {
+	cc resolver.ClientConn
+}
+
 func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (
 	resolver.Resolver, error) {
-	hosts := strings.FieldsFunc(target.Authority, func(r rune) bool {
-		return r == EndpointSepChar
-	})
+	serverName := target.URL.Host
 
-	fmt.Println(hosts)
+	fmt.Printf("serverName: %s\n", serverName)
 
-	return &skylbResolver{cc: cc}, nil
+	resolver := &skylbResolver{cc: cc}
+
+	return resolver, nil
 }
 
 func (b *skylbBuilder) Scheme() string {
-	return SkyLBScheme
+	return skyRs.SkyLBScheme
+}
+
+func (r *skylbResolver) Close() {
+}
+
+func (r *skylbResolver) ResolveNow(options resolver.ResolveNowOptions) {
 }

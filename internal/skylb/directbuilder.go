@@ -1,4 +1,4 @@
-package internal
+package skylb
 
 import (
 	"strings"

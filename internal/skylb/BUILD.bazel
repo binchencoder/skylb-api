@@ -11,16 +11,19 @@ go_library(
     importpath = "github.com/binchencoder/skylb-apiv2/internal/skylb",
     deps = [
         "//balancer:go_default_library",
+        "//client:go_default_library",
         "//client/option:go_default_library",
         "//internal/flags:go_default_library",
         "//internal/flags/client:go_default_library",
         "//internal/health:go_default_library",
         "//internal/rpccli:go_default_library",
         "//metrics:go_default_library",
-        "//proto:go_default_library",
         "//naming:go_default_library",
+        "//proto:go_default_library",
+        "//resolver:go_default_library",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",
         "@com_github_binchencoder_letsgo//sync:go_default_library",
+        "@com_github_binchencoder_gateway_proto//data:go_default_library",
         "@com_github_golang_glog//:go_default_library",
         "@com_github_grpc_ecosystem_grpc_opentracing//go/otgrpc:go_default_library",
         "@com_github_prometheus_client_golang//prometheus:go_default_library",
@@ -28,19 +31,15 @@ go_library(
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes:go_default_library",
         "@org_golang_google_grpc//status:go_default_library",
-        "@com_github_binchencoder_gateway_proto//data:go_default_library",
     ],
 )
 
 go_test(
     name = "tests",
     size = "small",
-    srcs = [
-        "locator_test.go",
-        "resolver_test.go",
-        "util_test.go",
-        "watcher_test.go",
-    ],
+    srcs = glob(
+        ["*_test.go"]
+    ),
     embed = [
         ":go_default_library",
     ],

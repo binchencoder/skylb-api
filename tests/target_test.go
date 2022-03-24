@@ -36,3 +36,13 @@ func TestParseTarget(t *testing.T) {
 		URL:       *u,
 	})
 }
+
+func TestParseUrl(t *testing.T) {
+	target := "skylb://testserver"
+	u, err := url.Parse(target)
+	if err != nil {
+		fmt.Println("parset err: ", err)
+		return
+	}
+	fmt.Printf("target: %s, \nparsedUrl: %+v \n", target, *u)
+}

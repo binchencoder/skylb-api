@@ -4,27 +4,33 @@ import (
 	"google.golang.org/grpc"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
-	"github.com/binchencoder/skylb-apiv2/handlers"
+	pb "github.com/binchencoder/skylb-apiv2/proto"
 )
 
 func ExampleNewServiceLocator() {
-	// Create a service locator.
-	sl := NewServiceLocator(vexpb.ServiceId_SHARED_TEST_CLIENT_SERVICE)
+	// Create a service client.
+	cli := NewServiceCli(vexpb.ServiceId_SHARED_TEST_CLIENT_SERVICE)
 
 	// Resolve services.
-	grpcHandler := handlers.NewGrpcLoadBalanceHandler(
-		NewDefaultServiceSpec(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE),
-		func(conn *grpc.ClientConn) {
-			// hold the connecton for use later.
-		},
-	)
-	sl.Resolve(grpcHandler)
+	// grpcHandler := handlers.NewGrpcLoadBalanceHandler(
+	// 	NewDefaultServiceSpec(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE),
+	// 	func(conn *grpc.ClientConn) {
+	// 		// hold the connecton for use later.
+	// 	},
+	// )
+	// sl.Resolve(grpcHandler)
+
+	cli.Resolve(NewDefaultServiceSpec(vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE))
 
 	// Start the locator.
-	sl.Start()
+	// sl.Start()
+
+	cli.Start(func(spec *pb.ServiceSpec, conn *grpc.ClientConn) {
+		// hold the connecton for use later.
+	})
 
 	// Use the connection to create grpc clients.
 
 	// Shutdown before exit.
-	sl.Shutdown()
+	cli.Shutdown()
 }

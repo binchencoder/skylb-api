@@ -4,25 +4,27 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/binchencoder/skylb-apiv2/resolver/internal"
+	pb "github.com/binchencoder/skylb-apiv2/proto"
 )
 
-// BuildSkyLBTarget returns a string that represents the given endpoints with skylb schema.
-func BuildSkyLBTarget(addrs string) string {
-	addrs = strings.TrimSpace(addrs)
-	if addrs == "" {
-		return addrs
-	}
+const (
+	// DirectScheme stands for direct scheme.
+	DirectScheme = "direct"
+	// SkyLBScheme stands for skylb scheme.
+	SkyLBScheme = "skylb"
+)
 
-	return fmt.Sprintf("%s://%s", internal.SkyLBScheme, addrs)
+// SkyLBTarget returns a string that represents the given endpoints with skylb schema.
+func SkyLBTarget(spec *pb.ServiceSpec) string {
+	return fmt.Sprintf("%s://%s?ns=%s&pn=%s", SkyLBScheme, spec.ServiceName, spec.Namespace, spec.PortName)
 }
 
-// BuildDirectTarget returns a string that represents the given endpoints with direct schema.
-func BuildDirectTarget(addrs string) string {
+// DirectTarget returns a string that represents the given endpoints with direct schema.
+func DirectTarget(addrs string) string {
 	addrs = strings.TrimSpace(addrs)
 	if addrs == "" {
 		return addrs
 	}
 
-	return fmt.Sprintf("%s://%s", internal.DirectScheme, addrs)
+	return fmt.Sprintf("%s://%s", DirectScheme, addrs)
 }

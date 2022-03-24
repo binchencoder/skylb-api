@@ -63,7 +63,7 @@ func NewGrpcClient(ctx context.Context) (pb.SkylbClient, error) {
 	}
 	glog.Infof("Connecting SkyLB instance %s on port %s", ep, port)
 
-	conn, err := grpc.Dial(resolver.BuildSkyLBTarget(fmt.Sprintf("%s:%s", ep, port)),
+	conn, err := grpc.Dial(resolver.DirectTarget(fmt.Sprintf("%s:%s", ep, port)),
 		grpc.WithInsecure(), grpc.WithTimeout(time.Second), grpc.WithBlock())
 	if err != nil {
 		glog.Errorf("Failed to dial to SkyLB instance %s, %+v.", ep, err)

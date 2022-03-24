@@ -10,6 +10,7 @@ go_library(
     ),
     importpath = "github.com/binchencoder/skylb-apiv2/resolver/internal",
     deps = [
+        "//resolver:go_default_library",
         "@org_golang_google_grpc//resolver:go_default_library",
     ],
 )
