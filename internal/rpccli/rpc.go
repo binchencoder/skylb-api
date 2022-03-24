@@ -51,6 +51,7 @@ func NewGrpcClient(ctx context.Context) (pb.SkylbClient, error) {
 	}
 	glog.Infof("Resolved SkyLB instances %s", addrs)
 
+	// TODO(chenbin) 这里不要随机取
 	switch len(addrs) {
 	case 0:
 		return nil, fmt.Errorf("No SkyLB instances found")

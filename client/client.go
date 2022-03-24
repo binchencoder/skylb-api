@@ -27,17 +27,9 @@ type ServiceCli interface {
 	// only needs to be called once, on any of those instances.
 	EnableHistogram()
 
-	// EnableResolveFullEps enables to resolve full endpoints.
-	// Deprecated: This method will be removed in future.
-	EnableResolveFullEps()
-
 	// EnableFailFast makes service client doesn't wait for service to become
 	// available in Start().
 	EnableFailFast()
-
-	// DisableResolveFullEps disables resolving full endpoints.
-	// Deprecated: This method will be removed in future.
-	DisableResolveFullEps()
 
 	// AddUnaryInterceptor adds a unary client interceptor to the client.
 	AddUnaryInterceptor(incept grpc.UnaryClientInterceptor)

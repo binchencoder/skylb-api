@@ -7,6 +7,7 @@ import (
 	"github.com/binchencoder/letsgo/flags"
 	"github.com/binchencoder/skylb-apiv2/client/option"
 	"github.com/binchencoder/skylb-apiv2/naming"
+	"github.com/binchencoder/skylb-apiv2/resolver"
 
 	"github.com/binchencoder/skylb-apiv2/internal/skylb"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
@@ -23,6 +24,8 @@ var (
 
 func init() {
 	flag.Var(&DebugSvcEndpoints, "debug-svc-endpoint", "The debug service endpoint. If not empty, disable SkyLB resolving for that service.")
+
+	resolver.Register()
 }
 
 // ServiceLocator defines the interface through which the client app locates

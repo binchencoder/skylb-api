@@ -3,14 +3,10 @@ package internal
 import (
 	"strings"
 
-	pb "github.com/binchencoder/skylb-apiv2/proto"
 	"google.golang.org/grpc/resolver"
 )
 
-type directBuilder struct {
-	endpoint *pb.InstanceEndpoint
-	spec     *pb.ServiceSpec
-}
+type directBuilder struct{}
 
 // Build
 func (d *directBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (
@@ -31,7 +27,7 @@ func (d *directBuilder) Build(target resolver.Target, cc resolver.ClientConn, op
 		return nil, err
 	}
 
-	return &nopResolver{cc: cc}, nil
+	return &skylbResolver{cc: cc}, nil
 }
 
 func (b *directBuilder) Scheme() string {

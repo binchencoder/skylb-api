@@ -37,20 +37,10 @@ var (
 	directResolverBuilder directBuilder
 )
 
-// RegisterResolver registers the skylb schemes to the resolver.
+// RegisterResolver registers the direct and skylb schemes to the resolver.
 func RegisterResolver() {
 	resolver.Register(&directResolverBuilder)
 	resolver.Register(&skylbResolverBuilder)
-}
-
-type skylbResolver struct {
-	cc resolver.ClientConn
-}
-
-func (r *skylbResolver) Close() {
-}
-
-func (r *skylbResolver) ResolveNow(options resolver.ResolveNowOptions) {
 }
 
 type nopResolver struct {
