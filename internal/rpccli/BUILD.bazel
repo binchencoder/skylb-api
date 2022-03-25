@@ -12,6 +12,7 @@ go_library(
     deps = [
         "//internal/flags:go_default_library",
         "//proto:go_default_library",
+        "//resolver:go_default_library",
         "@com_github_binchencoder_letsgo//strings:go_default_library",
         "@com_github_golang_glog//:go_default_library",
         "@org_golang_x_net//context:go_default_library",

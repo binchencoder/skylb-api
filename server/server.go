@@ -213,11 +213,11 @@ func startHTTPServer(lis net.Listener, mux *http.ServeMux) {
 }
 
 func start0(hostAddr string, servicePort int, spec *pb.ServiceSpec, interceptors ...grpc.UnaryServerInterceptor) (net.Listener, *grpc.Server) {
-	if !*withinK8s {
-		glog.Infoln("Outside k8s, starting load reporter.")
+	if *withinK8s {
+		glog.Infoln("Inside k8s, starting load reporter.")
 		go StartSkylbReportLoad(spec, servicePort)
 	} else {
-		glog.Warningln("WARNING: Inside k8s, load-reporting disabled.")
+		glog.Warningln("WARNING: Outside k8s, load-reporting disabled.")
 	}
 
 	lis, err := net.Listen("tcp", hostAddr)
@@ -238,7 +238,7 @@ func start0(hostAddr string, servicePort int, spec *pb.ServiceSpec, interceptors
 	incepts = append(incepts, metricsInterceptor, openTracingInterceptor)
 	incepts = append(incepts, interceptors...)
 
-	glog.Infof("Creating grpc server %s at %s", spec.ServiceName, hostAddr)
+	glog.Infof("Creating grpc server[%s] at [%s]", spec.ServiceName, hostAddr)
 
 	opts := make([]grpc.ServerOption, 0, 10)
 	opts = append(opts, grpcServerOptions...)

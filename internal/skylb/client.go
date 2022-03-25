@@ -34,7 +34,7 @@ type serviceClient struct {
 	conns           []*grpc.ClientConn
 	// lbs                map[string]grpc.Balancer
 	healthCheckClosers []chan<- struct{}
-	dopts              map[string][]*grpc.DialOption
+	dopts              map[string][]grpc.DialOption
 	unaryInterceptors  []grpc.UnaryClientInterceptor
 	failFast           bool
 	skylbResolveCount  int
@@ -48,9 +48,9 @@ type serviceClient struct {
 // Resolve resolves a service spec and returns a load balancer handle.
 // It needs to be called for every service used by the client.
 func (sc *serviceClient) Resolve(spec *pb.ServiceSpec, opts ...grpc.DialOption) {
-	dopts := []*grpc.DialOption{}
+	dopts := []grpc.DialOption{}
 	for _, opt := range opts {
-		dopts = append(dopts, &opt)
+		dopts = append(dopts, opt)
 	}
 	sc.dopts[spec.String()] = dopts
 	sc.resolve(spec)
@@ -115,7 +115,8 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 		return
 	}
 
-	glog.Infof("Starting service client with %d service specs to resolve.", sc.skylbResolveCount)
+	glog.Infof("Starting service client[%s] with %d service specs to resolve.",
+		csName, sc.skylbResolveCount)
 
 	if nil != err {
 		glog.V(1).Infof("Invalid caller service id %d\n", csId)
@@ -127,9 +128,9 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 		resolver.Register(&skylbBuilder{
 			keeper: sc.keeper,
 		})
-	}
 
-	go sc.keeper.Start(csId, csName, sc.resolveFullEps)
+		go sc.keeper.Start(csId, csName, sc.resolveFullEps)
+	}
 
 	for _, spec := range sc.specs {
 		specCopy := &pb.ServiceSpec{
@@ -156,7 +157,7 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 				} else {
 					target = skyrs.SkyLBTarget(spec)
 				}
-				conn, err = grpc.Dial(target, options)
+				conn, err = grpc.Dial(target, options...)
 			}()
 
 			if err == nil {
@@ -188,10 +189,10 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 	sc.started = true
 }
 
-func (sc *serviceClient) buildDialOptions(calledSpec *pb.ServiceSpec, opts ...grpc.DialOption) []grpc.DialOption {
+func (sc *serviceClient) buildDialOptions(calledSpec *pb.ServiceSpec) []grpc.DialOption {
 	var options []grpc.DialOption
 	if ops, ok := sc.dopts[calledSpec.String()]; ok {
-		options = append(options, ops)
+		options = ops
 	}
 
 	csId := sc.clientServiceId
@@ -285,7 +286,7 @@ func NewServiceClient(clientServiceId vexpb.ServiceId, dseps map[string]string) 
 		specs:              []*pb.ServiceSpec{},
 		conns:              []*grpc.ClientConn{},
 		healthCheckClosers: []chan<- struct{}{},
-		dopts:              map[string][]*grpc.DialOption{},
+		dopts:              map[string][]grpc.DialOption{},
 		unaryInterceptors:  []grpc.UnaryClientInterceptor{},
 
 		debugSvcEndpoints: dseps,

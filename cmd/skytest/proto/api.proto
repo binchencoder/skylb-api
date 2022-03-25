@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package proto;
+
+option java_multiple_files = false;
+option java_outer_classname = "SkytestProtos";
+option java_package = "com.binchencoder.skylb.skytest.proto";
+
+// The request message to be greeted.
+message GreetingRequest {
+	string name = 1;
+	int32  age  = 2;
+}
+
+// The response message to greet the requester.
+message GreetingResponse {
+	string greeting = 1;
+}
+
+// The gRPC service definition for skytest.
+service Skytest {
+	rpc Greeting (GreetingRequest) returns (GreetingResponse);
+}

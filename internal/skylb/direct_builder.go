@@ -1,4 +1,4 @@
-package internal
+package skylb
 
 import (
 	"strings"
@@ -38,6 +38,7 @@ func (d *directBuilder) Build(target resolver.Target, cc resolver.ClientConn, op
 	if err := cc.UpdateState(resolver.State{
 		Addresses: addrs,
 	}); err != nil {
+		cc.ReportError(err)
 		return nil, err
 	}
 

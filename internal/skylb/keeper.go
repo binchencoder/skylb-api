@@ -105,7 +105,7 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 	sk.cancel = cancel
 
 	for {
-		if err := sk.start(ctx, resolveFullEps, &req); err != nil {
+		if err := sk.start(ctx, &req); err != nil {
 			if err == io.EOF {
 				glog.Info("SkyLB server closed the resolve stream.")
 			}
@@ -121,7 +121,7 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 	svcKeeperGauge.Dec()
 }
 
-func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.ResolveRequest) error {
+func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error {
 	ctxt, cancel := context.WithCancel(ctx)
 	skyCli, err := rpccli.NewGrpcClient(ctxt)
 	if err != nil {
@@ -181,50 +181,36 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 			glog.V(2).Infof("Received %d endpoint(s) for service %s", lenEps, svcName)
 			metrics.RecordEndpointCount(svcName, lenEps)
 
-			if resolveFullEps {
-				localEps, ok := localEpsMap[svcEps.Spec.String()]
-				if !ok {
-					localEps = make(map[string]struct{})
-					localEpsMap[svcEps.Spec.String()] = localEps
-				}
+			localEps, ok := localEpsMap[svcEps.Spec.String()]
+			if !ok {
+				localEps = make(map[string]struct{})
+				localEpsMap[svcEps.Spec.String()] = localEps
+			}
 
-				// The response holds full endpoints, we need to calculate
-				// the deltas.
-				eps := make(map[string]struct{})
-				for _, ep := range svcEps.InstEndpoints {
-					addr := fmt.Sprintf("%s:%d", ep.Host, ep.Port)
-					eps[addr] = struct{}{}
-					if _, ok := localEps[addr]; !ok {
-						up := resolver.Address{
-							Attributes: toAttributes(pb.Operation_Add),
-							Addr:       addr,
-						}
-						if ep.Weight != 0 {
-							up.Metadata = ep.Weight
-						}
-						updates = append(updates, up)
-						localEps[addr] = struct{}{}
-					}
-				}
-				for addr := range localEps {
-					if _, ok := eps[addr]; !ok {
-						up := resolver.Address{
-							Attributes: toAttributes(pb.Operation_Delete),
-							Addr:       addr,
-						}
-						updates = append(updates, up)
-						delete(localEps, addr)
-					}
-				}
-			} else {
-				// TODO(chenbin): Remove the code once all clients changed
-				//             to use the new protocol.
-				for _, ep := range svcEps.InstEndpoints {
+			// The response holds full endpoints, we need to calculate
+			// the deltas.
+			eps := make(map[string]struct{})
+			for _, ep := range svcEps.InstEndpoints {
+				addr := fmt.Sprintf("%s:%d", ep.Host, ep.Port)
+				eps[addr] = struct{}{}
+				if _, ok := localEps[addr]; !ok {
 					up := resolver.Address{
-						Attributes: toAttributes(ep.Op),
-						Addr:       fmt.Sprintf("%s:%d", ep.Host, ep.Port),
+						Addr: addr,
+					}
+					if ep.Weight != 0 {
+						up.Metadata = ep.Weight
 					}
 					updates = append(updates, up)
+					localEps[addr] = struct{}{}
+				}
+			}
+			for addr := range localEps {
+				if _, ok := eps[addr]; !ok {
+					up := resolver.Address{
+						Addr: addr,
+					}
+					updates = append(updates, up)
+					delete(localEps, addr)
 				}
 			}
 
@@ -250,7 +236,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, resolveFullEps bool, req *pb.R
 					if i > 0 {
 						(&buf).WriteString(", ")
 					}
-					(&buf).WriteString(fmt.Sprintf("[%s]%s", opToString(up.Attributes.Value(AddressOpKey{}).(pb.Operation)), up.Addr))
+					(&buf).WriteString(fmt.Sprintf("[%+v]", up))
 				}
 				glog.Infof("Received endpoints update for %s with value %+v.", key, buf.String())
 			}
