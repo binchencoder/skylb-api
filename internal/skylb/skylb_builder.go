@@ -38,7 +38,7 @@ func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opt
 		PortName:    values.Get("pn"),
 	}
 
-	fmt.Printf("servSpec: %+v\n", servSpec)
+	fmt.Printf("skylbbuilder build servSpec: %+v\n", servSpec)
 	b.keeper.RegisterServiceCliConn(servSpec, cc)
 
 	resolver := &skylbResolver{cliConn: cc}

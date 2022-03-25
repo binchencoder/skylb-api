@@ -124,6 +124,7 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error {
 	ctxt, cancel := context.WithCancel(ctx)
 	skyCli, err := rpccli.NewGrpcClient(ctxt)
+	fmt.Printf("skyCli: %+v \n", skyCli)
 	if err != nil {
 		glog.Errorf("Failed to create gRPC client to SkyLB, %+v, retry.", err)
 		return err
@@ -161,6 +162,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 	readyMap := map[string]struct{}{}
 	for {
 		resp, err := stream.Recv()
+		fmt.Printf("stream.Recv: %+v \n", resp)
 		if err != nil {
 			close(stopCh)
 			cancel()
@@ -271,6 +273,7 @@ func (sk *skyLbKeeper) WaitUntilReady() {
 func NewSkyLbKeeper() *skyLbKeeper {
 	return &skyLbKeeper{
 		resolverCliConns: make(map[string]resolver.ClientConn),
+		services:         make(map[string]*pb.ServiceSpec),
 		readyCh:          make(chan struct{}, 1),
 	}
 }

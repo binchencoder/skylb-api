@@ -39,7 +39,7 @@ const (
 )
 
 var (
-	// TODO(fuyc): change default value to true when most apps are k8s-ready.
+	// TODO(chenbin): change default value to true when most apps are k8s-ready.
 	withinK8s             = flag.Bool("within-k8s", false, "Whether this grpc service runs in kubernetes cluster")
 	reportInterval        = flag.Duration("skylb-report-interval", 3*time.Second, "The SkyLB load-report interval.")
 	EnablePromOnSamePort  = flag.Bool("enable-prom-on-same-port", false, "Enable serving prometheus metrics on the same port as gRPC.")

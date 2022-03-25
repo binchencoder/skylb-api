@@ -33,7 +33,7 @@ var (
 func init() {
 	rand.Seed(time.Now().UnixNano())
 	token = randString(20)
-	fmt.Printf("I am %s, start port %d \n", token, *port)
+	fmt.Printf("I am %s \n", token)
 }
 
 func usage() {

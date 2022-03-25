@@ -10,6 +10,7 @@ import (
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/resolver"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
@@ -225,7 +226,9 @@ func (sc *serviceClient) buildDialOptions(calledSpec *pb.ServiceSpec) []grpc.Dia
 	// ClientToMetadataInterceptor needs to be the last.
 	incepts = append(incepts, metadataInterceptor)
 
-	options = append(options, grpc.WithInsecure(),
+	options = append(options, grpc.WithTransportCredentials(insecure.NewCredentials()))
+
+	options = append(options,
 		grpc.WithUnaryInterceptor(jg.ChainUnaryClient(incepts...)),
 		grpc.WithStreamInterceptor(func(ctx context.Context, desc *grpc.StreamDesc, cc *grpc.ClientConn, method string,
 			streamer grpc.Streamer, opts ...grpc.CallOption) (grpc.ClientStream, error) {
