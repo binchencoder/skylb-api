@@ -21,18 +21,19 @@ type skylbResolver struct {
 // Build
 func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (
 	resolver.Resolver, error) {
-	if target.Scheme != skyRs.SkyLBScheme {
+	if target.URL.Scheme != skyRs.SkyLBScheme {
 		return nil, ErrUnsupportSchema
 	}
 
-	u, err := url.Parse(target.Endpoint)
+	_, err := url.Parse(target.Endpoint)
 	if err != nil {
 		panic(ErrInvalidTarget)
 	}
 
-	values := u.Query()
+	url := target.URL
+	values := url.Query()
 	servSpec := &pb.ServiceSpec{
-		ServiceName: u.Host,
+		ServiceName: url.Host,
 		Namespace:   values.Get("ns"),
 		PortName:    values.Get("pn"),
 	}
