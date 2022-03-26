@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 type grpcType string

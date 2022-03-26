@@ -14,13 +14,13 @@ import (
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	jg "github.com/binchencoder/letsgo/grpc"
-	"github.com/binchencoder/skylb-apiv2/client/option"
-	"github.com/binchencoder/skylb-apiv2/internal/flags"
-	"github.com/binchencoder/skylb-apiv2/metrics"
-	"github.com/binchencoder/skylb-apiv2/naming"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
-	"github.com/binchencoder/skylb-apiv2/resolver"
-	skyrs "github.com/binchencoder/skylb-apiv2/resolver"
+	"github.com/binchencoder/skylb-api/client/option"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	"github.com/binchencoder/skylb-api/metrics"
+	"github.com/binchencoder/skylb-api/naming"
+	pb "github.com/binchencoder/skylb-api/proto"
+	"github.com/binchencoder/skylb-api/resolver"
+	skyrs "github.com/binchencoder/skylb-api/resolver"
 )
 
 var (

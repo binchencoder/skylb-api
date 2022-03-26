@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // SkyLBTarget returns a string that represents the given endpoints with skylb schema.

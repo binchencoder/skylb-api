@@ -8,7 +8,7 @@ go_library(
         "ctx.go",
         "health.go",
     ],
-    importpath = "github.com/binchencoder/skylb-apiv2/internal/health",
+    importpath = "github.com/binchencoder/skylb-api/internal/health",
     deps = [
         "@com_github_binchencoder_letsgo//hashring:go_default_library",
         "@com_github_golang_glog//:go_default_library",

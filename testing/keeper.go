@@ -5,7 +5,7 @@ import (
 	"google.golang.org/grpc/resolver"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 // SkyLbKeeperMock mocks SkyLB API option.SkyLbKeeper.

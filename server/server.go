@@ -26,11 +26,11 @@ import (
 	jg "github.com/binchencoder/letsgo/grpc"
 	lmetrics "github.com/binchencoder/letsgo/metrics"
 	"github.com/binchencoder/letsgo/runtime/pprof"
-	"github.com/binchencoder/skylb-apiv2/internal/flags"
-	"github.com/binchencoder/skylb-apiv2/internal/rpccli"
-	"github.com/binchencoder/skylb-apiv2/metrics"
-	"github.com/binchencoder/skylb-apiv2/naming"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	"github.com/binchencoder/skylb-api/internal/rpccli"
+	"github.com/binchencoder/skylb-api/metrics"
+	"github.com/binchencoder/skylb-api/naming"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 const (

@@ -3,8 +3,8 @@ package resolver
 import (
 	"net/url"
 
-	"github.com/binchencoder/skylb-apiv2/client/option"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	"github.com/binchencoder/skylb-api/client/option"
+	pb "github.com/binchencoder/skylb-api/proto"
 	"google.golang.org/grpc/resolver"
 )
 

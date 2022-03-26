@@ -14,9 +14,9 @@ import (
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo"
-	skylb "github.com/binchencoder/skylb-apiv2/client"
-	pb "github.com/binchencoder/skylb-apiv2/cmd/skytest/proto"
-	skypb "github.com/binchencoder/skylb-apiv2/proto"
+	skylb "github.com/binchencoder/skylb-api/client"
+	pb "github.com/binchencoder/skylb-api/cmd/skytest/proto"
+	skypb "github.com/binchencoder/skylb-api/proto"
 )
 
 var (

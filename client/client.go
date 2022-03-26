@@ -7,9 +7,9 @@ import (
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	"github.com/binchencoder/letsgo/flags"
-	"github.com/binchencoder/skylb-apiv2/internal/skylb"
-	"github.com/binchencoder/skylb-apiv2/naming"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	"github.com/binchencoder/skylb-api/internal/skylb"
+	"github.com/binchencoder/skylb-api/naming"
+	pb "github.com/binchencoder/skylb-api/proto"
 )
 
 const (

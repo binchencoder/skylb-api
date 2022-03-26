@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	pb "github.com/binchencoder/skylb-apiv2/proto"
+	pb "github.com/binchencoder/skylb-api/proto"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc/resolver"
 )

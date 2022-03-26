@@ -8,7 +8,7 @@ go_library(
         ["*.go"],
         exclude = ["*_test.go"],
     ),
-    importpath = "github.com/binchencoder/skylb-apiv2/balancer",
+    importpath = "github.com/binchencoder/skylb-api/balancer",
     deps = [
         "//internal/health:go_default_library",
         "@com_github_binchencoder_letsgo//grpc:go_default_library",

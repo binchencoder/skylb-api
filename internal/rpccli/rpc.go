@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/binchencoder/letsgo/strings"
-	"github.com/binchencoder/skylb-apiv2/internal/flags"
-	pb "github.com/binchencoder/skylb-apiv2/proto"
-	"github.com/binchencoder/skylb-apiv2/resolver"
+	"github.com/binchencoder/skylb-api/internal/flags"
+	pb "github.com/binchencoder/skylb-api/proto"
+	"github.com/binchencoder/skylb-api/resolver"
 )
 
 func init() {

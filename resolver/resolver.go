@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/binchencoder/skylb-apiv2/client/option"
+	"github.com/binchencoder/skylb-api/client/option"
 	"google.golang.org/grpc/resolver"
 )
 
