@@ -16,6 +16,7 @@ logs/
 # Bazel.
 bazel-bin
 bazel-genfiles
+bazel-skylb-api
 bazel-skylb-apiv2
 bazel-out
 bazel-testlogs

@@ -2,6 +2,7 @@ package skylb
 
 import (
 	"fmt"
+	"net"
 	"strconv"
 	"strings"
 	"time"
@@ -68,8 +69,10 @@ func (sc *serviceClient) resolve(spec *pb.ServiceSpec) {
 			if len(parts) != 2 {
 				panic(fmt.Sprintf("Service instance endpoint should in format host:port, got %s", ep))
 			}
-			_, err := strconv.Atoi(parts[1])
-			if err != nil {
+			if _, err := strconv.Atoi(parts[1]); err != nil {
+				panic(err)
+			}
+			if _, err := net.LookupHost(parts[0]); err != nil {
 				panic(err)
 			}
 		}
