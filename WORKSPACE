@@ -1,4 +1,4 @@
-workspace(name = "com_github_binchencoder_skylb_apiv2")
+workspace(name = "com_github_binchencoder_skylb_api")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")

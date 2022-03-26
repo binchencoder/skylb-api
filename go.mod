@@ -1,4 +1,4 @@
-module github.com/binchencoder/skylb-apiv2
+module github.com/binchencoder/skylb-api
 
 go 1.17
 

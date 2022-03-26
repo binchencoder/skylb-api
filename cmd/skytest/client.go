@@ -38,8 +38,9 @@ var (
 
 func startSkylb(sid vexpb.ServiceId) (skylb.ServiceCli, pb.SkytestClient, hpb.HealthClient) {
 	skycli := skylb.NewServiceCli(vexpb.ServiceId_SHARED_TEST_CLIENT_SERVICE)
-	skycli.Resolve(skylb.NewServiceSpec(skylb.DefaultNameSpace, sid, skylb.DefaultPortName))
-	// skycli.EnableHistogram()
+	skycli.Resolve(skylb.NewServiceSpec(skylb.DefaultNameSpace, sid, skylb.DefaultPortName),
+		grpc.WithDefaultServiceConfig(`{"loadBalancingConfig": [{"round_robin": {}}]}`))
+	skycli.EnableHistogram()
 	var cli pb.SkytestClient
 	var healthCli hpb.HealthClient
 	skycli.Start(func(spec *skypb.ServiceSpec, conn *grpc.ClientConn) {
