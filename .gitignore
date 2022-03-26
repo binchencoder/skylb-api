@@ -28,3 +28,8 @@ bazel-testlogs
 
 # Java files
 *.exe
+
+# Logs files
+*.ERROR*
+*.INFO*
+*.WARNING*

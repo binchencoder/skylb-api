@@ -86,7 +86,8 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 	svcKeeperGauge.Inc()
 
 	glog.V(4).Infof("Starting SkyLB keeper for caller service ID %#v", csId)
-	if len(sk.resolverCliConns) == 0 {
+	fmt.Printf("len(sk.services): %d\n", len(sk.services))
+	if len(sk.services) == 0 {
 		svcKeeperGauge.Dec()
 		return
 	}
@@ -124,7 +125,6 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error {
 	ctxt, cancel := context.WithCancel(ctx)
 	skyCli, err := rpccli.NewGrpcClient(ctxt)
-	fmt.Printf("skyCli: %+v \n", skyCli)
 	if err != nil {
 		glog.Errorf("Failed to create gRPC client to SkyLB, %+v, retry.", err)
 		return err
@@ -267,6 +267,10 @@ func (sk *skyLbKeeper) Shutdown() {
 
 func (sk *skyLbKeeper) WaitUntilReady() {
 	<-sk.readyCh
+}
+
+func calcServiceKey(spec *pb.ServiceSpec) string {
+	return fmt.Sprintf("%s.%s:%s", spec.Namespace, spec.ServiceName, spec.PortName)
 }
 
 // NewSkyLbKeeper returns a new skylb keeper.

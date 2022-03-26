@@ -35,14 +35,14 @@ go_binary(
     ],
 )
 
-pkg_tar(
-    name = "binary",
-    srcs = [
-        ":skytest-client",
-        ":skytest-server",
-    ],
-    package_dir = "/skylb",
-)
+# pkg_tar(
+#     name = "binary",
+#     srcs = [
+#         ":skytest-client",
+#         ":skytest-server",
+#     ],
+#     package_dir = "/skylb",
+# )
 
 # docker_build(
 #     name = "latest",

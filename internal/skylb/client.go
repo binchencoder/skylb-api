@@ -54,13 +54,13 @@ func (sc *serviceClient) Resolve(spec *pb.ServiceSpec, opts ...grpc.DialOption) 
 		dopts = append(dopts, opt)
 	}
 	sc.dopts[spec.String()] = dopts
+
 	sc.resolve(spec)
 }
 
 func (sc *serviceClient) resolve(spec *pb.ServiceSpec) {
 	if ep, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
 		// Debug mode, do not need to register service.
-
 		addrs := strings.Split(ep, ",")
 		// Check valid addrs
 		for _, addr := range addrs {
