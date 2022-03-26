@@ -1,4 +1,4 @@
-package skylb
+package resolver
 
 import (
 	"math"

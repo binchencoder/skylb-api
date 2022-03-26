@@ -21,7 +21,7 @@ bazel build cmd/skytest:skytest-client
 #### 确定先启动skylb
 
 ```
-skylb/bazel-bin/cmd/skylb/linux_amd64_stripped/skylb --etcd-endpoints="http://localhost:2377"
+skylb/bazel-bin/cmd/skylb/linux_amd64_stripped/skylb --etcd-endpoints="http://localhost:2377" -alsologtostderr -v=2 
 ```
 
 #### start gRPC server

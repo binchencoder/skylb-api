@@ -1,12 +1,10 @@
-package skylb
+package resolver
 
 import (
-	"fmt"
 	"net/url"
 
 	"github.com/binchencoder/skylb-apiv2/client/option"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
-	skyRs "github.com/binchencoder/skylb-apiv2/resolver"
 	"google.golang.org/grpc/resolver"
 )
 
@@ -21,7 +19,7 @@ type skylbResolver struct {
 // Build
 func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (
 	resolver.Resolver, error) {
-	if target.URL.Scheme != skyRs.SkyLBScheme {
+	if target.URL.Scheme != SkyLBScheme {
 		return nil, ErrUnsupportSchema
 	}
 
@@ -38,7 +36,6 @@ func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opt
 		PortName:    values.Get("pn"),
 	}
 
-	fmt.Printf("skylbbuilder build servSpec: %+v\n", servSpec)
 	b.keeper.RegisterServiceCliConn(servSpec, cc)
 
 	resolver := &skylbResolver{cliConn: cc}
@@ -46,7 +43,7 @@ func (b *skylbBuilder) Build(target resolver.Target, cc resolver.ClientConn, opt
 }
 
 func (b *skylbBuilder) Scheme() string {
-	return skyRs.SkyLBScheme
+	return SkyLBScheme
 }
 
 func (r *skylbResolver) Close() {

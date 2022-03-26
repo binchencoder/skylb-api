@@ -14,6 +14,9 @@ var (
 
 // SkyLbKeeper defines the interface for a SkyLB keeper.
 type SkyLbKeeper interface {
+	// ResisterService registers the service with the given spec to the keeper
+	RegisterService(spec *pb.ServiceSpec)
+
 	// RegisterServiceCliConn registers the service resolver.ClientConn
 	// with the given spec to the keeper
 	RegisterServiceCliConn(spec *pb.ServiceSpec, cliConn resolver.ClientConn)

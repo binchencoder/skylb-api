@@ -1,25 +1,15 @@
-package skylb
+package resolver
 
 import (
 	"strings"
 
-	skyRs "github.com/binchencoder/skylb-apiv2/resolver"
 	"google.golang.org/grpc/resolver"
-)
-
-var (
-	directResolverBuilder directBuilder
 )
 
 type directBuilder struct{}
 
 type directResolver struct {
 	cc resolver.ClientConn
-}
-
-func init() {
-	// Registers the direct scheme to the resolver.
-	resolver.Register(&directResolverBuilder)
 }
 
 // Build
@@ -46,7 +36,7 @@ func (d *directBuilder) Build(target resolver.Target, cc resolver.ClientConn, op
 }
 
 func (b *directBuilder) Scheme() string {
-	return skyRs.DirectScheme
+	return DirectScheme
 }
 
 func (r *directResolver) Close() {

@@ -7,13 +7,6 @@ import (
 	pb "github.com/binchencoder/skylb-apiv2/proto"
 )
 
-const (
-	// DirectScheme stands for direct scheme.
-	DirectScheme = "direct"
-	// SkyLBScheme stands for skylb scheme.
-	SkyLBScheme = "skylb"
-)
-
 // SkyLBTarget returns a string that represents the given endpoints with skylb schema.
 func SkyLBTarget(spec *pb.ServiceSpec) string {
 	return fmt.Sprintf("%s://%s?ns=%s&pn=%s", SkyLBScheme, spec.ServiceName, spec.Namespace, spec.PortName)

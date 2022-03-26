@@ -21,7 +21,7 @@ import (
 
 var (
 	nBatchRequest  = flag.Int("n-batch-request", 10000, "The number of batched request")
-	requestSleep   = flag.Duration("request-sleep", 50*time.Millisecond, "The sleep time after each request")
+	requestSleep   = flag.Duration("request-sleep", 100*time.Millisecond, "The sleep time after each request")
 	requestTimeout = flag.Duration("request-timeout", 100*time.Millisecond, "The timeout of each request")
 
 	spec = skylb.NewServiceSpec(skylb.DefaultNameSpace, vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE, skylb.DefaultPortName)
@@ -75,17 +75,16 @@ func testClient() {
 				Name: fmt.Sprintf("John Doe %d", time.Now().Second()),
 			}
 			ctx, cancel := context.WithTimeout(context.Background(), *requestTimeout)
-			resp, err := cli.Greeting(ctx, &req, grpc.FailFast(false))
+			_, err := cli.Greeting(ctx, &req, grpc.FailFast(false))
 			if err != nil {
 				cancel()
-				glog.Errorf("Failed to greet service, %v", err)
-				fmt.Printf("Failed to greet service, %v", err)
+				glog.Errorf("Failed to greet service, %v \n", err)
 				grpcFailCount.Inc()
 				time.Sleep(*requestTimeout)
 				continue
 			}
 
-			glog.Infof("Greeting resp: %v \n", resp)
+			// glog.Infof("Greeting resp: %v \n", resp)
 
 			healthCli.Check(context.Background(), &hpb.HealthCheckRequest{})
 			time.Sleep(*requestSleep)

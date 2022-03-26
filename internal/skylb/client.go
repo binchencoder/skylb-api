@@ -11,7 +11,6 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"google.golang.org/grpc/resolver"
 
 	vexpb "github.com/binchencoder/gateway-proto/data"
 	jg "github.com/binchencoder/letsgo/grpc"
@@ -20,6 +19,7 @@ import (
 	"github.com/binchencoder/skylb-apiv2/metrics"
 	"github.com/binchencoder/skylb-apiv2/naming"
 	pb "github.com/binchencoder/skylb-apiv2/proto"
+	"github.com/binchencoder/skylb-apiv2/resolver"
 	skyrs "github.com/binchencoder/skylb-apiv2/resolver"
 )
 
@@ -74,6 +74,7 @@ func (sc *serviceClient) resolve(spec *pb.ServiceSpec) {
 			}
 		}
 	} else {
+		sc.keeper.RegisterService(spec)
 		sc.skylbResolveCount++
 	}
 
@@ -126,9 +127,7 @@ func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.Cl
 
 	if sc.skylbResolveCount > 0 {
 		// Registers the skylb scheme to the resolver.
-		resolver.Register(&skylbBuilder{
-			keeper: sc.keeper,
-		})
+		resolver.RegisterSkylbResolverBuilder(sc.keeper)
 
 		go sc.keeper.Start(csId, csName, sc.resolveFullEps)
 	}

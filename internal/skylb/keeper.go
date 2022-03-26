@@ -73,10 +73,14 @@ func init() {
 	prom.MustRegister(svcWatcherUpdatesGauge)
 }
 
+func (sk *skyLbKeeper) RegisterService(spec *pb.ServiceSpec) {
+	key := calcServiceKey(spec)
+	sk.services[key] = spec
+}
+
 func (sk *skyLbKeeper) RegisterServiceCliConn(spec *pb.ServiceSpec, cliConn resolver.ClientConn) {
 	key := calcServiceKey(spec)
 	sk.resolverCliConns[key] = cliConn
-	sk.services[key] = spec
 
 	glog.Infof("Registered to resolve service spec %s.%s on port name %q.",
 		spec.Namespace, spec.ServiceName, spec.PortName)
@@ -86,7 +90,6 @@ func (sk *skyLbKeeper) Start(csId vexpb.ServiceId, csName string, resolveFullEps
 	svcKeeperGauge.Inc()
 
 	glog.V(4).Infof("Starting SkyLB keeper for caller service ID %#v", csId)
-	fmt.Printf("len(sk.services): %d\n", len(sk.services))
 	if len(sk.services) == 0 {
 		svcKeeperGauge.Dec()
 		return
@@ -157,12 +160,11 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 	}
 	glog.Infoln("Established resolve stream to SkyLB.")
 
-	localEpsMap := make(map[string]map[string]struct{})
+	// localEpsMap := make(map[string]map[string]struct{})
 
 	readyMap := map[string]struct{}{}
 	for {
 		resp, err := stream.Recv()
-		fmt.Printf("stream.Recv: %+v \n", resp)
 		if err != nil {
 			close(stopCh)
 			cancel()
@@ -183,38 +185,42 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 			glog.V(2).Infof("Received %d endpoint(s) for service %s", lenEps, svcName)
 			metrics.RecordEndpointCount(svcName, lenEps)
 
-			localEps, ok := localEpsMap[svcEps.Spec.String()]
-			if !ok {
-				localEps = make(map[string]struct{})
-				localEpsMap[svcEps.Spec.String()] = localEps
-			}
+			// localEps, ok := localEpsMap[svcEps.Spec.String()]
+			// if !ok {
+			// 	localEps = make(map[string]struct{})
+			// 	localEpsMap[svcEps.Spec.String()] = localEps
+			// }
 
 			// The response holds full endpoints, we need to calculate
 			// the deltas.
-			eps := make(map[string]struct{})
+			// eps := make(map[string]struct{})
 			for _, ep := range svcEps.InstEndpoints {
 				addr := fmt.Sprintf("%s:%d", ep.Host, ep.Port)
-				eps[addr] = struct{}{}
-				if _, ok := localEps[addr]; !ok {
-					up := resolver.Address{
-						Addr: addr,
-					}
-					if ep.Weight != 0 {
-						up.Metadata = ep.Weight
-					}
-					updates = append(updates, up)
-					localEps[addr] = struct{}{}
-				}
+				// eps[addr] = struct{}{}
+				// if _, ok := localEps[addr]; !ok {
+				// 	up := resolver.Address{
+				// 		Addr: addr,
+				// 	}
+				// 	if ep.Weight != 0 {
+				// 		up.Metadata = ep.Weight
+				// 	}
+				// 	updates = append(updates, up)
+				// 	localEps[addr] = struct{}{}
+				// }
+
+				updates = append(updates, resolver.Address{
+					Addr: addr,
+				})
 			}
-			for addr := range localEps {
-				if _, ok := eps[addr]; !ok {
-					up := resolver.Address{
-						Addr: addr,
-					}
-					updates = append(updates, up)
-					delete(localEps, addr)
-				}
-			}
+			// for addr := range localEps {
+			// 	if _, ok := eps[addr]; !ok {
+			// 		up := resolver.Address{
+			// 			Addr: addr,
+			// 		}
+			// 		updates = append(updates, up)
+			// 		delete(localEps, addr)
+			// 	}
+			// }
 
 			if len(updates) == 0 {
 				svcKeeperRecvStreamGauge.Dec()
@@ -225,7 +231,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 			if !sk.ready {
 				if _, ok := readyMap[key]; !ok {
 					readyMap[key] = struct{}{}
-					if len(readyMap) == len(sk.resolverCliConns) {
+					if len(readyMap) == len(sk.services) {
 						close(sk.readyCh)
 						sk.ready = true
 					}
@@ -242,14 +248,16 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 				}
 				glog.Infof("Received endpoints update for %s with value %+v.", key, buf.String())
 			}
+
 			if cliConn, ok := sk.resolverCliConns[key]; ok {
+				// glog.V(1).Infof("resolver.ClientConn#UpdateState, service:[%s], update: %+v \n", key, updates)
 				if err := cliConn.UpdateState(resolver.State{
 					Addresses: updates,
 				}); err != nil {
-
+					cliConn.ReportError(err)
 				}
 			} else {
-				glog.Warningf("Nil serviceEntry for key %s", key)
+				glog.Errorf("Nil resolver.ClientConn for key %s", key)
 			}
 		}
 		svcKeeperRecvStreamGauge.Dec()
