@@ -29,7 +29,7 @@ skylb/bazel-bin/cmd/skylb/linux_amd64_stripped/skylb --etcd-endpoints="http://lo
 1. 注册到skylbserver
 
 ```
-skylb-apiv2/bazel-bin/cmd/skytest/skytest-server_/skytest-server -within-k8s=true -port=18000 -skylb-endpoints="127.0.0.1:1900" -alsologtostderr -v=2 -log_dir=.
+skylb-apiv2/bazel-bin/cmd/skytest/skytest-server_/skytest-server -port=18000 -skylb-endpoints="127.0.0.1:1900" -alsologtostderr -v=2 -log_dir=.
 ```
 
 2. 不注册到skylbserver
