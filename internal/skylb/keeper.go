@@ -262,7 +262,7 @@ func (sk *skyLbKeeper) start(ctx context.Context, req *pb.ResolveRequest) error 
 
 			if cliConn, ok := sk.resolverCliConns[key]; ok {
 				if err := cliConn.UpdateState(resolver.State{
-					Addresses: localEpsMap[svcEps.Spec.String()],
+					Addresses: updates,
 				}); err != nil {
 					cliConn.ReportError(err)
 				}

@@ -5,6 +5,7 @@ import (
 	"net"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/golang/glog"
@@ -26,6 +27,8 @@ import (
 
 var (
 	withPrometheusHistogram = false
+
+	once sync.Once
 )
 
 // serviceClient implements interface skylb-api/client/ServiceClient.
@@ -44,7 +47,6 @@ type serviceClient struct {
 	debugSvcEndpoints map[string]string
 
 	resolveFullEps bool
-	started        bool
 }
 
 // Resolve resolves a service spec and returns a load balancer handle.
@@ -111,85 +113,80 @@ func (sc *serviceClient) AddUnaryInterceptor(incept grpc.UnaryClientInterceptor)
 //
 // Start can only be called once in the whole lifecycle of an application.
 func (sc *serviceClient) Start(callback func(spec *pb.ServiceSpec, conn *grpc.ClientConn)) {
-	csId := sc.clientServiceId
-	csName, err := naming.ServiceIdToName(csId)
+	// Start only once.
+	once.Do(func() {
+		csId := sc.clientServiceId
+		csName, err := naming.ServiceIdToName(csId)
 
-	// Only be called once
-	if sc.started {
-		glog.Warningf("Service client[%s] has started", csName)
-		return
-	}
+		glog.Infof("Starting service client[%s] with %d service specs to resolve.",
+			csName, sc.skylbResolveCount)
 
-	glog.Infof("Starting service client[%s] with %d service specs to resolve.",
-		csName, sc.skylbResolveCount)
-
-	if nil != err {
-		glog.V(1).Infof("Invalid caller service id %d\n", csId)
-		csName = fmt.Sprintf("!%d", csId)
-	}
-
-	if sc.skylbResolveCount > 0 {
-		// Registers the skylb scheme to the resolver.
-		resolver.RegisterSkylbResolverBuilder(sc.keeper)
-
-		go sc.keeper.Start(csId, csName, sc.resolveFullEps)
-	}
-
-	for _, spec := range sc.specs {
-		specCopy := &pb.ServiceSpec{
-			Namespace:   spec.Namespace,
-			ServiceName: spec.ServiceName,
-			PortName:    spec.PortName,
+		if nil != err {
+			glog.V(1).Infof("Invalid caller service id %d\n", csId)
+			csName = fmt.Sprintf("!%d", csId)
 		}
 
-		options := sc.buildDialOptions(specCopy)
+		if sc.skylbResolveCount > 0 {
+			// Registers the skylb scheme to the resolver.
+			resolver.RegisterSkylbResolverBuilder(sc.keeper)
 
-		var conn *grpc.ClientConn
-		var err error
-		for {
-			func() {
-				defer func() {
-					if p := recover(); p != nil {
-						err = fmt.Errorf("%v", p)
-					}
-				}()
+			go sc.keeper.Start(csId, csName, sc.resolveFullEps)
+		}
 
-				var target string
-				if addrs, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
-					target = skyrs.DirectTarget(addrs)
-				} else {
-					target = skyrs.SkyLBTarget(spec)
-				}
-				conn, err = grpc.Dial(target, options...)
-			}()
-
-			if err == nil {
-				break
+		for _, spec := range sc.specs {
+			specCopy := &pb.ServiceSpec{
+				Namespace:   spec.Namespace,
+				ServiceName: spec.ServiceName,
+				PortName:    spec.PortName,
 			}
 
-			glog.Warningf("Failed to dial service %q, %v.", spec.ServiceName, err)
-			time.Sleep(*flags.SkylbRetryInterval)
+			options := sc.buildDialOptions(specCopy)
+
+			var conn *grpc.ClientConn
+			var err error
+			for {
+				func() {
+					defer func() {
+						if p := recover(); p != nil {
+							err = fmt.Errorf("%v", p)
+						}
+					}()
+
+					var target string
+					if addrs, ok := sc.debugSvcEndpoints[spec.ServiceName]; ok {
+						target = skyrs.DirectTarget(addrs)
+					} else {
+						target = skyrs.SkyLBTarget(spec)
+					}
+					conn, err = grpc.Dial(target, options...)
+				}()
+
+				if err == nil {
+					break
+				}
+
+				glog.Warningf("Failed to dial service %q, %v.", spec.ServiceName, err)
+				time.Sleep(*flags.SkylbRetryInterval)
+			}
+
+			sc.conns = append(sc.conns, conn)
+			callback(spec, conn)
+			// if *cflags.EnableHealthCheck {
+			// 	closer := health.StartHealthCheck(conn, balancer, spec.ServiceName)
+			// 	if closer != nil {
+			// 		sc.healthCheckClosers = append(sc.healthCheckClosers, closer)
+			// 	}
+			// }
 		}
 
-		sc.conns = append(sc.conns, conn)
-		callback(spec, conn)
-		// if *cflags.EnableHealthCheck {
-		// 	closer := health.StartHealthCheck(conn, balancer, spec.ServiceName)
-		// 	if closer != nil {
-		// 		sc.healthCheckClosers = append(sc.healthCheckClosers, closer)
-		// 	}
-		// }
-	}
+		if withPrometheusHistogram {
+			metrics.EnableClientHandlingTimeHistogram()
+		}
 
-	if withPrometheusHistogram {
-		metrics.EnableClientHandlingTimeHistogram()
-	}
-
-	if !sc.failFast && sc.skylbResolveCount > 0 {
-		sc.keeper.WaitUntilReady()
-	}
-
-	sc.started = true
+		if !sc.failFast && sc.skylbResolveCount > 0 {
+			sc.keeper.WaitUntilReady()
+		}
+	})
 }
 
 func (sc *serviceClient) buildDialOptions(calledSpec *pb.ServiceSpec) []grpc.DialOption {
