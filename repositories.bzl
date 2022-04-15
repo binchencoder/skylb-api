@@ -4,8 +4,8 @@ def go_repositories():
     # go_repository(
     #     name = "com_github_binchencoder_ease_gateway",
     #     importpath = "github.com/binchencoder/ease-gateway",
-    #     sum = "h1:hRpJwksSTfcSQeKWW7CpjH/Gq2BteNwhI8hzI0nn/z4=",
-    #     version = "v0.0.4",
+    #     sum = "h1:efGeRw9OajE8VSNs8zdFP3GeONCgZYnDsZ5BHNkGPNw=",
+    #     version = "v1.0.4",
     # )
     go_repository(
         name = "com_github_binchencoder_gateway_proto",

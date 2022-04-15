@@ -3,11 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"math/rand"
+	"net/http"
 	"os"
 	"time"
 
 	"github.com/golang/glog"
+	"github.com/prometheus/client_golang/prometheus"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
@@ -56,11 +59,11 @@ func main() {
 	// }
 
 	// go registerFakeServices()
-	// go registerPrometheus()
+	go registerPrometheus()
 
 	myServiceId = vexpb.ServiceId_SHARED_TEST_SERVER_SERVICE
 	skylb.Register(myServiceId, cli.DefaultPortName, *port)
-	// skylb.EnableHistogram()
+	skylb.EnableHistogram()
 
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	glog.Infof("Starting gRPC service at %s\n", addr)
@@ -80,12 +83,12 @@ func main() {
 // 	}
 // }
 
-// func registerPrometheus() {
-// 	http.Handle("/_/metrics", prometheus.UninstrumentedHandler())
-// 	if err := http.ListenAndServe(*scrapeAddr, nil); err != nil {
-// 		log.Fatal("ListenServerError:", err)
-// 	}
-// }
+func registerPrometheus() {
+	http.Handle("/_/metrics", prometheus.UninstrumentedHandler())
+	if err := http.ListenAndServe(*scrapeAddr, nil); err != nil {
+		log.Fatal("ListenServerError:", err)
+	}
+}
 
 func randString(n int) string {
 	b := make([]rune, n)
